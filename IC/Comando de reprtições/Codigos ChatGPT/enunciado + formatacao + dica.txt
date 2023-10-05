@@ -1,0 +1,20 @@
+### enunciado + formatacao + dica
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Escreva um programa que determine quais e quantos motoristas infringiram o limite de velocidade em mais de 20% e menos que 50% acima da velocidade máxima permitida para a via.  
+O dado de entrada é um vetor com o registro das velocidades medidas pelo radar móvel. O primeiro valor do vetor indica o limite de velocidade máxima da via. Os demais valores são os registros de velocidade dos carros que trafegaramm na via. Como saída, é informada a posição no vetor de cada motorista que infringiu a velocidade (um por linha) e, ao final, a quantidade de motoristas que infringiram o limite.  
+Utilize uma variável acumuladora para guardar a quantidade de infrações.  
+Considere que os valores inseridos como entrada são sempre válidos, ou seja, são reais positivos.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Aqui está um programa em Python que faz o que você descreveu:
+
+`def verifica_infracoes(velocidades):     limite_velocidade = velocidades[0]     infracoes = 0      for i in range(1, len(velocidades)):         velocidade_registrada = velocidades[i]         limite_superior = limite_velocidade * 1.2  # 20% acima do limite         limite_inferior = limite_velocidade * 1.5  # 50% acima do limite          if velocidade_registrada > limite_superior and velocidade_registrada <= limite_inferior:             print(f"Motorista na posição {i} infringiu o limite de velocidade.")             infracoes += 1      print(f"Total de motoristas que infringiram o limite: {infracoes}")  # Exemplo de uso velocidades = [80, 95, 88, 100, 72, 84, 120] verifica_infracoes(velocidades)`
+
+Neste programa, definimos uma função `verifica_infracoes` que recebe a lista de velocidades como entrada. Ela começa obtendo o limite de velocidade da primeira posição da lista. Em seguida, percorremos a lista a partir do segundo elemento e verificamos se cada velocidade registrada está entre 20% e 50% acima do limite de velocidade. Se estiver, imprimimos a posição do motorista que infringiu o limite e incrementamos o contador de infrações. No final, exibimos o total de motoristas que infringiram o limite.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
