@@ -1,0 +1,24 @@
+Teste Vetores e strings 
+
+Nome do exercício: Data por extenso
+
+Descrição
+Escreva um programa que leia como entrada uma data no formato “ddmmaaaa” e imprima como saída essa data por extenso. 
+
+Formato para entrada e saída de dados
+O formato de entrada é "ddmmaaaa", sendo que "dd" é o dia do mês com dois dígitos, "mm" é o número do mês do ano com dois dígitos e "yyyy" é o ano completo.
+O formato de saída é "dia de mês por extenso de ano".
+
+Dicas:
+Sempre considere que os valores de entrada são válidos.
+Evite o uso de símbolos com acidentes, buscando usar apenas símbolos do ASCII. Por exemplo, o mês de março deve ser escrito sem "ç", ou seja, "marco". Dessa forma, evitam-se problemas com codificação dos textos. 
+
+Casos de teste 
+Entrada: 01092023
+Saída: 01 de setembro de 2023
+
+Entrada: 17031909
+Saída: 17 de marco de 1909
+
+Entrada: 31021031
+Saída: 31 de fevereiro de 1031
