@@ -1,0 +1,10 @@
+Here is one possible solution:
+
+def count_speeding_drivers(data):
+    max_speed = data[0]
+    speeding_drivers = []
+    for i, speed in enumerate(data[1:]):
+        if speed > max_speed * 1.2 and speed < max_speed * 1.5:
+            # Driver exceeded speed limit by 20-50%
+            speeding_drivers.append(i + 1)
+    return speeding_drivers

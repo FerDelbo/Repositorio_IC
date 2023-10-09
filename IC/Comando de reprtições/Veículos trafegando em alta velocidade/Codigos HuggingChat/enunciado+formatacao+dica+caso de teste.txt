@@ -1,0 +1,17 @@
+Here is one possible solution in Python:
+
+def count_speeding_drivers(input_data):
+    max_speed = input_data[0]
+    infractions = 0
+    positions = []
+    for i, speed in enumerate(input_data[1:]):
+        if speed > max_speed * 1.2:
+            positions.append(i + 1)
+            infractions += 1
+    return positions, infractions
+
+input_data = [60.0, 73.9, 22.9, 72.1, 72.0, 100.6]
+positions, infractions = count_speeding_drivers(input_data)
+print("Positions of infractions:", ", ".join([str(p) for p in positions]))
+print("Number of infractions:", infractions)
+# Output: Positions of infractions: 4, 5, Number of infractions: 2

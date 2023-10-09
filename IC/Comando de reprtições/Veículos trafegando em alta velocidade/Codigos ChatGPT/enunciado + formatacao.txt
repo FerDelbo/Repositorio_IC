@@ -1,0 +1,18 @@
+### enunciado + formatacao
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Escreva um programa que determine quais e quantos motoristas infringiram o limite de velocidade em mais de 20% e menos que 50% acima da velocidade máxima permitida para a via.  
+O dado de entrada é um vetor com o registro das velocidades medidas pelo radar móvel. O primeiro valor do vetor indica o limite de velocidade máxima da via. Os demais valores são os registros de velocidade dos carros que trafegaramm na via. Como saída, é informada a posição no vetor de cada motorista que infringiu a velocidade (um por linha) e, ao final, a quantidade de motoristas que infringiram o limite.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Aqui está um programa em Python que faz o que você pediu:
+
+`def verifica_infracoes(velocidades):     limite_maximo = velocidades[0]     infratores = []      for i in range(1, len(velocidades)):         velocidade_registrada = velocidades[i]         limite_superior = limite_maximo * 1.5  # Limite superior é 50% acima do limite máximo         limite_inferior = limite_maximo * 1.2  # Limite inferior é 20% acima do limite máximo          if velocidade_registrada > limite_inferior and velocidade_registrada <= limite_superior:             infratores.append(i)      return infratores   velocidades = [80, 90, 100, 110, 120, 130, 140] infratores = verifica_infracoes(velocidades)  if len(infratores) > 0:     print("Motoristas que infringiram o limite de velocidade:")     for i in infratores:         print(f"Motorista na posição {i} com velocidade {velocidades[i]} km/h")      print(f"Total de motoristas infratores: {len(infratores)}") else:     print("Nenhum motorista infringiu o limite de velocidade.")`
+
+Neste programa, `verifica_infracoes` recebe uma lista de velocidades registradas, onde o primeiro valor é o limite de velocidade da via e os valores subsequentes são as velocidades dos carros. Ele verifica cada velocidade registrada para ver se ela está entre 20% e 50% acima do limite de velocidade, e se estiver, adiciona a posição do motorista à lista de infratores. Em seguida, o programa imprime a posição e a velocidade de cada motorista infrator, bem como o total de infratores encontrados.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
