@@ -1,0 +1,18 @@
+ Sure! Here's a Python program that does what you described:
+```
+notes = input("Enter four notes: ")
+weights = (1, 2, 3, 4)
+total = sum(note * weight for note, weight in zip(notes, weights))
+average = total / sum(weights)
+print(round(average, 1))
+```
+Here's how it works:
+
+1. The `input` function is used to get the four notes from the user, separated by spaces.
+2. The `zip` function is used to pair each note with its corresponding weight.
+3. The `sum` function is used to calculate the total score by multiplying each note by its weight and then adding all those products together.
+4. The `sum` function is used again to calculate the sum of all the weights.
+5. The `round` function is used to round the weighted average to one decimal place.
+6. The `print` function is used to display the rounded weighted average.
+
+Let me know if you have any questions or need further clarification!

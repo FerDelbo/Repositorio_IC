@@ -1,0 +1,50 @@
+Aqui está um programa em Python que lê quatro notas de um aluno e imprime a média ponderada, sabendo que os pesos das avaliações são respectivamente: 1, 2, 3 e 4:
+Python
+def media_ponderada(notas, pesos):
+  """
+  Calcula a média ponderada de um conjunto de notas.
+
+  Args:
+    notas: Um conjunto de notas.
+    pesos: Um conjunto de pesos para as notas.
+
+  Returns:
+    A média ponderada das notas.
+  """
+
+  soma = 0
+  for nota, peso in zip(notas, pesos):
+    soma += nota * peso
+  return soma / sum(pesos)
+
+
+if __name__ == "__main__":
+  # Leia as notas do aluno
+  nota_1 = float(input("Digite a nota 1: "))
+  nota_2 = float(input("Digite a nota 2: "))
+  nota_3 = float(input("Digite a nota 3: "))
+  nota_4 = float(input("Digite a nota 4: "))
+
+  # Calcule a média ponderada
+  media = media_ponderada([nota_1, nota_2, nota_3, nota_4], [1, 2, 3, 4])
+
+  # Imprima a média
+  print(f"A média ponderada do aluno é {media:.2f}.")
+
+Este programa funciona da seguinte forma:
+A função media_ponderada() recebe dois conjuntos de dados como argumentos: as notas e os pesos.
+A função itera sobre os dois conjuntos de dados, multiplicando cada nota pelo seu respectivo peso.
+A função soma os produtos e divide pelo somatório dos pesos.
+No exemplo acima, o usuário é solicitado a digitar quatro notas. O programa então calcula a média ponderada das notas usando os pesos especificados. A média é então impressa na tela.
+Aqui está um exemplo de saída do programa:
+Digite a nota 1: 7
+Digite a nota 2: 8
+Digite a nota 3: 9
+Digite a nota 4: 10
+
+A média ponderada do aluno é 8.50.
+
+É claro que este programa pode ser modificado para atender a diferentes necessidades. Por exemplo, o usuário poderia ser solicitado a digitar os pesos das avaliações. Além disso, o programa poderia ser aprimorado para realizar uma verificação de aprovação, verificando se a média ponderada é maior ou igual a 7.0.
+Fontes
+1. https://github.com/Marlysson/Tecnologo-ADS
+

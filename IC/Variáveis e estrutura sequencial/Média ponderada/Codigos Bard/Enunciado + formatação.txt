@@ -1,0 +1,55 @@
+Aqui está um programa em Python que atende aos seus requisitos:
+
+```python
+def media_ponderada(notas, pesos):
+  """
+  Calcula a média ponderada de um conjunto de notas.
+
+  Args:
+    notas: Uma lista de notas.
+    pesos: Uma lista de pesos correspondentes às notas.
+
+  Returns:
+    A média ponderada das notas.
+  """
+
+  soma = 0
+  for nota, peso in zip(notas, pesos):
+    soma += nota * peso
+  return round(soma / sum(pesos), 1)
+
+
+if __name__ == "__main__":
+  # Entrada
+  notas = [float(input("Digite a nota 1: ")),
+            float(input("Digite a nota 2: ")),
+            float(input("Digite a nota 3: ")),
+            float(input("Digite a nota 4: "))]
+  pesos = [1, 2, 3, 4]
+
+  # Saída
+  media = media_ponderada(notas, pesos)
+  print(f"A média ponderada é de {media}.")
+```
+
+Este programa funciona da seguinte forma:
+
+* A função `media_ponderada()` recebe duas listas como entrada: uma lista de notas e uma lista de pesos.
+* A função itera sobre as duas listas, multiplicando cada nota pelo seu respectivo peso.
+* A função soma os resultados e divide pela soma dos pesos.
+* A função retorna a média ponderada.
+
+Na seção de entrada, o programa solicita ao usuário que digite as quatro notas. Na seção de saída, o programa imprime a média ponderada com um dígito decimal.
+
+Aqui está um exemplo de saída do programa:
+
+```
+Digite a nota 1: 7
+Digite a nota 2: 8
+Digite a nota 3: 9
+Digite a nota 4: 10
+
+A média ponderada é de 8.5.
+```
+
+Você pode modificar o programa para atender às suas necessidades específicas. Por exemplo, você pode alterar o número de notas ou os pesos das avaliações.

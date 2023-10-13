@@ -1,0 +1,35 @@
+Nome do exercício: Média ponderada
+
+Descrição:
+Escreva um programa que leia quatro notas de um aluno. Como saída, imprima a média ponderada, sabendo que os pesos das avaliações são respectivamente: 1, 2, 3 e 4.
+
+Formato de entrada e saída: 
+O programa deve receber 4 números de ponto flutuante, o qual deve ser aplicado em cada uma das notas, sendo a primeira nota peso 1, a segunda 2, terceira 3 e quarta 4. Como saída o programa deve fazer a média ponderada dessas 4 notas com os pesos impostos. Este resultado deve estar arredondado em uma casa decimal.
+
+Dicas:
+Dentro do comando print, use o comando round(x, n) para arredondar o número x com até n casas decimais.
+
+Caso de teste:
+Entrada:
+0.0
+0.0
+9.0
+10.0
+Saída:
+6.7
+
+Entrada:	
+10.0
+20.0
+30.0
+40.0
+Saída:
+30.0
+
+Entrada:	
+5.0
+3.0
+9.0
+10.0
+Saída:
+7.8

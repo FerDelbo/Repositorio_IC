@@ -1,0 +1,28 @@
+### Enunciado + formatação + dicas + caso de teste
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Escreva um programa em python que leia quatro notas de um aluno. Como saída, imprima a média ponderada, sabendo que os pesos das avaliações são respectivamente: 1, 2, 3 e 4.  
+O programa deve receber 4 números de ponto flutuante, o qual deve ser aplicado em cada uma das notas, sendo a primeira nota peso 1, a segunda 2, terceira 3 e quarta 4. Como saída o programa deve fazer a média ponderada dessas 4 notas com os pesos impostos. Este resultado deve estar arredondado em uma casa decimal.  
+Dicas:  
+Dentro do comando print, use o comando round(x, n) para arredondar o número x com até n casas decimais.  
+Tome como exemplo o seguinte caso de teste:  
+Entrada:  
+0.0  
+0.0  
+9.0  
+10.0  
+Saída:  
+6.7
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Você pode criar um programa em Python para calcular a média ponderada das notas conforme as orientações fornecidas. Aqui está um exemplo de código:
+
+`# Leitura das quatro notas nota1 = float(input("Digite a primeira nota: ")) nota2 = float(input("Digite a segunda nota: ")) nota3 = float(input("Digite a terceira nota: ")) nota4 = float(input("Digite a quarta nota: "))  # Cálculo da média ponderada media_ponderada = (nota1 * 1 + nota2 * 2 + nota3 * 3 + nota4 * 4) / (1 + 2 + 3 + 4)  # Arredondando o resultado para uma casa decimal media_ponderada_arredondada = round(media_ponderada, 1)  # Exibindo o resultado print("A média ponderada é:", media_ponderada_arredondada)`
+
+Este código solicita ao usuário que insira as quatro notas, realiza o cálculo da média ponderada e, em seguida, exibe o resultado com uma casa decimal. Certifique-se de que os pesos correspondem corretamente às notas, como especificado no enunciado do problema.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,20 @@
+### Enunciado + formatação + dicas
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Escreva um programa em python que leia quatro notas de um aluno. Como saída, imprima a média ponderada, sabendo que os pesos das avaliações são respectivamente: 1, 2, 3 e 4.  
+O programa deve receber 4 números de ponto flutuante, o qual deve ser aplicado em cada uma das notas, sendo a primeira nota peso 1, a segunda 2, terceira 3 e quarta 4. Como saída o programa deve fazer a média ponderada dessas 4 notas com os pesos impostos. Este resultado deve estar arredondado em uma casa decimal.  
+Dicas:  
+Dentro do comando print, use o comando round(x, n) para arredondar o número x com até n casas decimais.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Aqui está um programa em Python que lê quatro notas de um aluno e calcula a média ponderada com os pesos especificados:
+
+`# Solicita as quatro notas do aluno nota1 = float(input("Digite a primeira nota: ")) nota2 = float(input("Digite a segunda nota: ")) nota3 = float(input("Digite a terceira nota: ")) nota4 = float(input("Digite a quarta nota: "))  # Define os pesos das notas peso1 = 1 peso2 = 2 peso3 = 3 peso4 = 4  # Calcula a média ponderada media_ponderada = (nota1 * peso1 + nota2 * peso2 + nota3 * peso3 + nota4 * peso4) / (peso1 + peso2 + peso3 + peso4)  # Arredonda a média ponderada para uma casa decimal media_ponderada_arredondada = round(media_ponderada, 1)  # Imprime a média ponderada arredondada print("A média ponderada das notas é:", media_ponderada_arredondada)`
+
+Este programa solicita ao usuário que insira as quatro notas, calcula a média ponderada com os pesos especificados e a imprime arredondada para uma casa decimal.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
