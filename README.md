@@ -1,2 +1,2 @@
-# Respositorio_IC
+# Repositorio_IC
 Armazenamento dos estudos e dados coletados para a IC
