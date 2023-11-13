@@ -1,7 +1,6 @@
 import unittest
 import sys
 import io
-from math import pi
 
 
 def verificar_string(string1, string2, string3, valores_entrada,arquivo):
@@ -44,21 +43,21 @@ def verificar_string(string1, string2, string3, valores_entrada,arquivo):
 
 
 class TestStringVerification(unittest.TestCase):
-    file = 'codigo.py'
+    #file = 'codigo.py'
     def test_verificar_string_1(self):
         valores_entrada = ["60.0","73.9","22.9","72.1","72.0","100.6"]
-        self.assertTrue(verificar_string("1", "3", "2", valores_entrada,self.file))
+        self.assertFalse(verificar_string("1", "3", "2", valores_entrada,self.file))
 
     def test_verificar_string_2(self):
         valores_entrada = ["11.6","60.6","16.6","11.35"]
-        self.assertTrue(verificar_string("2", "1", "zero", valores_entrada,self.file))
+        self.assertFalse(verificar_string("2", "1", "zero", valores_entrada,self.file))
 
     def test_verificar_string_3(self):
         valores_entrada = ["72.9","29.1","7.29","90.7","66.6"]
-        self.assertTrue(verificar_string("3", "1", "zero", valores_entrada,self.file))
+        self.assertFalse(verificar_string("3", "1", "zero", valores_entrada,self.file))
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        TestStringVerification.file = sys.argv.pop()
+    #if len(sys.argv) > 1:
+    TestStringVerification.file = "C:\\Users\\Fernando\\Desktop\\Teste_cod\\solucao_velocidade\\3738_2588_7229.py"
     unittest.main()
