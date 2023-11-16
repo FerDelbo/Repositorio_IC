@@ -1,4 +1,4 @@
-from numpy import *
+#from numpy import *
 
 v = (input(":"))
 dia = v[0:2]

@@ -1,7 +1,6 @@
 import unittest
 import sys
 import io
-from math import pi
 
 
 def verificar_string(string1, valores_entrada,arquivo):
@@ -37,7 +36,7 @@ def verificar_string(string1, valores_entrada,arquivo):
 
 
 class TestStringVerification(unittest.TestCase):
-    file = 'codigo.py'
+    #file = 'codigo.py'
     def test_verificar_string_1(self):
         valores_entrada = ["0.0", "0.0", "9.0", "10.0"]
         self.assertTrue(verificar_string("6.7", valores_entrada,self.file))
@@ -52,6 +51,6 @@ class TestStringVerification(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        TestStringVerification.file = sys.argv.pop()
+    #if len(sys.argv) > 1:
+    TestStringVerification.file = "C:\\Users\\Fernando\\Desktop\\Teste_cod\\solucao_media\\3357_4236_7229.py"
     unittest.main()

@@ -1,6 +1,6 @@
-from numpy import *
+#from numpy import *
 
-mes = array(["janeiro", "fevereiro" ,"marco" ,"abril","maio",  "junho" ,"julho", "agosto" ,"setembro", "outubro" ,"novembro", "dezembro"])
+mes = ["janeiro", "fevereiro" ,"marco" ,"abril","maio",  "junho" ,"julho", "agosto" ,"setembro", "outubro" ,"novembro", "dezembro"]
 data = input("data")
 
 d = data[0:2]

@@ -1,7 +1,6 @@
 import unittest
 import sys
 import io
-from math import pi
 
 
 def verificar_string(string1, valores_entrada,arquivo):
@@ -37,21 +36,21 @@ def verificar_string(string1, valores_entrada,arquivo):
 
 
 class TestStringVerification(unittest.TestCase):
-    file = 'codigo.py'
+    #file = 'codigo.py'
     def test_verificar_string_1(self):
-        valores_entrada = ["17011909"]
-        self.assertTrue(verificar_string("17 de janeiro de 1909", valores_entrada,self.file))
+        valores_entrada = ["01092023"]
+        self.assertTrue(verificar_string("01 de setembro de 2023", valores_entrada,self.file))
 
     def test_verificar_string_2(self):
-        valores_entrada = ["10082021"]
-        self.assertTrue(verificar_string("10 de agosto de 2021", valores_entrada,self.file))
+        valores_entrada = ["17031909"]
+        self.assertTrue(verificar_string("17 de marco de 1909", valores_entrada,self.file))
 
     def test_verificar_string_3(self):
-        valores_entrada = ["21042018"]
-        self.assertTrue(verificar_string("21 de abril de 2018", valores_entrada,self.file))
+        valores_entrada = ["31021031"]
+        self.assertTrue(verificar_string("31 de fevereiro de 1031", valores_entrada,self.file))
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        TestStringVerification.file = sys.argv.pop()
+    #if len(sys.argv) > 1:
+    TestStringVerification.file = "C:\\Users\\Fernando\\Desktop\\Teste_cod\\solucao_data\\3619_1186_7229.py"
     unittest.main()
