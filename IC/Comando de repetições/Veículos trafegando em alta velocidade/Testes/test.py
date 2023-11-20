@@ -3,7 +3,7 @@ import sys
 import io
 
 
-def verificar_string(string1, string2, string3, valores_entrada,arquivo):
+def verificar_string(valores_esperados, valores_entrada,arquivo):
     # Abre o arquivo 'codigo.py' e lê o seu conteúdo
     with open(arquivo, 'r') as file:
         codigo = file.read()
@@ -22,11 +22,11 @@ def verificar_string(string1, string2, string3, valores_entrada,arquivo):
     try:
         # Executa o código lido do arquivo com o input mockado
         exec(codigo, {'input': input_mock_function})
-        valor_impresso1 = sys.stdout.getvalue().strip()
-        partes = valor_impresso1.split('\n')
-        saida1 = partes[0]
-        saida2 = partes[1]
-        saida3 = partes[2]
+        valor_impresso = sys.stdout.getvalue().strip()
+        # partes = valor_impresso.split('\n')
+        # saida1 = partes[0]
+        # saida2 = partes[1]
+        # saida3 = partes[2]
 
     except Exception as e:
         print(f"Erro ao executar o código: {e}")
@@ -36,28 +36,28 @@ def verificar_string(string1, string2, string3, valores_entrada,arquivo):
         sys.stdout = stdout_backup
 
     # Verifica se os valores impressos são iguais às strings fornecidas
-    if(saida3 == "zero"):
-        return string1 == saida1 and string2 == saida2
+    if(valores_esperados == valor_impresso):
+        return True;
     else:
-        return string1 == saida1 and string2 == saida2 and string3 == saida3
+        return False;
 
 
 class TestStringVerification(unittest.TestCase):
     #file = 'codigo.py'
     def test_verificar_string_1(self):
         valores_entrada = ["60.0","73.9","22.9","72.1","72.0","100.6"]
-        self.assertFalse(verificar_string("1", "3", "2", valores_entrada,self.file))
+        self.assertTrue(verificar_string("1\n3\n2", valores_entrada,self.file))
 
     def test_verificar_string_2(self):
         valores_entrada = ["11.6","60.6","16.6","11.35"]
-        self.assertFalse(verificar_string("2", "1", "zero", valores_entrada,self.file))
+        self.assertTrue(verificar_string("2\n1", valores_entrada,self.file))
 
     def test_verificar_string_3(self):
         valores_entrada = ["72.9","29.1","7.29","90.7","66.6"]
-        self.assertFalse(verificar_string("3", "1", "zero", valores_entrada,self.file))
+        self.assertTrue(verificar_string("3\n1", valores_entrada,self.file))
 
 
 if __name__ == '__main__':
     #if len(sys.argv) > 1:
-    TestStringVerification.file = "C:\\Users\\Fernando\\Desktop\\Teste_cod\\solucao_velocidade\\3738_2588_7229.py"
+    TestStringVerification.file = "C:\\Users\\Fernando\\Desktop\\Teste_cod\\solucao_velocidade\\3738_2588_2927.py"
     unittest.main()
