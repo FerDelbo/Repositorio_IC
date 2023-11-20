@@ -14,7 +14,34 @@ Saída: 1 3 2
 
 Aqui está um programa em Python que faz o que você descreveu:
 
-`def verificar_infracoes(velocidades):     limite_velocidade = velocidades[0]     infracoes = []     quantidade_infracoes = 0      for i in range(1, len(velocidades)):         velocidade_registrada = velocidades[i]         limite_superior = limite_velocidade * 1.5  # 50% acima do limite         limite_inferior = limite_velocidade * 1.2  # 20% acima do limite          if limite_inferior < velocidade_registrada <= limite_superior:             infracoes.append(i)             quantidade_infracoes += 1      return infracoes, quantidade_infracoes  # Exemplo de teste entrada = [60.0, 73.9, 22.9, 72.1, 72.0, 100.6] infracoes, quantidade = verificar_infracoes(entrada)  if quantidade > 0:     print("Motoristas que infringiram o limite:")     for i in infracoes:         print(i, end=' ')     print("\nQuantidade total de motoristas infratores:", quantidade) else:     print("Nenhum motorista infringiu o limite de velocidade.")`
+def verificar_infracoes(velocidades):
+    limite_velocidade = velocidades[0]
+    infracoes = []
+    quantidade_infracoes = 0
+
+    for i in range(1, len(velocidades)):
+        velocidade_registrada = velocidades[i]
+        limite_superior = limite_velocidade * 1.5  # 50% acima do limite
+        limite_inferior = limite_velocidade * 1.2  # 20% acima do limite
+
+        if limite_inferior < velocidade_registrada <= limite_superior:
+            infracoes.append(i)
+            quantidade_infracoes += 1
+
+    return infracoes, quantidade_infracoes
+
+# Exemplo de teste
+entrada = [60.0, 73.9, 22.9, 72.1, 72.0, 100.6]
+infracoes, quantidade = verificar_infracoes(entrada)
+
+if quantidade > 0:
+    print("Motoristas que infringiram o limite:")
+    for i in infracoes:
+        print(i, end=' ')
+    print("\nQuantidade total de motoristas infratores:", quantidade)
+else:
+    print("Nenhum motorista infringiu o limite de velocidade.")
+
 
 Este programa começa definindo o limite de velocidade com base no primeiro valor do vetor de entrada. Em seguida, ele verifica cada registro de velocidade e compara com os limites superior e inferior (20% e 50% acima do limite, respectivamente). Se a velocidade estiver dentro desse intervalo, o índice do motorista é adicionado à lista de infratores e a contagem de infratores é incrementada. Finalmente, o programa imprime os índices dos motoristas que infringiram o limite e a quantidade total de motoristas infratores.
 
