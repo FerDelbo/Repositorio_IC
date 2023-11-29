@@ -1,0 +1,14 @@
+Sure, here is the Python program that reads four notes from a student and prints the weighted average:
+
+```python
+note1 = float(input("Enter the first note: "))
+note2 = float(input("Enter the second note: "))
+note3 = float(input("Enter the third note: "))
+note4 = float(input("Enter the fourth note: "))
+
+weighted_average = (note1 * 1 + note2 * 2 + note3 * 3 + note4 * 4) / 10
+
+print("The weighted average is:", round(weighted_average, 1))
+```
+
+This program first prompts the user to enter four notes. The notes are stored in variables `note1`, `note2`, `note3`, and `note4`. The weighted average is then calculated by multiplying each note by its weight and then summing the products. The final result is rounded to one decimal place and printed to the console.

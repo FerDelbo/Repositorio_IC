@@ -1,0 +1,47 @@
+### enunciado+formatacao.en
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write a program that reads a date in the format “ddmmyyyy” as input and prints that date in words as output.  
+The input format is "ddmmyyyy", where "dd" is the two-digit day of the month, "mm" is the two-digit month number of the year, and "yyyy" is the full year.  
+The output format is "day of month spelled out of year".
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Certainly! Below is an example of a Python program that takes a date in the "ddmmyyyy" format as input and prints the date in words as output:
+
+def date_to_words(date):
+    # Define lists for days, months, and suffixes
+    days = ["", "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth",
+            "Eleventh", "Twelfth", "Thirteenth", "Fourteenth", "Fifteenth", "Sixteenth", "Seventeenth", "Eighteenth",
+            "Nineteenth", "Twentieth", "Twenty-First", "Twenty-Second", "Twenty-Third", "Twenty-Fourth",
+            "Twenty-Fifth", "Twenty-Sixth", "Twenty-Seventh", "Twenty-Eighth", "Twenty-Ninth", "Thirtieth", "Thirty-First"]
+
+    months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+    # Extract day, month, and year from the input string
+    day = int(date[0:2])
+    month = int(date[2:4])
+    year = int(date[4:])
+
+    # Convert day, month, and year to words
+    day_word = days[day]
+    month_word = months[month]
+    year_word = str(year)
+
+    # Print the result
+    print(f"{day_word} of {month_word} of {year_word}")
+
+
+# Get input from the user
+date_input = input("Enter the date in the format ddmmyyyy: ")
+
+# Call the function with the input and print the result
+date_to_words(date_input)
+
+
+You can run this program and input a date in the specified format, and it will print the date in words. Keep in mind that this program assumes valid input, and you may want to add additional validation if needed.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

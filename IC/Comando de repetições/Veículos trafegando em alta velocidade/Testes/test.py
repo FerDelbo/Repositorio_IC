@@ -45,19 +45,18 @@ def verificar_string(valores_esperados, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
     #file = 'codigo.py'
     def test_verificar_string_1(self):
-        valores_entrada = ["60.0","73.9","22.9","72.1","72.0","100.6"]
+        valores_entrada = ["[60.0, 73.9, 22.9, 72.1, 72.0, 100.6]"]
         self.assertTrue(verificar_string("1\n3\n2", valores_entrada,self.file))
 
     def test_verificar_string_2(self):
-        valores_entrada = ["11.6","60.6","16.6","11.35"]
+        valores_entrada = ["[11.6, 60.6, 16.6, 11.35]"]
         self.assertTrue(verificar_string("2\n1", valores_entrada,self.file))
 
     def test_verificar_string_3(self):
-        valores_entrada = ["72.9","29.1","7.29","90.7","66.6"]
+        valores_entrada = ["[72.9, 29.1, 7.29, 90.7, 66.6]"]
         self.assertTrue(verificar_string("3\n1", valores_entrada,self.file))
-
 
 if __name__ == '__main__':
     #if len(sys.argv) > 1:
-    TestStringVerification.file = "C:\\Users\\Fernando\\Desktop\\Teste_cod\\solucao_velocidade\\3738_2588_2927.py"
+    TestStringVerification.file = "C:\\Users\\Fernando\\Desktop\\Projeto\\Rep_IC\\Repositorio_IC\\IC\\Comando de repetições\\Veículos trafegando em alta velocidade\\Solução\\3738_2588_7229.py"
     unittest.main()

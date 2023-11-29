@@ -1,0 +1,28 @@
+ ```
+# Leia a velocidade maxima da via e os registros de velocidade dos carros
+velocidade_maxima = float(input())
+velocidades = [float(x) for x in input().split()]
+
+# Inicialize a quantidade de infracoes como zero
+infraccoes = 0
+
+# Percorra os registros de velocidade e identify os que ultrapassaram o limite
+for i in range(len(velocidades)):
+    if velocidades[i] > velocidade_maxima * 1.2 and velocidades[i] < velocidade_maxima * 1.5:
+        # Se ultrapassou o limite, incremente a quantidade de infraccoes e imprima a posicao do motorista
+        infraccoes += 1
+        print(f"{i+1}")
+
+# Imprima a quantidade de infraccoes encontradas
+print(f"Total de {infraccoes} infraccoes.")
+```
+Este código irá ler a velocidade máxima da via e os registros de velocidade dos carros, e then iterate sobre os registros de velocidade para identificar aqueles que ultrapassaram o limite. A condição para considerar uma velocidade como excessiva é que ela esteja entre 20% e 50% acima da velocidade máxima permitida. Caso contrário, incrementa a contagem de infrações e imprime a posição do motorista na saída. Por fim, imprime a quantidade total de infrações encontradas.
+
+No exemplo fornecido, a saída seria:
+```
+1
+3
+2
+Total de 3 infraccoes.
+```
+Isso significa que há três motoristas que infringiram o limite de velocidade, estando na 1ª, 3ª e 5ª posições do vetor de entrada.

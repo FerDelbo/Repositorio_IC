@@ -1,0 +1,26 @@
+ Para resolver este problema, podemos utilizar a seguinte lógica:
+
+1. Leia as informações dos motoristas, incluindo a velocidade atual e a velocidade máxima permitida para a via.
+2. Calcule a porcentagem de excesso de velocidade para cada motorista, usando a fórmula: (velocidade atual - velocidade máxima permitida) / velocidade máxima permitida * 100.
+3. Verifique se a porcentagem de excesso de velocidade é maior do que 20% e menor do que 50%. Se for, considere o motorista como infrator.
+4. Imprima os dados do motorista infrator, incluindo o nome, a velocidade atual e a porcentagem de excesso de velocidade.
+
+Aqui está um exemplo de código Python que implementa essa lógica:
+```
+# Leia as informações dos motoristas
+nome = input("Insira o nome do motorista: ")
+velocidade_atual = float(input("Insira a velocidade atual do motorista: "))
+velocidade_maxima = float(input("Insira a velocidade máxima permitida para a via: "))
+
+# Calcule a porcentagem de excesso de velocidade
+porcentagem_excesso = ((velocidade_atual - velocidade_maxima) / velocidade_maxima) * 100
+
+# Verifique se o motorista infringiu o limite de velocidade
+if porcentagem_excesso > 20 and porcentagem_excesso < 50:
+    print(f"O motorista {nome} está infringindo o limite de velocidade!")
+    print(f"Velocidade atual: {velocidade_atual} km/h")
+    print(f"Porcentagem de excesso de velocidade: {porcentagem_excesso}%")
+else:
+    print(f"O motorista {nome} não está infringindo o limite de velocidade.")
+```
+Este código irá perguntar ao usuário pelo nome do motorista, sua velocidade atual e a velocidade máxima permitida para a via. Em seguida, calculará a porcentagem de excesso de velocidade e verificará se ela está dentro do intervalo de 20% a 50% acima da velocidade máxima permitida. Se estiver, considerará o motorista como infrator e imprimirá uma mensagem alertando sobre a infracção. Caso contrário, imprimirá uma mensagem indicando que o motorista não está infringindo o limite de velocidade.

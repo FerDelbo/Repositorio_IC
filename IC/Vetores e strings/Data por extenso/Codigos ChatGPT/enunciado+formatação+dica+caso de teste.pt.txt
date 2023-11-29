@@ -1,0 +1,58 @@
+
+enunciado + formatacao + dica + caso de teste
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Escreva um programa em python que leia como entrada uma data no formato “ddmmaaaa” e imprima como saída essa data por extenso.  
+O formato de entrada é "ddmmaaaa", sendo que "dd" é o dia do mês com dois dígitos, "mm" é o número do mês do ano com dois dígitos e "yyyy" é o ano completo.  
+O formato de saída é "dia de mês por extenso de ano".  
+Sempre considere que os valores de entrada são válidos.  
+Evite o uso de símbolos com acidentes, buscando usar apenas símbolos do ASCII. Por exemplo, o mês de março deve ser escrito sem "ç", ou seja, "marco". Dessa forma, evitam-se problemas com codificação dos textos.  
+Por último use esse caso de teste para ver se o código funciona  
+Entrada: 31021031  
+Saída: 31 de fevereiro de 1031
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Aqui está um programa Python que lê uma data no formato "ddmmaaaa" e imprime a data por extenso:
+
+def data_por_extenso(data):
+    # Dicionários para mapear os números de mês e mês por extenso
+    meses = {
+        '01': 'janeiro',
+        '02': 'fevereiro',
+        '03': 'marco',
+        '04': 'abril',
+        '05': 'maio',
+        '06': 'junho',
+        '07': 'julho',
+        '08': 'agosto',
+        '09': 'setembro',
+        '10': 'outubro',
+        '11': 'novembro',
+        '12': 'dezembro'
+    }
+
+    # Separa a data em dia, mês e ano
+    dia = data[0:2]
+    mes = data[2:4]
+    ano = data[4:8]
+
+    # Formata a data por extenso
+    data_extenso = f"{dia} de {meses[mes]} de {ano}"
+
+    return data_extenso
+
+# Leitura da data de entrada
+data_input = input("Digite uma data no formato ddmmaaaa: ")
+
+# Chama a função e imprime a data por extenso
+data_extenso = data_por_extenso(data_input)
+print("Saída:", data_extenso)
+
+Ao rodar o programa com a entrada "31021031", a saída será:
+
+`Digite uma data no formato ddmmaaaa: 31021031 Saída: 31 de fevereiro de 1031`
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

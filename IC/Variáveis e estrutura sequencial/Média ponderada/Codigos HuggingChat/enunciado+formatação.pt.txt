@@ -1,0 +1,36 @@
+ ```
+# Leitura dos valores
+nota1 = float(input("Entre com a Primeira Nota: "))
+nota2 = float(input("Entre com a Segunda Nota: "))
+nota3 = float(input("Entre com a Terceira Nota: "))
+nota4 = float(input("Entre com a Quarta Nota: "))
+
+# Cálculo da média ponderada
+media = (nota1 * 1 + nota2 * 2 + nota3 * 3 + nota4 * 4) / (1 + 2 + 3 + 4)
+
+# Arredondamento para uma casa decimal
+media_arredondada = round(media, 1)
+
+# Saída
+print("Média Ponderada:", media_arredondada)
+```
+Este código irá solicitar ao usuário que insira quatro notas, uma por linha, e usar os pesos indicados para calcular a média ponderada. A média será arredondada para uma casa decimal e exibida na tela.
+
+Para example, se o usuário inserir as seguintes notas:
+
+* 8.5
+* 7.0
+* 9.2
+* 6.8
+
+A média ponderada será calculada como:
+
+(8.5 \* 1 + 7.0 \* 2 + 9.2 \* 3 + 6.8 \* 4) / (1 + 2 + 3 + 4) = 8.14
+
+A média ponderada arredondada para uma casa decimal será:
+
+8.14 -> 8.1
+
+A saída do programa será:
+
+Média Ponderada: 8.1

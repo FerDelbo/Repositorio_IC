@@ -1,0 +1,29 @@
+Here's the Python code to determine which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road:
+
+```python
+def check_speed_violations(speed_data, speed_limit):
+    violations = []
+    for driver_speed in speed_data:
+        if driver_speed > speed_limit * 1.2 and driver_speed <= speed_limit * 1.5:
+            violations.append(driver_speed)
+    return violations
+
+if __name__ == "__main__":
+    # Sample speed data
+    speed_data = [70, 60, 85, 55, 90]
+    speed_limit = 65
+
+    # Check for violations
+    violations = check_speed_violations(speed_data, speed_limit)
+
+    # Print the results
+    print("Drivers exceeding the speed limit by more than 20% and less than 50%:")
+    for violation in violations:
+        print(violation)
+
+    print("Total number of violations:", len(violations))
+```
+
+This code defines a function `check_speed_violations` that takes two arguments: `speed_data` (a list of driver speeds) and `speed_limit` (the maximum speed allowed). The function iterates through the `speed_data` and identifies drivers whose speeds fall within the range of 20% to 50% above the speed limit. These violations are stored in a list and returned.
+
+The main part of the code calls the `check_speed_violations` function with the sample speed data and speed limit. The resulting violations are printed along with their count.

@@ -1,0 +1,42 @@
+### enunciado+formatacao+dica.en
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write a program in python that reads four notes from a student. As output, print the weighted average, knowing that the weights of the evaluations are respectively: 1, 2, 3 and 4.  
+The program must receive 4 floating point numbers, which must be applied to each of the notes, with the first note weighing 1, the second 2, the third 3 and the fourth 4. As output, the program must make the weighted average of these 4 notes with the imposed weights. This result must be rounded to one decimal place.  
+Tips:  
+Inside the print command, use the round(x, n) command to round the number x to up to n decimal places.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Certainly! Here's a simple Python program that reads four notes from a student, calculates the weighted average, and prints the result rounded to one decimal place:
+
+# Function to calculate weighted average
+def weighted_average(note1, note2, note3, note4):
+    weight1 = 1
+    weight2 = 2
+    weight3 = 3
+    weight4 = 4
+
+    total_weight = weight1 + weight2 + weight3 + weight4
+
+    weighted_sum = (note1 * weight1) + (note2 * weight2) + (note3 * weight3) + (note4 * weight4)
+
+    return weighted_sum / total_weight
+
+# Input notes from the user
+note1 = float(input("Enter the first note: "))
+note2 = float(input("Enter the second note: "))
+note3 = float(input("Enter the third note: "))
+note4 = float(input("Enter the fourth note: "))
+
+# Calculate and print the weighted average rounded to one decimal place
+result = weighted_average(note1, note2, note3, note4)
+print("Weighted Average:", round(result, 1))
+
+
+This program defines a function `weighted_average` that takes four notes and calculates their weighted average. The input notes are then read from the user, and the result is printed using the `round` function to round it to one decimal place.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

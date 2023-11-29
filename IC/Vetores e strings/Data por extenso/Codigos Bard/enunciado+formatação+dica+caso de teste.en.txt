@@ -1,0 +1,45 @@
+Sure, here is a Python program that reads a date in the format "ddmmyyyy" as input and prints that date in words as output:
+
+```python
+import datetime
+
+def date_to_words(date_str):
+    # Extract day, month, and year from the date string
+    day = int(date_str[:2])
+    month = int(date_str[2:4])
+    year = int(date_str[4:])
+
+    # Convert month number to month name
+    months = {
+        1: "January",
+        2: "February",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December"
+    }
+    month_name = months[month]
+
+    # Create a datetime object from the extracted date components
+    date_obj = datetime.datetime(year, month, day)
+
+    # Format the date as "day of month spelled out of year"
+    formatted_date = f"{date_obj.strftime('%A')}, {date_obj.day} {month_name} {date_obj.year}"
+
+    return formatted_date
+
+# Example usage
+date_str = "01092023"
+formatted_date = date_to_words(date_str)
+print(formatted_date)
+```
+
+This code first imports the `datetime` module, which is used to work with dates and times in Python. Then, it defines a function called `date_to_words()` that takes a date string in the format "ddmmyyyy" as input and returns a formatted date string in the format "day of month spelled out of year". The function first extracts the day, month, and year from the date string and then converts the month number to the month name. Finally, it creates a `datetime` object from the extracted date components and formats it as desired.
+
+The example usage at the end of the code shows how to use the `date_to_words()` function to convert the date string "01092023" to the formatted date string "Friday, 1 September 2023".

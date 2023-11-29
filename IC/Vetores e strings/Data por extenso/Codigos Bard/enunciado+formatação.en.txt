@@ -1,0 +1,46 @@
+Sure, here is a Python program that reads a date in the format "ddmmyyyy" as input and prints that date in words as output:
+
+```python
+import datetime
+
+# Define a dictionary to map month numbers to their corresponding month names
+month_names = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+}
+
+# Define a function to convert a date in the format "ddmmyyyy" to words
+def convert_date_to_words(date_str):
+    # Extract the day, month, and year from the date string
+    day = int(date_str[:2])
+    month = int(date_str[2:4])
+    year = int(date_str[4:])
+
+    # Create a datetime object from the extracted date components
+    date_obj = datetime.datetime(year, month, day)
+
+    # Convert the month number to the corresponding month name
+    month_name = month_names[date_obj.month]
+
+    # Construct the output string
+    output_str = f"{day} {month_name} {year}"
+
+    return output_str
+
+# Example usage
+date_str = input("Enter a date in the format ddmmyyyy: ")
+output_str = convert_date_to_words(date_str)
+print(output_str)
+```
+
+This program first defines a dictionary `month_names` that maps month numbers to their corresponding month names. Then, it defines a function `convert_date_to_words()` that takes a date string in the format "ddmmyyyy" as input and returns the date in words as output. The function extracts the day, month, and year from the date string, creates a `datetime` object from the extracted components, converts the month number to the corresponding month name, and constructs the output string. Finally, the program prompts the user to enter a date in the format "ddmmyyyy" and prints the date in words using the `convert_date_to_words()` function.

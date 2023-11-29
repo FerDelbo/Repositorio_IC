@@ -1,0 +1,18 @@
+ ```
+nota1 = float(input("Entre com a primeira nota: "))
+nota2 = float(input("Entre com a segunda nota: "))
+nota3 = float(input("Entre com a terceira nota: "))
+nota4 = float(input("Entre com a quarta nota: "))
+
+peso1 = 1
+peso2 = 2
+peso3 = 3
+peso4 = 4
+
+media_ponderada = (nota1 * peso1 + nota2 * peso2 + nota3 * peso3 + nota4 * peso4) / (peso1 + peso2 + peso3 + peso4)
+
+print("Média ponderada:", media_ponderada)
+```
+Este código irá ler quatro notas do usuário e calcular a média ponderada com base nos pesos fornecidos. A variável `media_ponderada` recebe o resultado da operação e é impressa na consola.
+
+Para usar este código, você precisará Python instalado em seu computador e uma IDE (Integrated Development Environment) para escrever e executar o código. Você também pode copiar e paste-lo no interpretador de Python no seu navegador.

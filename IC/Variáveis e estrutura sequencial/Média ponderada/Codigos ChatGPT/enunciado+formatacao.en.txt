@@ -1,0 +1,33 @@
+### enunciado+formatacao.en
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write a program in python that reads four notes from a student. As output, print the weighted average, knowing that the weights of the evaluations are respectively: 1, 2, 3 and 4.  
+The program must receive 4 floating point numbers, which must be applied to each of the notes, with the first note weighing 1, the second 2, the third 3 and the fourth 4. As output, the program must make the weighted average of these 4 notes with the imposed weights. This result must be rounded to one decimal place.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Certainly! Here's a simple Python program that takes four floating-point numbers as input, calculates the weighted average, and prints the result rounded to one decimal place:
+
+def calculate_weighted_average(note1, note2, note3, note4):
+    weighted_average = (note1 * 1 + note2 * 2 + note3 * 3 + note4 * 4) / (1 + 2 + 3 + 4)
+    rounded_average = round(weighted_average, 1)
+    return rounded_average
+
+# Get input from the user
+note1 = float(input("Enter the first note: "))
+note2 = float(input("Enter the second note: "))
+note3 = float(input("Enter the third note: "))
+note4 = float(input("Enter the fourth note: "))
+
+# Calculate and print the weighted average
+result = calculate_weighted_average(note1, note2, note3, note4)
+print(f"The weighted average is: {result}")
+
+
+
+You can run this program, and it will prompt you to enter the four notes. After entering the notes, it will calculate the weighted average and print the result.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

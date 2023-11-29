@@ -1,0 +1,18 @@
+Here is one possible solution:
+
+def ddmmyyyy_to_words(date):
+    # Split the date into separate digits for each component (day, month, year)
+    days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    day = int(date[0]) - 1
+    month = int(date[2:4])
+    year = int(date[5:7])
+    
+    # Determine whether the given date is valid (i.e., within the range of possible dates for the specified month and year)
+    if not (1 <= day <= 31) or not (1 <= month <= 12) or not (1900 <= year <= 2100):
+        raise ValueError("Invalid date")
+        
+    # Convert the day of the week to a string using the appropriate index from the list of days above
+    day_str = days[day % 7]
+    
+    # Print the result
+    print(f"{day_str} {month} {year}")
