@@ -10,6 +10,6 @@ def Veiculos_trafegando_em_alta_velocidade(vetor):
 velocidade = []
 Veiculos_trafegando_em_alta_velocidade(velocidade)
 #caso de teste que possivelmente não foram tratados
-# vetor de velocidades nulo entrda :[0, 0, 0, 0, 0, 0] saida: 0 
-# vetor de velocidades vazio entrada: [] saida: erro na parte de pegar a primira posicao do vetor
+# vetor de velocidades nulo entrda :[0, 0, 0, 0, 0, 0] 
+# vetor de velocidades vazio entrada: [] 
 #vetor de velocidades [60, 11.9, 12, 12.1, 29.1, 30, 30.1,]

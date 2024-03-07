@@ -1,7 +1,7 @@
 def Data_por_extenso(ddmmaaaa):
     dia = ddmmaaaa[0] + ddmmaaaa[1]
     mes =  ddmmaaaa[2] + ddmmaaaa[3]
-    ano = ddmmaaaa[4] + ddmmaaaa[5] + ddmmaaaa[6] + ddmmaaaa[7]#Cancatenando strings
+    ano = ddmmaaaa[4] + ddmmaaaa[5] + ddmmaaaa[6] + ddmmaaaa[7]#Concatenando strings
     meses = {"01": "Janeiro",
              "02": "Fevereiro",
              "03": "Marco",
@@ -18,3 +18,5 @@ def Data_por_extenso(ddmmaaaa):
 
 entrada = str(input("Informe a data em numeros no formato 'ddmmaaaa': "))
 Data_por_extenso(entrada)
+
+#Possiveis casos de teste que podem ser testados
