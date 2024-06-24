@@ -1,7 +1,7 @@
 Enunciado em traduzido ao inglês (Google tradutor):
 
 Descrição:
-Write a program that determines which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road.
+Write a program in python that determines which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road.
 
 Formato para entrada e saída de dados:
 The input data is a vector recording the speeds measured by the mobile radar. The first value of the vector indicates the maximum speed limit of the road. The other values ​​are the speed records of the cars that traveled on the road. As output, the position in the vector of each driver who violated the speed is reported (one per line) and, in the end, the number of drivers who violated the limit.
