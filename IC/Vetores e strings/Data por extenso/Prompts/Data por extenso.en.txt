@@ -1,7 +1,9 @@
 Enunciado em traduzido ao inglês (Google tradutor):
-Write a program that reads a date in the format “ddmmyyyy” as input and prints that date in words as output.
 
-Formato para entrada e saída de dados
+Descrição:
+Write a program in python that reads a date in the format “ddmmyyyy” as input and prints that date in words as output.
+
+Formato para entrada e saída de dados:
 The input format is "ddmmyyyy", where "dd" is the two-digit day of the month, "mm" is the two-digit month number of the year, and "yyyy" is the full year.
 The output format is "day of month spelled out of year".
 
@@ -9,12 +11,12 @@ Dicas:
 Always assume that input values ​​are valid.
 Avoid the use of symbols with accidentals, trying to use only ASCII symbols. For example, the month of March must be written without "ç", that is, "marco". In this way, problems with encoding the texts are avoided.
 
-Casos de teste 
-Input: 01092023
-Output: September 1, 2023
+Casos de teste:
+Input 01092023
+Output September 1, 2023
 
-Input: 17031909
-Output: March 17, 1909
+Input 17031909
+Output March 17, 1909
 
-Input: 31021031
-Output:February 31, 1031
+Input 31021031
+Output February 31, 1031
