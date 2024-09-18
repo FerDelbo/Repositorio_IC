@@ -1,0 +1,57 @@
+Sure, here is a Python program that reads a date in the format “ddmmyyyy” as input and prints that date in words as output:
+
+```python
+import datetime
+
+def date_to_words(date_str):
+    day = int(date_str[:2])
+    month = int(date_str[2:4])
+    year = int(date_str[4:])
+
+    date = datetime.datetime(year, month, day)
+
+    months = {
+        1: "January",
+        2: "February",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December"
+    }
+
+    day_of_week = {
+        0: "Sunday",
+        1: "Monday",
+        2: "Tuesday",
+        3: "Wednesday",
+        4: "Thursday",
+        5: "Friday",
+        6: "Saturday"
+    }
+
+    return f"{date.strftime('%A')}, {months[date.month]} {day}, {date.strftime('%Y')}"
+
+date_str = input("Enter a date in the format ddmmyyyy: ")
+print(date_to_words(date_str))
+```
+
+This program first imports the `datetime` module, which is used to work with dates and times in Python. Then, it defines a function called `date_to_words` that takes a date string in the format “ddmmyyyy” as input and returns the date in words as output.
+
+The `date_to_words` function first converts the date string to a `datetime` object. Then, it uses the `strftime()` method to format the date object as a string in the desired format. Finally, it returns the formatted date string.
+
+The `main` part of the program prompts the user to enter a date in the format “ddmmyyyy” and then calls the `date_to_words` function to convert the date to words. Finally, it prints the formatted date string to the console.
+
+Here is an example of how to use the program:
+
+```
+Enter a date in the format ddmmyyyy: 25112023
+Saturday, November 25, 2023
+```
+
+I hope this helps!

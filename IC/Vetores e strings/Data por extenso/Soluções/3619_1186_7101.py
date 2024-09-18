@@ -1,4 +1,4 @@
-from numpy import*
+#from numpy import*
 v = input("Data: ")
 if (v[2:4]=="01"):
 	print(v[:2],"de janeiro de",v[-4:])

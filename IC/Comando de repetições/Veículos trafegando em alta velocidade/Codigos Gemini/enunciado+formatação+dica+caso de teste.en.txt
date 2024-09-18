@@ -1,0 +1,27 @@
+Sure, here is the Python program that determines which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road:
+
+```python
+def findSpeedingDrivers(speeds):
+    speedLimit = speeds[0]
+    infractions = 0
+    violatingDrivers = []
+
+    for i in range(1, len(speeds)):
+        currentSpeed = speeds[i]
+        exceeds20Percent = (currentSpeed / speedLimit) > 1.2
+        exceeds50Percent = (currentSpeed / speedLimit) > 1.5
+
+        if exceeds20Percent and not exceeds50Percent:
+            infractions += 1
+            violatingDrivers.append(i)
+
+    print("Positions of drivers who violated the speed limit:")
+    for driver in violatingDrivers:
+        print(driver)
+
+    print("Total number of drivers who violated the speed limit:", infractions)
+
+# Example usage
+speeds = [60.0, 73.9, 22.9, 72.1, 72.0, 100.6]
+findSpeedingDrivers(speeds)
+```

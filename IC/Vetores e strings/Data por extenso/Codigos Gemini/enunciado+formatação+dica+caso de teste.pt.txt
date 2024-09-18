@@ -1,0 +1,96 @@
+Programa em Python
+Python
+def converte_data(data):
+  """
+  Converte uma data no formato "ddmmaaaa" para o formato por extenso.
+
+  Args:
+    data: A data no formato "ddmmaaaa".
+
+  Returns:
+    A data no formato por extenso.
+  """
+
+  dia = data[:2]
+  mes = data[2:4]
+  ano = data[4:]
+
+  meses = {
+    1: "janeiro",
+    2: "fevereiro",
+    3: "março",
+    4: "abril",
+    5: "maio",
+    6: "junho",
+    7: "julho",
+    8: "agosto",
+    9: "setembro",
+    10: "outubro",
+    11: "novembro",
+    12: "dezembro",
+  }
+
+  return f"{dia} de {meses[int(mes)]} de {ano}"
+
+
+if __name__ == "__main__":
+  data = input("Digite uma data no formato ddmmaaaa: ")
+  data_convertida = converte_data(data)
+  print(data_convertida)
+
+Explicação
+A função converte_data() recebe uma data no formato "ddmmaaaa" como entrada e retorna a data no formato por extenso. A função funciona da seguinte forma:
+Divide a data em três partes: dia, mês e ano.
+Usa um dicionário para obter o nome do mês por extenso.
+Monta a string da data por extenso.
+Caso de teste
+Para o caso de teste fornecido, a função retornará o seguinte:
+Digite uma data no formato ddmmaaaa: 31021031
+31 de fevereiro de 1031
+
+Outras implementações
+É possível implementar a função converte_data() de outras formas. Por exemplo, podemos usar uma lista de strings para armazenar os nomes dos meses por extenso. Dessa forma, a função ficaria assim:
+Python
+def converte_data(data):
+  """
+  Converte uma data no formato "ddmmaaaa" para o formato por extenso.
+
+  Args:
+    data: A data no formato "ddmmaaaa".
+
+  Returns:
+    A data no formato por extenso.
+  """
+
+  dia = data[:2]
+  mes = data[2:4]
+  ano = data[4:]
+
+  meses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+
+  return f"{dia} de {meses[int(mes)]} de {ano}"
+
+Outra possibilidade é usar a função strftime() do módulo datetime. Essa função pode ser usada para formatar uma data de acordo com um determinado padrão. No nosso caso, podemos usar o padrão "d de M de yyyy" para obter a data no formato por extenso.
+Python
+import datetime
+
+def converte_data(data):
+  """
+  Converte uma data no formato "ddmmaaaa" para o formato por extenso.
+
+  Args:
+    data: A data no formato "ddmmaaaa".
+
+  Returns:
+    A data no formato por extenso.
+  """
+
+  data = datetime.datetime.strptime(data, "%d%m%Y")
+  return data.strftime("%d de %B de %Y")
+
+Qual implementação escolher depende das preferências do programador.
+Fontes
+1. https://pt.scribd.com/doc/44508156/Portugues-para-Estrangeiros-01
+2. https://github.com/JoseGuilherme03/BSI-Prog Sujeito à licença (MIT)
+3. https://github.com/vitorskt/ExerciciosPython
+

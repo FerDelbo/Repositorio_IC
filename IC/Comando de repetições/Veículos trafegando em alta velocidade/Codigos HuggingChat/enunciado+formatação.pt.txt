@@ -1,0 +1,27 @@
+ Para resolver este problema, podemos utilizar uma estratégia de divisão e conquista. Primeiro, ordenamos o vetor de velocidades em ordem crescente. Em seguida, encontramos o índice do primeiro elemento que excede o limite de velocidade máximo permitido (ou seja, o primeiro elemento que é maior do que o limite de velocidade máximo plus 20%). Esse índice será o ponto de partida para nosso contador de motoristas que infringiram o limite.
+
+A partir desse ponto, iteramos sobre o restante do vetor, aumentando o contador em 1 para cada elemento que for menor ou igual ao limite de velocidade máximo plus 50%. Antes de sairmos do loop, verificamos se o contador atual é maior que zero e, se for, incrementamos o número de motoristas que infringiram o limite.
+
+Aqui está o pseudocódigo para o algoritmo proposto:
+```
+vetor = [limite_max, vel1, vel2, ..., velN]
+
+# Ordenamos o vetor em ordem crescente
+ordenado = sort(vetor)
+
+# Encontramos o índice do primeiro elemento que excede o limite de velocidade máximo permitido
+i_inicial = bisect.bisect_left(ordenado, limite_max + 20)
+
+# Contamos quantos elementos até o final do vetor são menores ou iguais ao limite de velocidade máximo plus 50%
+contador = 0
+for i in range(i_inicial, len(ordenado)):
+    if ordenado[i] <= limite_max + 50:
+        contador += 1
+
+# Verificamos se há algum motorista que infringiu o limite e incrementamos o número de motoristas que infringiram
+if contador > 0:
+    print("Motoristas que infringiram o limite:", contador)
+else:
+    print("Nenhum motorista infringiu o limite.")
+```
+Note que o algoritmo assume que o vetor de velocidades é representado como uma lista de números reais. Além disso, utiliza a função `sort()` para ordenar o vetor em ordem crescente e a função `bisect.bisect_left()` para encontrar o índice do primeiro elemento que excede o limite de velocidade máximo permitido. A função `range()` é usada para iteração sobre o vetor.

@@ -1,0 +1,14 @@
+ ```
+data = input("Entre com a data em formato ddmmaaaa: ")
+dia, mes, ano = data.split("/")
+print(f"{dia} de {mes} de {ano}")
+```
+ou ainda podemos usar o método `datetime` para fazer isso:
+```
+from datetime import datetime
+
+data = input("Entre com a data em formato ddmmaaaa: ")
+dt = datetime.strptime(data, "%d/%m/%Y")
+print(dt.strftime("%A, %d de %B de %Y"))
+```
+ambos os métodos irão imprimir a data em forma extensa.

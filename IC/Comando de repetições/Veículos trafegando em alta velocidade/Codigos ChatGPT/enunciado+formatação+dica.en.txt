@@ -1,0 +1,74 @@
+### enunciado+formatação+dica ingles
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write a program in python that determines which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road.  
+The input data is a vector recording the speeds measured by the mobile radar. The first value of the vector indicates the maximum speed limit of the road. The other values ​​are the speed records of the cars that traveled on the road. As output, the position in the vector of each driver who violated the speed is reported (one per line) and, in the end, the number of drivers who violated the limit.  
+Use an accumulator variable to store the number of infractions.  
+Consider that the values ​​entered as input are always valid, that is, they are real positives.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Certainly! Below is a simple Python program that takes a vector of speeds as input and determines which drivers violated the speed limit by more than 20% and less than 50%. It also prints the positions of the violators and the total number of violations:
+
+def check_speed_violations(speeds):
+    max_speed_limit = speeds[0]
+    violation_count = 0
+    violator_positions = []
+
+    for i in range(1, len(speeds)):
+        speed = speeds[i]
+        violation_percentage = ((speed - max_speed_limit) / max_speed_limit) * 100
+
+        if 20 < violation_percentage < 50:
+            violation_count += 1
+            violator_positions.append(i)
+
+    return violator_positions, violation_count
+
+
+# Example usage:
+if __name__ == "__main__":
+    # Example input vector: [max_speed_limit, speed1, speed2, ..., speedN]
+    speeds_input = [60, 72, 65, 80, 68, 75]
+
+    violator_positions, violation_count = check_speed_violations(speeds_input)
+
+    print("Positions of violators:")
+    for position in violator_positions:
+        print(position)
+
+    print("\nTotal number of violations:", violation_count)
+
+In this example, the maximum speed limit is set to 60, and the speeds of the cars are provided in the `speeds_input` list. The program then calculates the violation percentage for each driver and identifies those who violated the speed limit by more than 20% and less than 50%. The positions of the violators and the total number of violations are then printed.
+
+You can customize the `speeds_input` list with your own set of speed data.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Any tips for optimizing speed detection?
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Certainly! Optimizing speed detection can involve several strategies to make your program more efficient. Here are some tips:
+
+1.  **Use Vectorized Operations:** Instead of using explicit loops, try to use vectorized operations provided by libraries like NumPy. These operations are highly optimized and can significantly speed up numerical computations.
+    
+    `import numpy as np  def check_speed_violations(speeds):     max_speed_limit = speeds[0]     violation_count = 0     violator_positions = []      speeds = np.array(speeds[1:])     violation_percentages = ((speeds - max_speed_limit) / max_speed_limit) * 100      violator_positions = np.where((20 < violation_percentages) & (violation_percentages < 50))[0] + 1     violation_count = len(violator_positions)      return violator_positions, violation_count`
+    
+2.  **Early Exit:** If your input data is sorted or there's a pattern, consider implementing an early exit strategy. If you find a speed below the limit, you may not need to continue checking the rest of the speeds.
+    
+    `def check_speed_violations(speeds):     max_speed_limit = speeds[0]     violation_count = 0     violator_positions = []      for i in range(1, len(speeds)):         speed = speeds[i]         violation_percentage = ((speed - max_speed_limit) / max_speed_limit) * 100          if 20 < violation_percentage < 50:             violation_count += 1             violator_positions.append(i)          # Early exit if you want to stop checking after a certain number of violations         if violation_count >= MAX_ALLOWED_VIOLATIONS:             break      return violator_positions, violation_count`
+    
+3.  **Parallel Processing:** If you have a large dataset, consider parallelizing the speed detection process using libraries like `concurrent.futures` or `multiprocessing`.
+    
+4.  **Use a Set for Violator Positions:** If the order of violator positions is not essential, consider using a set instead of a list to store violator positions. Set operations are generally faster than list operations.
+    
+    `def check_speed_violations(speeds):     max_speed_limit = speeds[0]     violation_count = 0     violator_positions = set()      for i in range(1, len(speeds)):         speed = speeds[i]         violation_percentage = ((speed - max_speed_limit) / max_speed_limit) * 100          if 20 < violation_percentage < 50:             violation_count += 1             violator_positions.add(i)      return violator_positions, violation_count`
+    
+
+Remember to test the performance of your program after making these changes to ensure that they have the desired impact.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

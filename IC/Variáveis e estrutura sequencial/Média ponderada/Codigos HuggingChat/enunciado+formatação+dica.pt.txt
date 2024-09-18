@@ -1,0 +1,17 @@
+ ```
+# Leitura dos valores
+nota1 = float(input("Entre com a Primeira Nota: "))
+nota2 = float(input("Entre com a Segunda Nota: "))
+nota3 = float(input("Entre com a Terceira Nota: "))
+nota4 = float(input("Entre com a Quarta Nota: "))
+
+# Cálculo da média ponderada
+media = (nota1 * 1 + nota2 * 2 + nota3 * 3 + nota4 * 4) / (1 + 2 + 3 + 4)
+
+# Arredondamento da média
+media_arredondada = round(media, 1)
+
+# Saída
+print("Média Ponderada:", media_arredondada)
+```
+Este código irá ler quatro valores de ponto flutuante, calcular a média ponderada deles usando os pesos 1, 2, 3 e 4, e imprimir a média ponderada arredondada para uma casa decimal.

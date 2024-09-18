@@ -1,0 +1,34 @@
+### Enunciado
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Escreva um programa em python que leia quatro notas de um aluno. Como saída, imprima a média ponderada, sabendo que os pesos das avaliações são respectivamente: 1, 2, 3 e 4.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Você pode criar um programa em Python para calcular a média ponderada das quatro notas de um aluno da seguinte forma:
+
+# Solicita ao usuário que insira as quatro notas
+nota1 = float(input("Digite a primeira nota: "))
+nota2 = float(input("Digite a segunda nota: "))
+nota3 = float(input("Digite a terceira nota: "))
+nota4 = float(input("Digite a quarta nota: "))
+
+# Define os pesos das notas
+peso1 = 1
+peso2 = 2
+peso3 = 3
+peso4 = 4
+
+# Calcula a média ponderada
+media_ponderada = (nota1 * peso1 + nota2 * peso2 + nota3 * peso3 + nota4 * peso4) / (peso1 + peso2 + peso3 + peso4)
+
+# Imprime o resultado
+print("A média ponderada do aluno é:", media_ponderada)
+
+
+Neste programa, o usuário é solicitado a inserir as quatro notas e, em seguida, o programa calcula a média ponderada usando os pesos especificados (1, 2, 3 e 4) e imprime o resultado.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

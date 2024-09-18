@@ -1,0 +1,46 @@
+### enunciado.en
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write a program that reads a date in the format “ddmmyyyy” as input and prints that date in words as output.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sure, I can provide you with a simple Python program that takes a date in the format "ddmmyyyy" as input and prints the corresponding date in words. Here's an example:
+
+def date_in_words(date_str):
+    # Define lists of words for days, months, and years
+    days = ["", "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth",
+            "Eleventh", "Twelfth", "Thirteenth", "Fourteenth", "Fifteenth", "Sixteenth", "Seventeenth", "Eighteenth",
+            "Nineteenth", "Twentieth", "Twenty-First", "Twenty-Second", "Twenty-Third", "Twenty-Fourth", "Twenty-Fifth",
+            "Twenty-Sixth", "Twenty-Seventh", "Twenty-Eighth", "Twenty-Ninth", "Thirtieth", "Thirty-First"]
+
+    months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+    # Extract day, month, and year from the input date string
+    day = int(date_str[:2])
+    month = int(date_str[2:4])
+    year = int(date_str[4:])
+
+    # Check if the date is valid
+    if day < 1 or day > 31 or month < 1 or month > 12:
+        return "Invalid date"
+
+    # Convert the date to words
+    date_in_words = f"{days[day]} {months[month]} {year}"
+
+    return date_in_words
+
+# Get input from the user
+date_input = input("Enter a date in the format ddmmyyyy: ")
+
+# Call the function and print the result
+result = date_in_words(date_input)
+print(result)
+
+
+This program defines a function `date_in_words` that takes a date string as input and returns the corresponding date in words. It uses lists for days and months to map the numeric values to their word equivalents. The program then takes user input, calls the function, and prints the result.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

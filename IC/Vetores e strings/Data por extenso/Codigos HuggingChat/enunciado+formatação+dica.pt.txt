@@ -1,0 +1,16 @@
+ ```
+def converter_data(data):
+    Dia, Mes, Ano = data.split('')
+    return f'{Dia} de {Mes} de {Ano}'
+
+# Testes
+print(converter_data('25031987')) # Imprime: 25 de Março de 1987
+print(converter_data('14022022')) # Imprime: 14 de Fevereiro de 2022
+```
+Explicação:
+
+* A função `converter_data` recebe a entrada `data` no formato "ddmmaaaa" e retorna a data por extenso.
+* A função usa o método `split()` para dividir a string de entrada em três partes: dia, mês e ano.
+* Em seguida, ela concatena as três partes novamente em uma única string, usando o formato desejado ("dia de mês de anno").
+* No final, a função retorna a string formatada.
+* Os testes mostram exemplos de entrada e saída corretos.

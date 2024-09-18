@@ -1,0 +1,39 @@
+Here's the Python code to determine which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road:
+
+```python
+def detect_speeding_drivers(speed_data):
+    # Initialize accumulator variables
+    infractions = 0
+    over_20_and_less_50 = []
+
+    # Extract the speed limit from the first value
+    speed_limit = speed_data[0]
+
+    # Iterate through the remaining values (car speeds)
+    for i in range(1, len(speed_data)):
+        current_speed = speed_data[i]
+
+        # Calculate the percentage over the speed limit
+        percentage_over = (current_speed - speed_limit) / speed_limit * 100
+
+        # Check if the speed exceeds the limit by more than 20% and less than 50%
+        if percentage_over > 20 and percentage_over < 50:
+            # Record the position of the violating driver
+            over_20_and_less_50.append(i)
+
+            # Increment the accumulator for infractions
+            infractions += 1
+
+    return over_20_and_less_50, infractions
+
+# Example usage
+speed_data = [50, 60, 72, 85, 40]
+over_20_and_less_50, infractions = detect_speeding_drivers(speed_data)
+
+print("Positions of drivers violating the speed limit:", over_20_and_less_50)
+print("Number of drivers violating the speed limit:", infractions)
+```
+
+This code first defines a function `detect_speeding_drivers` that takes the speed data as input. It then initializes accumulator variables to track the number of infractions and the positions of drivers violating the limit. Next, it extracts the speed limit from the first value and iterates through the remaining values (car speeds). For each car speed, it calculates the percentage over the speed limit and checks if it falls within the specified range (more than 20% and less than 50%). If so, it records the position of the violating driver and increments the infraction count. Finally, it returns the list of violating driver positions and the total number of infractions.
+
+The example usage demonstrates how to call the function with a sample speed data vector and print the results.

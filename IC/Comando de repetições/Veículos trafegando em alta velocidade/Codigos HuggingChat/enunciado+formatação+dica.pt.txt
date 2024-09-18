@@ -1,0 +1,22 @@
+ ```
+# Leia a velocidade maxima da via e os registros de velocidade dos carros
+velocidade_maxima = float(input())
+velocidades = [float(x) for x in input().split()]
+
+# Inicialize a variavel acumuladora para guardar a quantidade de infracoes
+quantidade_infraccoes = 0
+
+# Percorra os registros de velocidade e identify os motoristas que infringiram o limite
+for i in range(len(velocidades)):
+    if velocidades[i] > velocidade_maxima * 1.2 and velocidades[i] < velocidade_maxima * 1.5:
+        print(f"Motorista {i+1} infringiu o limite de velocidade.")
+        quantidade_infraccoes += 1
+
+print(f"Quantidade de motoristas que infringiram o limite: {quantidade_infraccoes}")
+```
+A lógica deste código é a seguinte:
+
+* Primeiro, leia a velocidade máxima da via e os registros de velocidade dos carros utilizando a função `input()`.
+* Em seguida, inicialize uma variável acumuladora (`quantidade_infraccoes`) para guardar a quantidade de infrações.
+* Percorra os registros de velocidade utilizando um laço `for` e identifique os motoristas que infringiram o limite de velocidade. Para isso, verifique se a velocidade do carro está entre 120% e 150% do limite de velocidade máximo. Se estiver dentro desse intervalo, imprima uma mensagem indicando que o motorista infringiu o limite e aumente a contagem da variável acumuladora.
+* Finalmente, imprima a quantidade de motoristas que infringiram o limite.

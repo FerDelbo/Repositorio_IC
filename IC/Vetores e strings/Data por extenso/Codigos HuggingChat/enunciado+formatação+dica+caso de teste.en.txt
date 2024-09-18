@@ -1,0 +1,17 @@
+Here is one possible solution in Python:
+
+def date_to_words(date):
+    days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    months = [None, None, None, None, None, None, None] # January, February, ... December
+    
+    for i in range(len(months)):
+        months[i] = {
+            'short': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            'long': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        }
+    
+    d, m, y = map(int, date[:3]), map(int, date[3:-4]), int(date[-4:])
+    return "%s %d, %Y" % (days[d - 1], m + 1)
+
+print(date_to_words("17031909"))  # Output: March 17, 1909
+print(date_to_words("31021031"))   # Output: February 31, 1031

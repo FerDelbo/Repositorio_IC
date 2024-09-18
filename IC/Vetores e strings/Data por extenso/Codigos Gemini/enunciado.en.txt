@@ -1,0 +1,45 @@
+Here's the code:
+
+```python
+import calendar
+
+date = "24092023"
+day = int(date[0:2])
+month = int(date[2:4])
+year = int(date[4:])
+
+months = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+}
+
+if 1 <= month <= 12 and 1 <= day <= 31:
+    if calendar.isleap(year):
+        if month == 2 and day == 29:
+            print(f"{day}th {months[month]} {year}")
+        elif day <= 28:
+            print(f"{day}th {months[month]} {year}")
+        else:
+            print("Invalid date")
+    else:
+        if month == 2 and day == 28:
+            print(f"{day}th {months[month]} {year}")
+        elif day <= 27:
+            print(f"{day}th {months[month]} {year}")
+        else:
+            print("Invalid date")
+else:
+    print("Invalid date")
+```
+
+This code first imports the calendar module, which is used to check if a year is a leap year. Then, it defines a dictionary `months` that maps months to their full names. The code then reads the input date as a string and extracts the day, month, and year as integers. It then checks if the month is between 1 and 12 and if the day is between 1 and 31. If the month and day are valid, the code checks if the year is a leap year. If it is, it checks if the month is February and the day is 29. If it is, it prints the date in words. Otherwise, if the day is less than or equal to 28, it prints the date in words. Otherwise, it prints "Invalid date". If the month or day is not valid, the code prints "Invalid date".

@@ -1,4 +1,4 @@
-from numpy import *
+#from numpy import *
 data =input("Entre com a data: ")
 
 

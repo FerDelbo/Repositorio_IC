@@ -1,0 +1,47 @@
+### enunciado+formatação ingles
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write a program in python that determines which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road.  
+The input data is a vector recording the speeds measured by the mobile radar. The first value of the vector indicates the maximum speed limit of the road. The other values ​​are the speed records of the cars that traveled on the road. As output, the position in the vector of each driver who violated the speed is reported (one per line) and, in the end, the number of drivers who violated the limit.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Certainly! Here's a simple Python program that takes a vector of speeds as input and outputs the positions of drivers who violated the speed limit by more than 20% and less than 50%, along with the total number of violators:
+
+def speed_violations(speeds):
+    max_speed_limit = speeds[0]
+    violations = []
+
+    for i in range(1, len(speeds)):
+        speed = speeds[i]
+        violation_percentage = ((speed - max_speed_limit) / max_speed_limit) * 100
+
+        if 20 < violation_percentage < 50:
+            violations.append(i)
+
+    return violations
+
+def main():
+    # Example input vector
+    speed_vector = [120, 130, 150, 110, 140, 160, 125]
+
+    violations = speed_violations(speed_vector)
+
+    if violations:
+        print("Positions of drivers who violated the speed limit:")
+        for position in violations:
+            print(f"Driver at position {position}")
+
+        print(f"\nTotal number of violators: {len(violations)}")
+    else:
+        print("No drivers violated the speed limit within the specified range.")
+
+if __name__ == "__main__":
+    main()
+
+Replace the `speed_vector` variable with your own list of speeds. The program calculates the violation percentage for each driver and checks if it falls between 20% and 50%. The positions of violating drivers are then printed, along with the total number of violators.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

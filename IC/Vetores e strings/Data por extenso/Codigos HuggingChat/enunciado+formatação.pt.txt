@@ -1,0 +1,20 @@
+ ```
+#!/usr/bin/env python
+
+def main():
+    # Leia a data fornecida no formato "ddmmaaaa"
+    data = input("Por favor, insira uma data no formato 'ddmmaaaa': ")
+
+    # Separar a data em suas partes (dia, mes, anno)
+    dia, mes, anno = data[:2], data[3:5], data[6:]
+
+    # Imprimir a data por extenso
+    print(f"{dia} de {mes} de {anno}")
+
+main()
+```
+Este programa usará a função `input()` para ler a entrada do usuário, que deve ser uma string no formato "ddmmaaaa". Em seguida, usaremos o método `slice` para separar a string em três partes: o primeiro componente (dia), o segundo componente (mês) e o terceiro componente (ano).
+
+Em seguida, usaremos as variáveis `dia`, `mes` e `anno` para imprimir a data por extenso, utilizando a função `print()`. A estrutura da string de saída será `{dia} de {mes} de {anno}`.
+
+Lembre-se de que o código acima está escrito em Python 3.x, então certifique-se de usar um interpretador Python 3 se você quiser executá-lo.

@@ -1,0 +1,41 @@
+Sure, here is a Python program that determines which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road:
+
+```python
+def find_speeding_drivers(speeds):
+    # Extract speed limit from the first value
+    speed_limit = speeds[0]
+
+    # Calculate the upper and lower limits for violating the speed limit
+    upper_limit = speed_limit + 0.2 * speed_limit
+    lower_limit = speed_limit + 0.5 * speed_limit
+
+    # Initialize an empty list to store the positions of speeding drivers
+    speeding_drivers = []
+
+    # Iterate through the speed records
+    for i, speed in enumerate(speeds[1:]):
+        if speed > upper_limit:
+            # Driver violated the speed limit by more than 50%
+            speeding_drivers.append(i + 1)
+        elif speed > lower_limit:
+            # Driver violated the speed limit by more than 20% but less than 50%
+            speeding_drivers.append(i + 1)
+
+    # Count the number of speeding drivers
+    number_of_speeding_drivers = len(speeding_drivers)
+
+    return speeding_drivers, number_of_speeding_drivers
+
+# Example usage
+speeds = [50, 65, 72, 80, 45, 58]
+speeding_drivers, number_of_speeding_drivers = find_speeding_drivers(speeds)
+
+print("Speeding drivers:", speeding_drivers)
+print("Number of speeding drivers:", number_of_speeding_drivers)
+```
+
+This program first extracts the speed limit from the first value of the input vector. Then, it calculates the upper and lower limits for violating the speed limit, which are 20% and 50% above the speed limit, respectively.
+
+Next, it iterates through the speed records and checks if each driver's speed is greater than either of the limits. If so, the position of the driver is added to the list of speeding drivers.
+
+Finally, the program counts the number of speeding drivers and prints both the list of positions and the total number of speeding drivers.

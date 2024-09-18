@@ -1,0 +1,52 @@
+### enunciado ingles
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write a program in python that determines which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To write a program in Python that determines which drivers violated the speed limit by more than 20% and less than 50%, you can use the following example code. This assumes you have a list of speeds and corresponding maximum speed limits for each driver:
+
+def check_speed_violations(speeds, max_speeds):
+    # Validate input lengths
+    if len(speeds) != len(max_speeds):
+        raise ValueError("Length of speeds and max_speeds should be the same.")
+
+    # Set the violation thresholds
+    lower_threshold = 0.2  # 20%
+    upper_threshold = 0.5  # 50%
+
+    # Initialize counters
+    total_violations = 0
+    drivers_violated = []
+
+    # Check each driver's speed
+    for i in range(len(speeds)):
+        speed = speeds[i]
+        max_speed = max_speeds[i]
+        speed_limit = max_speed + (max_speed * upper_threshold)
+
+        if speed > speed_limit:
+            total_violations += 1
+            drivers_violated.append(i + 1)  # Driver numbers start from 1, not 0
+
+    return total_violations, drivers_violated
+
+# Example usage
+speeds = [75, 90, 60, 110, 80]
+max_speeds = [60, 80, 50, 100, 70]
+
+total_violations, drivers_violated = check_speed_violations(speeds, max_speeds)
+
+print(f"Total number of violations: {total_violations}")
+print(f"Drivers violated: {drivers_violated}")
+
+
+In this example, the `check_speed_violations` function takes two lists as input: `speeds` (actual speeds of the drivers) and `max_speeds` (maximum speed limits allowed for each driver). The function then iterates through each driver's speed, calculates the allowed speed with the upper threshold, and checks if the driver's speed exceeds this limit. If a violation is found, it increments the violation counter and adds the driver's number to the list of violators.
+
+You can replace the example `speeds` and `max_speeds` lists with your actual data for testing the program.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

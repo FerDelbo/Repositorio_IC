@@ -1,0 +1,44 @@
+### enunciado.en
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write a program in python that reads four notes from a student. As output, print the weighted average, knowing that the weights of the evaluations are respectively: 1, 2, 3 and 4.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Certainly! You can create a simple Python program to achieve this. Here's an example:
+
+def calculate_weighted_average(notes):
+    if len(notes) != 4:
+        raise ValueError("Please provide exactly four notes.")
+
+    weights = [1, 2, 3, 4]
+    weighted_sum = sum(note * weight for note, weight in zip(notes, weights))
+    total_weight = sum(weights)
+
+    weighted_average = weighted_sum / total_weight
+    return weighted_average
+
+def main():
+    try:
+        # Read four notes from the student
+        notes = [float(input(f"Enter note {i + 1}: ")) for i in range(4)]
+
+        # Calculate and print the weighted average
+        result = calculate_weighted_average(notes)
+        print(f"The weighted average is: {result:.2f}")
+
+    except ValueError as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    main()
+
+
+This program defines a function `calculate_weighted_average` that takes a list of four notes and calculates the weighted average based on the provided weights. The `main` function reads four notes from the user, calls the `calculate_weighted_average` function, and then prints the result.
+
+Remember that this code assumes the user will input valid numerical values for the notes. If you need to add more input validation, you can enhance the program accordingly.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

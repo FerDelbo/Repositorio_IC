@@ -1,0 +1,28 @@
+Sure, here is a Python program that reads four notes from a student and prints the weighted average:
+
+```python
+notes = [float(input("Enter note 1: ")), float(input("Enter note 2: ")), float(input("Enter note 3: ")), float(input("Enter note 4: "))]
+weights = [1, 2, 3, 4]
+
+weighted_average = sum(note * weight for note, weight in zip(notes, weights)) / sum(weights)
+
+print("Weighted average:", weighted_average)
+```
+
+This program first prompts the user to enter four notes. The notes are stored in a list called `notes`. The weights of the evaluations are stored in a list called `weights`. The weighted average is calculated using the formula:
+
+```
+weighted_average = sum(note * weight for note, weight in zip(notes, weights)) / sum(weights)
+```
+
+The `zip()` function is used to iterate over the `notes` and `weights` lists simultaneously. The `sum()` function is used to calculate the sum of the products of the notes and weights. The final result is divided by the sum of the weights to get the weighted average.
+
+Here is an example of how to run the program:
+
+```
+Enter note 1: 10
+Enter note 2: 8
+Enter note 3: 9
+Enter note 4: 7
+Weighted average: 8.1
+```

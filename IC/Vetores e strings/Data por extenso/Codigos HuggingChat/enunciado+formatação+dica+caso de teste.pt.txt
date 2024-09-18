@@ -1,0 +1,17 @@
+ ```
+def converter_data(data):
+    Dia, Mes, Ano = data[:2], data[2:4], data[4:]
+    return f"{Dia} de {Mes} de {Ano}"
+
+teste = "31021031"
+print(converter_data(teste)) # Saida: 31 de fevereiro de 1031
+```
+O código acima usa a função `f-string` do Python para criar uma string formatada com as informações da data fornecida.
+
+Toda a lógica do código está concentrada na função `converter_data`, que recebe a data no formato "ddmmaaaa" e retorna a data formatada como "dia de mês de anno".
+
+Dentro da função, utilizamos o método `slice` para extrair as diferentes partes da data fornecida. O slice `[0:2]` retorna os primeiros 2 caracteres (día), o slice `[2:4]` retorna os próximos 2 caracteres (mês) e o slice `[4:]` retorna todos os caracteres restantes (ano).
+
+Em seguida, utilizamos a mescla de strings para montar a data formatada, usando o placeholder `{Dia}`, `{Mes}` e `{Ano}` para incluir as partes da data extraídas anteriormente.
+
+Finalmente, impressamos a saída formatada usando a função `print`.

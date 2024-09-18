@@ -1,0 +1,44 @@
+### enunciado+formatacao+dica.en
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write a program that reads a date in the format “ddmmyyyy” as input and prints that date in words as output.  
+The input format is "ddmmyyyy", where "dd" is the two-digit day of the month, "mm" is the two-digit month number of the year, and "yyyy" is the full year.  
+The output format is "day of month spelled out of year".  
+Always assume that input values ​​are valid.  
+Avoid the use of symbols with accidentals, trying to use only ASCII symbols. For example, the month of March must be written without "ç", that is, "marco". In this way, problems with encoding the texts are avoided.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Certainly! Below is a simple Python program that takes a date in the format "ddmmyyyy" as input and prints the date in words as output:
+
+def date_in_words(date):
+    # Define lists for days, months, and numbers
+    days = ["", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth",
+            "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth", "eighteenth",
+            "nineteenth", "twentieth", "twenty-first", "twenty-second", "twenty-third", "twenty-fourth",
+            "twenty-fifth", "twenty-sixth", "twenty-seventh", "twenty-eighth", "twenty-ninth", "thirtieth", "thirty-first"]
+
+    months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+    # Extract day, month, and year from the input date
+    day = int(date[:2])
+    month = int(date[2:4])
+    year = int(date[4:])
+
+    # Print the date in words
+    print(f"{days[day]} of {months[month]} of {year}")
+
+
+# Get input from the user
+date_input = input("Enter the date in the format 'ddmmyyyy': ")
+
+# Call the function with the input date
+date_in_words(date_input)
+
+
+For example, if you input "25112023," the program will output "twenty-fifth of November of 2023."
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+From ChatGPT, designed with FancyGPT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
