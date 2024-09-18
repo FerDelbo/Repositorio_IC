@@ -1,7 +1,7 @@
 # filename: data_extenso.py
 data = input()  # dd/mm/yyyy
 
-dia = int(data[:2])
+dia = int(data[:2]) 
 mes = int(data[2:4])
 ano = int(data[4:])
 
@@ -20,4 +20,4 @@ meses = {
     12: 'dezembro'
 }
 
-print(f'{dia} de {meses[mes]} de {ano}')
+print(f'{dia:02d} de {meses[mes]} de {ano}')

@@ -1,13 +1,3 @@
-
-1. Write a Python program that accepts a date input from the user in the format "ddmmaaaa".
-2. Parse the input date into day, month, and year.
-3. Define functions to convert numbers to their respective month and day names.
-4. Combine the day, month, and year to form the full date in a readable format.
-5. Print the full date.
-
-Here is the Python code to execute:
-
-```python
 def get_month_name(month_num):
     months = {
         "01": "janeiro",
@@ -75,8 +65,3 @@ full_day_name = get_day_name(day)
 
 # Print full date
 print(f"{full_day_name} de {full_month_name} de {year}")
-```
-
-After executing the code, provide the date in the format "ddmmaaaa" when prompted, and the program will output the date by its full name in Portuguese.
-
-The code works by defining two dictionaries that map month and day numbers to their respective names. The user's input is then parsed into day, month, and year, and the full date is printed using the corresponding names from the dictionaries.

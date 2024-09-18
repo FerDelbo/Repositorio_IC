@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestStringVerification-resultado Data" tests="3" file=".py" time="0.021" timestamp="2024-09-17T14:51:56" failures="1" errors="0" skipped="0">
+	<testcase classname="TestStringVerification" name="test_verificar_string_2" time="0.000" timestamp="2024-09-17T14:51:56" file="test.py" line="44"/>
+	<testcase classname="TestStringVerification" name="test_verificar_string_3" time="0.000" timestamp="2024-09-17T14:51:56" file="test.py" line="48"/>
+	<testcase classname="TestStringVerification" name="test_verificar_string_1" time="0.020" timestamp="2024-09-17T14:51:56" file="test.py" line="40">
+		<failure type="AssertionError" message="False is not true"><![CDATA[Traceback (most recent call last):
+  File "/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/test.py", line 42, in test_verificar_string_1
+    self.assertTrue(verificar_string("01 de setembro de 2023", valores_entrada,self.file))
+AssertionError: False is not true
+]]></failure>
+	</testcase>
+</testsuite>

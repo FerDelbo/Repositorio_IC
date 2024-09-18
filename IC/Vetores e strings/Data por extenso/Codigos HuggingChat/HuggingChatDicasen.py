@@ -1,7 +1,3 @@
-
-Please execute the following Python code:
-
-```python
 from datetime import datetime
 import calendar
 
@@ -32,9 +28,4 @@ day_name = calendar.day_name[date_obj.weekday()]
 
 # Print date in words
 print(f"{day_name.lower()}, {date_obj.day} of {months[date_input[2:4]]}, {date_input[4:]}")
-```
-
-This code will prompt the user to enter a date in the format "ddmmyyyy", convert it into a date object, get the day name, and print the date in words as output.
-
-After executing the code, please provide the output so I can verify if the code is working as expected.
 

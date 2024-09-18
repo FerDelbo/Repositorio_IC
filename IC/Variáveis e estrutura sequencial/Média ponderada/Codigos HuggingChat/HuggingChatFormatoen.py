@@ -1,5 +1,3 @@
-
-```python
 # Read four notes from the student
 note1 = float(input("Enter the first note: "))
 note2 = float(input("Enter the second note: "))
@@ -13,6 +11,5 @@ weighted_average = (note1 * 1 + note2 * 2 + note3 * 3 + note4 * 4) / (1 + 2 + 3 
 weighted_average_rounded = round(weighted_average, 1)
 
 # Print the weighted average
-print("The weighted average is:", weighted_average_rounded)
-```
-
+#print("The weighted average is:", weighted_average_rounded)
+print(weighted_average_rounded)

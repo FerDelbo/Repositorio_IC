@@ -1,11 +1,3 @@
-
-1. Define a function called `convert_num_to_words` that converts numbers from 0 to 999 to their equivalent in words. This function will be used to convert the day, month, and year to words.
-2. Write a function called `convert_date_to_words` that takes a date in the format "ddmmyyyy" as input and returns the date in words using the `convert_num_to_words` function.
-3. Get the date input from the user using `input()` function and convert it to words using the `convert_date_to_words` function.
-
-Here's the complete code:
-
-```python
 # filename: date_to_words.py
 
 def convert_num_to_words(num):
@@ -44,6 +36,3 @@ date_in_words = convert_date_to_words(date_input)
 
 # Print the result
 print(f"The date in words is: {date_in_words}")
-```
-
-To execute this code, the user needs to save the code in a file named `date_to_words.py` and run it using Python. After running the code, the user will be prompted to enter the date in the format "ddmmyyyy". The program will then print the date in words.

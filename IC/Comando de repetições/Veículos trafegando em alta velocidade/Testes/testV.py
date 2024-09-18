@@ -38,17 +38,17 @@ def verificar_string(valores_esperados, valores_entrada,arquivo):
 
     # Verifica se os valores impressos são iguais às strings fornecidas
     if(valores_esperados == valor_impresso):
-        return True;
+        return True
     else:
-        return False;
+        return False
 
 
 class TestStringVerification(unittest.TestCase):
     #file = 'codigo.py'
     def test_verificar_string_1(self):
-        valores_entrada = ["[60.0, 73.9, 22.9, 72.1, 72.0, 100.6]"]
+        valores_entrada = ["[60.0, 73.9, 22.9, 72.1, 72.0, 100.6]"] 
         self.assertTrue(verificar_string("1\n3\n2", valores_entrada,self.file))
-
+        
     def test_verificar_string_2(self):
         valores_entrada = ["[11.6, 60.6, 16.6, 11.35]"]
         self.assertTrue(verificar_string("2\n1", valores_entrada,self.file))
@@ -57,8 +57,21 @@ class TestStringVerification(unittest.TestCase):
         valores_entrada = ["[72.9, 29.1, 7.29, 90.7, 66.6]"]
         self.assertTrue(verificar_string("3\n1", valores_entrada,self.file))
 
+def runTest(arg1, arg2, arg3):
+    import xmlrunner as r
+    import glob 
+    #Maneira 1 -> faz a busca pelo qual foi passado pelo termianl + geral
+    #base_path = '/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/'
+    #file = glob.glob(f"{base_path}**/{sys.argv[1]}*/**/{sys.argv[2]}*{sys.argv[3]}*{sys.argv[4]}.py", recursive=True)
+    
+    #Maneira 2 -> faz a busca por parametro de terminal mas já dentro do diretorio Veículos Trafegando em Alta Velocidade + seguro
+    file = glob.glob(f"/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/**/Veículos*/**/{arg1}{arg2}{arg3}.py", recursive=True)
+    #print(file)
+    TestStringVerification.file = file[0]
+    unittest.main(argv=sys.argv[:1], testRunner=r.XMLTestRunner(output='testeVeiculo', outsuffix="Veiculos"))
+    #outsuffix = time.strftime("%Y%m%d%H%M%S")
+
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        # Evita caracteres especiais no nome do atributo, usando getattr para acessar dinamicamente
-        TestStringVerification.file = os.path.join("/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veículos trafegando em alta velocidade/Codigos Gemini", sys.argv[1] + ".py")
-    unittest.main(argv=sys.argv[:1])
+    runTest(arg1=sys.argv[1], arg2=sys.argv[2], arg3=sys.argv[3])
+   
+    

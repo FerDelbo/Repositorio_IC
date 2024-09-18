@@ -1,5 +1,3 @@
-
-```python
 # filename: speed_violations.py
 
 def check_speed_violations(speed_vector):
@@ -22,9 +20,7 @@ def check_speed_violations(speed_vector):
     print(num_violations)
 
 # Example usage:
-speed_vector = [60, 70, 80, 90, 100, 110, 120]  # Replace this with your actual input data
+#speed_vector = [60, 70, 80, 90, 100, 110, 120]  # Replace this with your actual input data
+from numpy import*
+speed_vector = array(eval(input()))
 check_speed_violations(speed_vector)
-```
-
-To execute the code, save it in a file named `speed_violations.py` and replace the example `speed_vector` with your actual input data. Run the script, and it will print the position in the vector of each driver who violated the speed limit and the number of violations at the end.
-

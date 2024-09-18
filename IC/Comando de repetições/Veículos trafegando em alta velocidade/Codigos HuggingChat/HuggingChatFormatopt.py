@@ -1,7 +1,3 @@
-
-Here's the code:
-
-```python
 def find_speed_violators(speeds):
     max_speed = speeds[0]
     violators = []
@@ -17,17 +13,14 @@ def find_speed_violators(speeds):
     return violators, len(violators)
 
 # Example usage:
-speeds = [90, 100, 120, 140, 160, 180]
+#speeds = [90, 100, 120, 140, 160, 180] #código original
+from numpy import* # minha adição
+speeds = array(eval(input()))  #minha mudança
 violators, violations_count = find_speed_violators(speeds)
 
-print("Posições dos motoristas que infringiram o limite de velocidade:")
+#print("Posições dos motoristas que infringiram o limite de velocidade:") #código original
 for violator in violators:
     print(violator)
 
-print(f"\nTotal de motoristas que infringiram o limite: {violations_count}")
-```
-
-To use this script, simply replace the `speeds` list with the actual data. The output will display the position of each infringing driver in the list and the total number of infringements.
-
-Now, please execute the code and provide the result so that I can verify the answer.
-
+#print(f"\nTotal de motoristas que infringiram o limite:{violations_count}") #codigo original
+print(violations_count) #minha mudança

@@ -49,8 +49,14 @@ class TestStringVerification(unittest.TestCase):
         valores_entrada = ["5.0", "3.0", "9.0", "10.0"]
         self.assertTrue(verificar_string("7.8", valores_entrada,self.file))
 
+def runTest(arg1, arg2, arg3):
+    import xmlrunner as r
+    import glob
+
+    file = glob.glob(f"/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/**/Média*/**/{sys.argv[1]}{sys.argv[2]}{sys.argv[3]}.py", recursive=True)
+    #print(file)
+    TestStringVerification.file = file[0]
+    unittest.main(argv=sys.argv[:1], testRunner=r.XMLTestRunner(output='testeMédia', outsuffix="resultado Média"))
 
 if __name__ == '__main__':
-    #if len(sys.argv) > 1:
-    TestStringVerification.file = "C:\\Users\\Fernando\\Desktop\\Teste_cod\\solucao_media\\3357_4236_7229.py"
-    unittest.main()
+    runTest(arg1=sys.argv[1], arg2=sys.argv[2], arg3=sys.argv[3])

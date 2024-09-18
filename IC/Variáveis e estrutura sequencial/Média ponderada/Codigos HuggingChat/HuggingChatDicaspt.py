@@ -10,5 +10,5 @@ grade4 = float(input("Enter the fourth grade: "))
 weighted_average = ((grade1 * 1) + (grade2 * 2) + (grade3 * 3) + (grade4 * 4)) / (1 + 2 + 3 + 4)
 
 # Print the weighted average rounded to one decimal place
-print("The weighted average is:", round(weighted_average, 1))
-```
+#print("The weighted average is:", round(weighted_average, 1))
+print(round(weighted_average, 1))
