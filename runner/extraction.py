@@ -64,20 +64,17 @@ class XMLExtractor:
         # Salvar a planilha
         workbook.save(excel_file)
     
-    def run(self):
-        dados = extractor.extractData()
-        extractor.saveExcel(dados)
-
-def buscarXML(arg1):
-    #xml= glob.glob(f'**/*{arg1}.xml', recursive=True)
-    xml= glob.glob(f'/home/**/*{arg1}.xml', recursive=True)
-    return xml
+def run(nameExercise, nameLLM):
+    #print("Iniciando!")
+    xml= glob.glob(f'/home/**/*{nameExercise}.xml', recursive=True)
+    #print(xml)
+    extractor = XMLExtractor(xml[0], nameExercise, nameLLM)
+    dados = extractor.extractData()
+    extractor.saveExcel(dados)
+    #print("salvo vom sucesso!")
 
 if __name__ == "__main__":
     nameExercise = sys.argv[1]
     nameLLM = sys.argv[2]
-    fileXML = buscarXML(nameExercise)
-    #print(fileXML)
-    extractor = XMLExtractor(fileXML[0], nameExercise, nameLLM)
-    extractor.run()
+    run(nameExercise, nameLLM)
     

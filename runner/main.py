@@ -11,6 +11,7 @@ sys.path.append(path_to_test_Media)
 path_to_test_Data = os.path.abspath('/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes')
 sys.path.append(path_to_test_Data)
 
+#from .IC.Comando.Veículos.Testes import testV
 import testV # Responsavel pelos casos de teste do exercico de Veículos trafegando em alta velocidade
 import testM # Responsavel pelos casos de teste do exercico de Média ponderada
 import testD # Responsavel pelos casos de teste do exercico de Data por extenso
@@ -20,25 +21,21 @@ import extraction #Responsavel por extrair os componentes do aqruivo XML e salva
 #importlib.reload(testV)
 
 nameExercise = sys.argv[1] # Nome do exercicio
-arg2 = sys.argv[2] # Nome da LLM
-arg3 = sys.argv[3] # Parte do prompt é selecionada
-arg4 = sys.argv[4] # Idioma
-stop = True
+nameLLM = sys.argv[2] # Nome da LLM
+partPrompt = sys.argv[3] # Parte do prompt é selecionada
+language = sys.argv[4] # Idioma
 
 if nameExercise == "Veiculos":
-    testV.runTest(arg2, arg3, arg4)
-    
+    testV.runTest(nameLLM, partPrompt, language)
+    extraction.run(nameExercise, nameLLM)
+   
 elif nameExercise == "Média":
-    testM.runTest(arg2, arg3, arg4)
+    testM.runTest(nameLLM, partPrompt, language)
+    extraction.run(nameExercise, nameLLM)
     
 elif nameExercise == "Data":
-    testD.runTest(arg2, arg3, arg4)
+    testD.runTest(nameLLM, partPrompt, language)
+    extraction.run(nameExercise, nameLLM)
 
 else:
     print("Arquivo não encontrado! Veja a formatação adequado dos dados")
-    stop = False
-
-if stop:
-    xml = extraction.buscarXML(nameExercise)
-    extractor = XMLExtractor(xml[0], nameExercise, arg2)
-    extractor.run()
