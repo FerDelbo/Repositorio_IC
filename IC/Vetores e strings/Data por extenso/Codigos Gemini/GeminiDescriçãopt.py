@@ -1,14 +1,21 @@
-# filename: ex_date_extenso.py
-import locale
+def data_por_extenso(data):
+  """Converte uma data no formato "ddmmaaaa" para extenso."""
 
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+  meses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
+           "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
 
-dia = input('Dia [dd]: ')
-mes = input('Mes [mm]: ')
-ano = input('Ano [aaaa]: ')
+  dia = int(data[:2])
+  mes = int(data[2:4]) - 1
+  ano = int(data[4:])
 
-data = '{}-{}-{}'.format(dia, mes, ano)
+  return f"{dia} de {meses[mes]} de {ano}"
 
-data_extenso = f'{dia} de {locale.month_name[int(mes)]} de {ano}'
 
+# Lê a data do usuário
+data = input("Digite uma data no formato \"ddmmaaaa\": ")
+
+# Converte a data para extenso
+data_extenso = data_por_extenso(data)
+
+# Imprime a data por extenso
 print(data_extenso)

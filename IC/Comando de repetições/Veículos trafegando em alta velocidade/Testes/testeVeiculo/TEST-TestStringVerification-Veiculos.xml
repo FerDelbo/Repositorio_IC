@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestStringVerification-Veiculos" tests="3" file=".py" time="0.146" timestamp="2024-09-17T18:09:19" failures="0" errors="0" skipped="0">
-	<testcase classname="TestStringVerification" name="test_verificar_string_1" time="0.142" timestamp="2024-09-17T18:09:19" file="testV.py" line="48"/>
-	<testcase classname="TestStringVerification" name="test_verificar_string_2" time="0.002" timestamp="2024-09-17T18:09:19" file="testV.py" line="52"/>
-	<testcase classname="TestStringVerification" name="test_verificar_string_3" time="0.001" timestamp="2024-09-17T18:09:19" file="testV.py" line="56"/>
-</testsuite>

@@ -60,18 +60,24 @@ class TestStringVerification(unittest.TestCase):
 def runTest(arg1, arg2, arg3):
     import xmlrunner as r
     import glob 
-    #Maneira 1 -> faz a busca pelo qual foi passado pelo termianl + geral
-    #base_path = '/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/'
-    #file = glob.glob(f"{base_path}**/{sys.argv[1]}*/**/{sys.argv[2]}*{sys.argv[3]}*{sys.argv[4]}.py", recursive=True)
-    
-    #Maneira 2 -> faz a busca por parametro de terminal mas já dentro do diretorio Veículos Trafegando em Alta Velocidade + seguro
-    file = glob.glob(f"/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/**/Veículos*/**/{arg1}{arg2}{arg3}.py", recursive=True)
+       
+    file = glob.glob(f"/home/**/Repositorio_IC/**/Veiculos*/**/{arg1}{arg2}{arg3}.py", recursive=True)
     #print(file)
     TestStringVerification.file = file[0]
-    unittest.main(argv=sys.argv[:1], testRunner=r.XMLTestRunner(output='testeVeiculo', outsuffix="Veiculos"))
+    # #unittest.main(argv=[''], testRunner=r.XMLTestRunner(output='testeVeiculo', outsuffix="Veiculos"))
+    # suite = unittest.TestLoader().loadTestsFromTestCase(TestStringVerification)
+    # unittest.TextTestRunner().run(suite)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestStringVerification)
+    runner = r.XMLTestRunner(output='testeVeiculo', outsuffix="resultado_Veiculos")
+    runner.run(suite)
+
     #outsuffix = time.strftime("%Y%m%d%H%M%S")
 
 if __name__ == '__main__':
+    #parametros que devem ser passados:
+    #arg1 -> nome LLM
+    #arg2 -> qual parte do prompt
+    #arg3 ->idioma (pt, eng, eng2)
     runTest(arg1=sys.argv[1], arg2=sys.argv[2], arg3=sys.argv[3])
    
     

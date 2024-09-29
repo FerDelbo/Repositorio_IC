@@ -53,10 +53,16 @@ def runTest(arg1, arg2, arg3):
     import xmlrunner as r
     import glob
 
-    file = glob.glob(f"/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/**/Média*/**/{sys.argv[1]}{sys.argv[2]}{sys.argv[3]}.py", recursive=True)
+    file = glob.glob(f"/home/**/Repositorio_IC/**/Média*/**/{arg1}{arg2}{arg3}.py", recursive=True)
     #print(file)
     TestStringVerification.file = file[0]
-    unittest.main(argv=sys.argv[:1], testRunner=r.XMLTestRunner(output='testeMédia', outsuffix="resultado Média"))
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestStringVerification)
+    runner = r.XMLTestRunner(output='testeMédia', outsuffix="resultado_Média")
+    runner.run(suite)
 
 if __name__ == '__main__':
+    #parametros que devem ser passados:
+    #arg1 -> nome LLM
+    #arg2 -> qual parte do prompt
+    #arg3 ->idioma (pt, eng, eng2)
     runTest(arg1=sys.argv[1], arg2=sys.argv[2], arg3=sys.argv[3])
