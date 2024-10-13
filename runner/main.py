@@ -1,5 +1,6 @@
 import sys
-from utils import generativeIA # Responsavel por fazer a requisição a API das LLM, gerar o código e salvar no repositorio
+import generativeIA
+#from utils import generativeIA # Responsavel por fazer a requisição a API das LLM, gerar o código e salvar no repositorio
 from utils import testV # Responsavel pelos casos de teste do exercico de Veículos trafegando em alta velocidade
 from utils import testM # Responsavel pelos casos de teste do exercico de Média ponderada
 from utils import testD # Responsavel pelos casos de teste do exercico de Data por extenso
@@ -9,19 +10,20 @@ nameExercise = sys.argv[1] # Nome do exercicio
 nameLLM = sys.argv[2] # Nome da LLM
 partPrompt = sys.argv[3] # Parte do prompt é selecionada
 language = sys.argv[4] # Idioma
+session = sys.argv[5] #sesão que foi realizada o teste
 
-generativeIA.generativeCodeRun(nameLLM, nameExercise, language, partPrompt)
+generativeIA.generativeCodeRun(nameLLM, nameExercise, language, partPrompt, session)
 
 if nameExercise == "Veiculos":
-    testV.runTest(nameLLM, partPrompt, language)
+    testV.runTest(nameLLM, partPrompt, language, session)
     extraction.run(nameExercise, nameLLM)
    
 elif nameExercise == "Média":
-    testM.runTest(nameLLM, partPrompt, language)
+    testM.runTest(nameLLM, partPrompt, language, session)
     extraction.run(nameExercise, nameLLM)
     
 elif nameExercise == "Data":
-    testD.runTest(nameLLM, partPrompt, language)
+    testD.runTest(nameLLM, partPrompt, language, session)
     extraction.run(nameExercise, nameLLM)
 
 else:
