@@ -16,15 +16,15 @@ generativeIA.generativeCodeRun(nameLLM, nameExercise, language, partPrompt, sess
 
 if nameExercise == "Veiculos":
     testV.runTest(nameLLM, partPrompt, language, session)
-    extraction.run(nameExercise, nameLLM)
+    extraction.run(nameExercise, nameLLM, language, partPrompt)
    
 elif nameExercise == "Média":
     testM.runTest(nameLLM, partPrompt, language, session)
-    extraction.run(nameExercise, nameLLM)
+    extraction.run(nameExercise, nameLLM, language, partPrompt)
     
 elif nameExercise == "Data":
     testD.runTest(nameLLM, partPrompt, language, session)
-    extraction.run(nameExercise, nameLLM)
+    extraction.run(nameExercise, nameLLM, language, partPrompt)
 
 else:
     print("Arquivo não encontrado! Veja a formatação adequado dos dados")

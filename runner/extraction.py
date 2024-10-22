@@ -4,10 +4,12 @@ import glob
 import sys
 
 class XMLExtractor:
-    def __init__(self, fileXML, nameExercise, nameLLM):
+    def __init__(self, fileXML, nameExercise, nameLLM, language, prompt):
         self.fileXML = fileXML
         self.nameExercise = nameExercise
         self.nameLLM = nameLLM
+        self.language = language
+        self.prompt = prompt
 
     def extractData(self):
         # Transformar o arquivo XML em uma árvore
@@ -25,8 +27,16 @@ class XMLExtractor:
             "QtdFalhas": listTestsuite['failures'],
             "QtdAcerto": str(int(listTestsuite['tests']) - int(listTestsuite['failures'])),
             "NomeFalha": '',
-            "NomeAcerto": ''
+            "NomeAcerto": '',
+            "Idioma": self.language,
+            "Prompt": self.prompt,
+            "Git": ''
         }
+
+        import git
+        repo = git.Repo(search_parent_directories=True)
+        sha = repo.head.object.hexsha
+        components['Git'] = sha 
 
         falhas = []
         acertos = []
@@ -58,17 +68,20 @@ class XMLExtractor:
             components["QtdFalhas"],
             components["QtdAcerto"],
             components["NomeFalha"],
-            components["NomeAcerto"]
+            components["NomeAcerto"],
+            components["Idioma"],
+            components["Prompt"],
+            components["Git"]
         ])
 
         # Salvar a planilha
         workbook.save(excel_file)
     
-def run(nameExercise, nameLLM):
+def run(nameExercise, nameLLM, language, prompt):
     #print("Iniciando!")
     xml= glob.glob(f'/home/**/*{nameExercise}.xml', recursive=True)
     #print(xml)
-    extractor = XMLExtractor(xml[0], nameExercise, nameLLM)
+    extractor = XMLExtractor(xml[0], nameExercise, nameLLM, language, prompt)
     dados = extractor.extractData()
     extractor.saveExcel(dados)
     #print("salvo vom sucesso!")
