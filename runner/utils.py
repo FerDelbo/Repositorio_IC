@@ -17,6 +17,12 @@ sys.path.append(path_to_test_Data)
 path_to_keys = os.path.abspath('/home/fernando/Área de Trabalho/Projeto/apis')
 sys.path.append(path_to_keys)
 
+#class testExecute 
+#class generativeAI
+#class codeGenerator
+#class extraction
+#-> chama todas as classes #class codeEvaluator
+
 
 #import generativeIA
 import testV # Responsavel pelos casos de teste do exercico de Veículos trafegando em alta velocidade
