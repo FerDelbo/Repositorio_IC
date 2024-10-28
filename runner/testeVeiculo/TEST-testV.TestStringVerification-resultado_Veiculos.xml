@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testV.TestStringVerification-resultado_Veiculos" tests="3" file="testV.py" time="0.009" timestamp="2024-10-13T20:13:36" failures="3" errors="0" skipped="0">
-	<testcase classname="testV.TestStringVerification" name="test_verificar_string_1" time="0.008" timestamp="2024-10-13T20:13:36" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veiculos trafegando em alta velocidade/Testes/testV.py" line="48">
+<testsuite name="testV.TestStringVerification-resultado_Veiculos" tests="3" file="testV.py" time="0.005" timestamp="2024-10-28T18:44:14" failures="3" errors="0" skipped="0">
+	<testcase classname="testV.TestStringVerification" name="test_verificar_string_1" time="0.004" timestamp="2024-10-28T18:44:14" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veiculos trafegando em alta velocidade/Testes/testV.py" line="48">
 		<failure type="AssertionError" message="False is not true"><![CDATA[Traceback (most recent call last):
   File "/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veiculos trafegando em alta velocidade/Testes/testV.py", line 50, in test_verificar_string_1
     self.assertTrue(verificar_string("1\n3\n2", valores_entrada,self.file))
 AssertionError: False is not true
 ]]></failure>
 	</testcase>
-	<testcase classname="testV.TestStringVerification" name="test_verificar_string_2" time="0.001" timestamp="2024-10-13T20:13:36" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veiculos trafegando em alta velocidade/Testes/testV.py" line="52">
+	<testcase classname="testV.TestStringVerification" name="test_verificar_string_2" time="0.001" timestamp="2024-10-28T18:44:14" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veiculos trafegando em alta velocidade/Testes/testV.py" line="52">
 		<failure type="AssertionError" message="False is not true"><![CDATA[Traceback (most recent call last):
   File "/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veiculos trafegando em alta velocidade/Testes/testV.py", line 54, in test_verificar_string_2
     self.assertTrue(verificar_string("2\n1", valores_entrada,self.file))
 AssertionError: False is not true
 ]]></failure>
 	</testcase>
-	<testcase classname="testV.TestStringVerification" name="test_verificar_string_3" time="0.001" timestamp="2024-10-13T20:13:36" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veiculos trafegando em alta velocidade/Testes/testV.py" line="56">
+	<testcase classname="testV.TestStringVerification" name="test_verificar_string_3" time="0.001" timestamp="2024-10-28T18:44:14" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veiculos trafegando em alta velocidade/Testes/testV.py" line="56">
 		<failure type="AssertionError" message="False is not true"><![CDATA[Traceback (most recent call last):
   File "/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Comando de repetições/Veiculos trafegando em alta velocidade/Testes/testV.py", line 58, in test_verificar_string_3
     self.assertTrue(verificar_string("3\n1", valores_entrada,self.file))
