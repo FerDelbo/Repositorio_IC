@@ -57,12 +57,12 @@ class TestStringVerification(unittest.TestCase):
         valores_entrada = ["[72.9, 29.1, 7.29, 90.7, 66.6]"]
         self.assertTrue(verificar_string("3\n1", valores_entrada,self.file))
 
-def runTest(arg1, arg2, arg3):
+def runTest(arg1, arg2, arg3, arg4):
     import xmlrunner as r
     import glob 
        
-    file = glob.glob(f"/home/**/Repositorio_IC/**/Veiculos*/**/{arg1}{arg2}{arg3}.py", recursive=True)
-    #print(file)
+    file = glob.glob(f"/home/**/Repositorio_IC/**/Veiculos*/**/{arg4}/{arg1}{arg2}{arg3}.py", recursive=True)
+    print(file)
     TestStringVerification.file = file[0]
     # #unittest.main(argv=[''], testRunner=r.XMLTestRunner(output='testeVeiculo', outsuffix="Veiculos"))
     # suite = unittest.TestLoader().loadTestsFromTestCase(TestStringVerification)

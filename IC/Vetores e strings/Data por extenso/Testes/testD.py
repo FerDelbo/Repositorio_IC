@@ -49,11 +49,11 @@ class TestStringVerification(unittest.TestCase):
         valores_entrada = ["31021031"]
         self.assertTrue(verificar_string("31 de fevereiro de 1031", valores_entrada,self.file))
 
-def runTest(arg1, arg2, arg3):
+def runTest(arg1, arg2, arg3, arg4):
     import xmlrunner as r
     import glob
 
-    file = glob.glob(f"/home/**/Repositorio_IC/**/Data*/**/{arg1}{arg2}{arg3}.py", recursive=True)
+    file = glob.glob(f"/home/**/Repositorio_IC/**/Data*/**/{arg4}/{arg1}{arg2}{arg3}.py", recursive=True)
     #print(file)
     TestStringVerification.file = file[0]
     #unittest.main(argv=sys.argv[:1], testRunner=r.XMLTestRunner(output='testeData', outsuffix="resultado Data"))

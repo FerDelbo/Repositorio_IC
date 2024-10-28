@@ -1,28 +1,37 @@
-# Criar uma lista de velocidades de motoristas
-velocidades = [80, 95, 110, 125, 75, 90, 105, 130]
+def verificar_infracoes(velocidades, limite_velocidade):
+    """
+    Determina quais e quantos motoristas infringiram o limite de velocidade em mais de 20% e menos que 50% acima da velocidade máxima permitida.
 
-# Definir o limite de velocidade
+    Parâmetros:
+        velocidades (lista): Lista das velocidades dos motoristas em km/h.
+        limite_velocidade (int): Limite de velocidade em km/h.
+
+    Retorna:
+        lista: Lista com os nomes dos motoristas que infringiram o limite de velocidade dentro da faixa especificada.
+    """
+    # Calcula a faixa de velocidade que representa uma infração de mais de 20% e menos que 50% acima do limite.
+    faixa_infracao = (1 + 20 / 100) * limite_velocidade, (1 + 50 / 100) * limite_velocidade
+
+    # Cria uma lista para armazenar os nomes dos motoristas infratores.
+    motoristas_infratores = []
+
+    # Itera sobre as velocidades dos motoristas.
+    for velocidade in velocidades:
+        # Verifica se a velocidade está dentro da faixa de infração.
+        if faixa_infracao[0] < velocidade < faixa_infracao[1]:
+            # Adiciona o nome do motorista à lista de infratores.
+            motoristas_infratores.append(velocidade)
+
+    # Retorna a lista de motoristas infratores.
+    return motoristas_infratores
+
+
+# Exemplo de uso
+velocidades = [80, 100, 120, 150, 90, 110, 130]
 limite_velocidade = 100
 
-# Criar uma lista para armazenar os motoristas que infringiram o limite
-infratores = []
+motoristas_infratores = verificar_infracoes(velocidades, limite_velocidade)
 
-# Iterar sobre as velocidades
-for velocidade in velocidades:
-
-    # Calcular a porcentagem acima do limite de velocidade
-    porcentagem_acima = (velocidade - limite_velocidade) / limite_velocidade * 100
-
-    # Verificar se a porcentagem acima do limite está entre 20% e 50%
-    if 20 <= porcentagem_acima < 50:
-        infratores.append(velocidade)
-
-# Exibir a lista de infratores
-print("Motoristas que infringiram o limite de velocidade em mais de 20% e menos que 50% acima da velocidade máxima permitida:")
-print(infratores)
-
-# Contar o número de infratores
-num_infratores = len(infratores)
-
-# Exibir o número de infratores
-print("Número de motoristas infratores:", num_infratores)
+print("Motoristas que infringiram o limite de velocidade em mais de 20% e menos que 50%:")
+for motorista in motoristas_infratores:
+    print(f"- {motorista} km/h")

@@ -1,24 +1,34 @@
-def speed_limit_violators(drivers):
-    speed_limit = 60
-    violators = []
-
-    for driver in drivers:
-        driver_name = driver['name']
-        driver_speed = driver['speed']
-        percentage_above_limit = ((driver_speed - speed_limit) / speed_limit) * 100
-
-        if 20 < percentage_above_limit < 50:
-            violators.append(driver_name)
-
-    return violators
-
-# Test the function with a sample list of drivers
-drivers = [
-    {'name': 'Alice', 'speed': 70},
-    {'name': 'Bob', 'speed': 80},
-    {'name': 'Carol', 'speed': 90},
-    {'name': 'David', 'speed': 100},
+# List of motorists with their speed and speed limit
+motorists = [
+    {'speed': 80, 'limit': 60},
+    {'speed': 120, 'limit': 80},
+    {'speed': 90, 'limit': 70},
+    {'speed': 110, 'limit': 80},
+    # Add more data as needed
 ]
 
-violators = speed_limit_violators(drivers)
-print(f"The following drivers exceeded the speed limit by more than 20% and less than 50%: {violators}")
+# Initialize counters
+count_infractions = 0
+count_total = 0
+
+# Iterate over each motorist
+for motorist in motorists:
+    # Calculate how much the motorist exceeded the speed limit
+    excess_speed = motorist['speed'] - motorist['limit']
+
+    # Check if the motorist exceeded the speed limit
+    if excess_speed > 0:
+        # Calculate how much the speed limit was exceeded
+        excess_percentage = (excess_speed / motorist['limit']) * 100
+
+        # Check if the excess speed was between 20% and 50%
+        if 20 < excess_percentage < 50:
+            # Increment the counter for infractions
+            count_infractions += 1
+
+        # Increment the total counter
+        count_total += 1
+
+# Print the results
+print(f"There were {count_infractions} motorists who infringed the speed limit between 20% and 50%.")
+print(f"This accounts for {count_infractions / count_total * 100}% of all motorists.")
