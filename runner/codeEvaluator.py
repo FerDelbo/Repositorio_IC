@@ -45,13 +45,6 @@ class CodeEvaluator:
         #passo 9 é feita uma limpa no XML e pega o conteudo para jogar em uma planikha fora desse repositorio
         extraction.run(self.nameProblems, self.nameLLM, self.language, self.prompt_type, path)
         #programa finalizado
-    
-    
-    # def discolver_problems(self,):
-    #     list problems = glob.glob(f'/**/Repositorio_IC/**/Prompts/*{self.language}.txt',recursive=true)
-    #     return problems
-    # #def createLLM(self,) -> None:
-    #     pass
 
 parser = argparse.ArgumentParser(description="Inciar gerador de soluções.")
 # Adicionando os argumentos

@@ -18,12 +18,16 @@ class XMLExtractor:
 
         # Obter atributos do testsuite
         listTestsuite = root.attrib
-
+        
+        from datetime import datetime
+        
+        now = datetime.now()
+        
         # Dicionário de componentes a serem extraídos
         components = {
             "NomeExercicio": self.nameExercise,
             "NomeLLM": self.nameLLM,
-            "Data/Hora": listTestsuite['timestamp'],
+            "Data/Hora": now,
             "QtdFalhas": listTestsuite['failures'],
             "QtdAcerto": str(int(listTestsuite['tests']) - int(listTestsuite['failures'])),
             "NomeFalha": '',
@@ -32,6 +36,8 @@ class XMLExtractor:
             "Prompt": self.prompt,
             "Git": ''
         }
+        
+        del(datetime)
 
         import git
         repo = git.Repo(search_parent_directories=True)
@@ -41,7 +47,7 @@ class XMLExtractor:
         falhas = []
         acertos = []
 
-        # Iterar sobre os elementos 'testcase' e coletar nomes de testes que falharam ou passaram
+        # coletar nomes de testes que falharam ou passaram
         for testcase in root.iter('testcase'):
             nome_teste = testcase.attrib['name']
             if testcase.find('failure') is not None:
@@ -51,7 +57,7 @@ class XMLExtractor:
 
         components['NomeFalha'] = "; ".join(falhas)
         components['NomeAcerto'] = "; ".join(acertos)
-
+        del(git)
         return components
 
     def saveExcel(self, components):
@@ -79,7 +85,7 @@ class XMLExtractor:
     
 def run(nameExercise, nameLLM, language, prompt, outDir):
     #print("Iniciando!")
-    print(outDir)
+    #print(outDir)
     xml= glob.glob(f'{outDir}/**/*{nameExercise}.xml', recursive=True)
     #print(xml)
     extractor = XMLExtractor(xml[0], nameExercise, nameLLM, language, prompt)
