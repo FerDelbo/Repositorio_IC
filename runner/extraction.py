@@ -77,9 +77,10 @@ class XMLExtractor:
         # Salvar a planilha
         workbook.save(excel_file)
     
-def run(nameExercise, nameLLM, language, prompt):
+def run(nameExercise, nameLLM, language, prompt, outDir):
     #print("Iniciando!")
-    xml= glob.glob(f'/home/**/*{nameExercise}.xml', recursive=True)
+    print(outDir)
+    xml= glob.glob(f'{outDir}/**/*{nameExercise}.xml', recursive=True)
     #print(xml)
     extractor = XMLExtractor(xml[0], nameExercise, nameLLM, language, prompt)
     dados = extractor.extractData()

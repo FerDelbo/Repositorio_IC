@@ -34,20 +34,18 @@ class codeGenerator:
                 self.prompt[str(lastKey)] += i #define o valor para a ultima chave que foi definida
         #print(prompt)
 
-    def __createPrompt(self,):
+    def __createPrompt(self, dirctory):
         #Aqui ocrre a filtragem dos diretorios e subdiretorios para a utilização do txt
         #Veiculos, Média, Data
-        print(self.nameExercise)
-        print(self.language)
-        path = glob.glob(f"/home/**/Repositorio_IC/IC/**/{self.nameExercise}*/**/Prompts/**/*.{self.language}.txt", recursive=True)
+        #print(dirctory)
+        path = glob.glob(f"{dirctory}*/**/{self.nameExercise}*/**/Prompts/**/*.{self.language}.txt", recursive=True)
         self.__convertTxt(path[0])
 
-    def saveCode(self, response):
+    def saveCode(self, response, outDirctory):
         #salvar o arquivo
-        directory = glob.glob(f"/home/**/Projeto/soluçãoLLM/{self.nameExercise}/{self.llm}/{self.session}", recursive=True)
-        print(directory)
+        directory = glob.glob(f"{outDirctory}/{self.nameExercise}/{self.llm}/{self.session}", recursive=True)
         if len(directory) == 0:
-            path = self.__createSession()
+            path = self.__createSession(outDirctory)
             print("seção criada")
             nome = f'{self.llm}{self.partitionPrompt}{self.language}.py'
             full_path = os.path.join(path, nome)
@@ -60,10 +58,10 @@ class codeGenerator:
         file.close()
         self.__removeLines(full_path)
 
-    def __createSession(self):
+    def __createSession(self, outDirctory):
         #print("criando seção")
-        directory = glob.glob(f"/home/**/Projeto/soluçãoLLM/{self.nameExercise}/{self.llm}", recursive=True)
-        base_path = directory[0]
+        #directory = glob.glob(f"{outDirctory}/{self.nameExercise}/{self.llm}", recursive=True)
+        base_path = outDirctory
         new_subdirectory_path = os.path.join(base_path, self.session)
         os.makedirs(new_subdirectory_path, exist_ok=True)
         return new_subdirectory_path
@@ -83,8 +81,8 @@ class codeGenerator:
         with open(directory, 'w') as file:
             file.writelines(newLines)
 
-    def createMessage(self):
-        self.__createPrompt()
+    def createMessage(self, inputDir, output):
+        self.__createPrompt(inputDir)
         message = self.prompt['Descrição:\n']
         l = ['Formato para entrada e saída de dados:\n', 'Dicas:\n', 'Casos de teste:\n']
         if self.partitionPrompt == "Descrição": 
@@ -99,9 +97,9 @@ class codeGenerator:
                     newTxt = self.prompt[i]
                     message = message + newTxt
 
-def codeRun(nameLLM, nameExercice, language, partPrompt, session):
+def codeRun(inputDirctory, outDirctory, nameLLM, nameExercice, language, partPrompt, session):
     start = codeGenerator(nameLLM, nameExercice, language, partPrompt, session)
-    message = start.createMessage()
+    message = start.createMessage(inputDirctory, outDirctory)
 
     if nameLLM == "Gemini":
         modelLLM = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=GEMINI_KEY)
@@ -113,7 +111,7 @@ def codeRun(nameLLM, nameExercice, language, partPrompt, session):
         
     response = modelLLM.invoke(message)
     print(response.content)
-    start.saveCode(response)
+    start.saveCode(response, outDirctory)
 
 if __name__ == "__main__":
     
