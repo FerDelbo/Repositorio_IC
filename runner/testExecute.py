@@ -21,6 +21,6 @@ class TestExecute:
     #fazer a busca com o nome do exercico e usar o import module 
         path = glob.glob(f'{self.input_dirctory}/**/{nameProblem}*/**/test.py', recursive=True)
         test = module_from_file("test", path[0])
-        test.runTest(self.nameLLM, self.partPrompt, self.language, self.session, self.output_dirctory)
+        test.runTest(self.nameLLM, self.partPrompt, self.language, self.output_dirctory)
         del(test)
     

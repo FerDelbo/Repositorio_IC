@@ -86,7 +86,7 @@ class XMLExtractor:
 def run(nameExercise, nameLLM, language, prompt, outDir):
     #print("Iniciando!")
     #print(outDir)
-    xml= glob.glob(f'{outDir}/**/*{nameExercise}.xml', recursive=True)
+    xml= glob.glob(f'{outDir}/**/*{prompt}*{nameExercise}.xml', recursive=True)
     #print(xml)
     extractor = XMLExtractor(xml[0], nameExercise, nameLLM, language, prompt)
     dados = extractor.extractData()
