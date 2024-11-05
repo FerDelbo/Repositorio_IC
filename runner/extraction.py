@@ -69,7 +69,7 @@ class XMLExtractor:
 
     def saveExcel(self, components):
         # Abrir a planilha
-        excel_file = '/home/fernando/Área de Trabalho/Projeto/planilhaIC.xlsx'
+        excel_file = '/home/fernando/Área de Trabalho/Projeto/resultadoCasosdeTeste.xlsx'
         workbook = openpyxl.load_workbook(excel_file)
         sheet = workbook.active
 
