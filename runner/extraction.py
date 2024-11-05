@@ -20,7 +20,7 @@ class XMLExtractor:
         listTestsuite = root.attrib
         
         from datetime import datetime
-        listTestsuite['timestamp'] = datetime.now().isoformat()
+        listTestsuite['timestamp'] = datetime.now()
         # Dicionário de componentes a serem extraídos
         components = {
             "NomeExercicio": self.nameExercise,
