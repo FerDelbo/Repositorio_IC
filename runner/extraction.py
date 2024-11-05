@@ -20,16 +20,14 @@ class XMLExtractor:
         listTestsuite = root.attrib
         
         from datetime import datetime
-        
-        now = datetime.now()
-        
+        listTestsuite['timestamp'] = datetime.now().isoformat()
         # Dicionário de componentes a serem extraídos
         components = {
             "NomeExercicio": self.nameExercise,
             "NomeLLM": self.nameLLM,
-            "Data/Hora": now,
-            "QtdFalhas": listTestsuite['failures'],
-            "QtdAcerto": str(int(listTestsuite['tests']) - int(listTestsuite['failures'])),
+            "Data/Hora": listTestsuite['timestamp'],
+            "QtdFalhas": str(int(listTestsuite['failures']) + int(listTestsuite['errors'])),
+            "QtdAcerto": str(int(listTestsuite['tests']) - int(listTestsuite['failures']) - int(listTestsuite['errors'])),
             "NomeFalha": '',
             "NomeAcerto": '',
             "Idioma": self.language,
@@ -47,13 +45,22 @@ class XMLExtractor:
         falhas = []
         acertos = []
 
-        # coletar nomes de testes que falharam ou passaram
+        # # coletar nomes de testes que falharam ou passaram
+        # for testcase in root.iter('testcase'):
+        #     nome_teste = testcase.attrib['name']
+        #     if testcase.find('errors') is not None:
+        #         falhas.append(nome_teste)
+        #     else:
+        #         acertos.append(nome_teste)
+
+         # Coletar nomes de testes que falharam ou passaram
         for testcase in root.iter('testcase'):
             nome_teste = testcase.attrib['name']
-            if testcase.find('failure') is not None:
+            if testcase.find('failure') is not None or testcase.find('error') is not None:
                 falhas.append(nome_teste)
             else:
                 acertos.append(nome_teste)
+
 
         components['NomeFalha'] = "; ".join(falhas)
         components['NomeAcerto'] = "; ".join(acertos)
