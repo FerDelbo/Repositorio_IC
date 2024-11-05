@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testD.TestStringVerification-resultado_Data" tests="3" file="testD.py" time="0.009" timestamp="2024-09-25T10:54:24" failures="2" errors="0" skipped="0">
-	<testcase classname="testD.TestStringVerification" name="test_verificar_string_3" time="0.000" timestamp="2024-09-25T10:54:24" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/testD.py" line="48"/>
-	<testcase classname="testD.TestStringVerification" name="test_verificar_string_1" time="0.008" timestamp="2024-09-25T10:54:24" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/testD.py" line="40">
+<testsuite name="testD.TestStringVerification-resultado_Data" tests="3" file="testD.py" time="0.005" timestamp="2024-10-28T18:50:28" failures="3" errors="0" skipped="0">
+	<testcase classname="testD.TestStringVerification" name="test_verificar_string_1" time="0.004" timestamp="2024-10-28T18:50:28" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/testD.py" line="40">
 		<failure type="AssertionError" message="False is not true"><![CDATA[Traceback (most recent call last):
   File "/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/testD.py", line 42, in test_verificar_string_1
     self.assertTrue(verificar_string("01 de setembro de 2023", valores_entrada,self.file))
 AssertionError: False is not true
 ]]></failure>
 	</testcase>
-	<testcase classname="testD.TestStringVerification" name="test_verificar_string_2" time="0.001" timestamp="2024-09-25T10:54:24" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/testD.py" line="44">
+	<testcase classname="testD.TestStringVerification" name="test_verificar_string_2" time="0.001" timestamp="2024-10-28T18:50:28" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/testD.py" line="44">
 		<failure type="AssertionError" message="False is not true"><![CDATA[Traceback (most recent call last):
   File "/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/testD.py", line 46, in test_verificar_string_2
     self.assertTrue(verificar_string("17 de marco de 1909", valores_entrada,self.file))
+AssertionError: False is not true
+]]></failure>
+	</testcase>
+	<testcase classname="testD.TestStringVerification" name="test_verificar_string_3" time="0.001" timestamp="2024-10-28T18:50:28" file="/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/testD.py" line="48">
+		<failure type="AssertionError" message="False is not true"><![CDATA[Traceback (most recent call last):
+  File "/home/fernando/Área de Trabalho/Projeto/Repositorio_IC/IC/Vetores e strings/Data por extenso/Testes/testD.py", line 50, in test_verificar_string_3
+    self.assertTrue(verificar_string("31 de fevereiro de 1031", valores_entrada,self.file))
 AssertionError: False is not true
 ]]></failure>
 	</testcase>

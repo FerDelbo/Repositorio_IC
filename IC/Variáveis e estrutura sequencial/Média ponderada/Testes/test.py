@@ -1,7 +1,7 @@
 import unittest
 import sys
 import io
-
+import os
 
 def verificar_string(string1, valores_entrada,arquivo):
     # Abre o arquivo 'codigo.py' e lê o seu conteúdo
@@ -49,16 +49,23 @@ class TestStringVerification(unittest.TestCase):
         valores_entrada = ["5.0", "3.0", "9.0", "10.0"]
         self.assertTrue(verificar_string("7.8", valores_entrada,self.file))
 
-def runTest(arg1, arg2, arg3, arg4):
+def runTest(nameLLm, prompt, language, outDir):
     import xmlrunner as r
     import glob
 
-    file = glob.glob(f"/home/**/Repositorio_IC/**/Média*/**/{arg4}/{arg1}{arg2}{arg3}.py", recursive=True)
-    #print(file)
+    file = glob.glob(f"{outDir}/**/{nameLLm}{prompt}{language}.py", recursive=True)
     TestStringVerification.file = file[0]
     suite = unittest.TestLoader().loadTestsFromTestCase(TestStringVerification)
-    runner = r.XMLTestRunner(output='testeMédia', outsuffix="resultado_Média")
+    
+    outDir = outDir +"/XML"
+    if not(os.path.exists(outDir)):
+        os.makedirs(outDir,exist_ok=True)
+    runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_Média")
     runner.run(suite)
+
+    del(glob)
+    del(r)
+
 
 if __name__ == '__main__':
     #parametros que devem ser passados:
