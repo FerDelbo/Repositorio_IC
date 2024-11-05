@@ -76,14 +76,14 @@ class XMLExtractor:
         # Adicionar os dados à planilha
         sheet.append([
             components["NomeExercicio"],
+            components["Idioma"],
             components["NomeLLM"],
+            components["Prompt"],
             components["Data/Hora"],
             components["QtdFalhas"],
             components["QtdAcerto"],
             components["NomeFalha"],
             components["NomeAcerto"],
-            components["Idioma"],
-            components["Prompt"],
             components["Git"]
         ])
 
