@@ -4,9 +4,13 @@
 import sys
 import glob
 import os
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_mistralai import ChatMistralAI 
 from langchain_openai import ChatOpenAI
+#from langchain.text_splitter import RegexTextSplitter
+import re
+
 from utils import keys
 from keys import GEMINI_KEY
 from keys import GPT_KEY
@@ -53,10 +57,10 @@ class codeGenerator:
             nome = f'{self.llm}{self.partitionPrompt}{self.language}.py'
             full_path = os.path.join(directory[0], nome)
         
+        solution = self.__removeLines(response.content)
         file = open(full_path, 'w')
-        file.write(str(response.content))
+        file.write(solution)
         file.close()
-        self.__removeLines(full_path)
 
     def __createSession(self, outDirctory):
         #print("criando seção")
@@ -65,26 +69,28 @@ class codeGenerator:
         new_subdirectory_path = os.path.join(base_path, self.session)
         os.makedirs(new_subdirectory_path, exist_ok=True)
         return new_subdirectory_path
-        
-    def __removeLines(self, directory):
-        #editar        
-        with open(directory, 'r') as file:
-            lines = file.readlines()
-            newLines = []
-            flag = False
-            for i in lines:
-                if "```" in i: #A formatação do codigo vem com esse icone ``` 
-                    flag = True
-                elif flag != False:
-                    newLines.append(i)
-        #reescrever
-        with open(directory, 'w') as file:
-            file.writelines(newLines)
+
+    
+    def __removeLines(self, solution):
+        # Definir a expressão regular para extrair o conteúdo entre blocos de código delimitados por ```
+        pattern = r"```(?:\w*\n)?(.*?)```"
+        # Usar re.search para encontrar o primeiro bloco de código
+        match = re.search(pattern, solution, re.DOTALL)
+        # Extrair e limpar o bloco de código se encontrado
+        first_code_block = match.group(1).strip() if match else None
+        if first_code_block is None :
+            return solution
+        return first_code_block
 
     def createMessage(self, inputDir, output):
         self.__createPrompt(inputDir)
         message = self.prompt['Descrição:\n']
         l = ['Formato para entrada e saída de dados:\n', 'Dicas:\n', 'Casos de teste:\n']
+        desc = "Descrição"
+        if self.language == "en" or self.language == "en2":
+            from googletrans import Translator
+            l = Translator.trasnlator(l, "en")
+            print(l)
         if self.partitionPrompt == "Descrição": 
             return message
         else:
