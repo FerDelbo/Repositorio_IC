@@ -5,7 +5,7 @@ Write a program in python that reads a date in the format "ddmmyyyy" as input an
 
 Format for data input and output:
 The input format is "ddmmyyyy", where "dd" is the two-digit day of the month, "mm" is the two-digit month number of the year, and "yyyy" is the full year.
-The output format is "day of month spelled out of year".
+The output format is "day de month spelled out (in Portuguese) de year".
 
 Tips:
 Always assume that input values ​​are valid.
@@ -15,8 +15,8 @@ Test cases:
 Input: 01092023
 Output: 1 de setembro de 2023
 
-Input: 17031909
+Input 17031909
 Output: 17 de marco de 1909
 
 Input: 28021031
-Output: 28 de fevereiro de 1031
+Output: February 31, 1031
