@@ -1,5 +1,3 @@
-Teste Vetores e strings 
-
 Nome do exercício: Data por extenso
 
 Descrição:
@@ -14,11 +12,11 @@ Sempre considere que os valores de entrada são válidos.
 Evite o uso de símbolos com acidentes, buscando usar apenas símbolos do ASCII. Por exemplo, o mês de março deve ser escrito sem "ç", ou seja, "marco". Dessa forma, evitam-se problemas com codificação dos textos. 
 
 Casos de teste:
-Entrada 01092023
-Saída 01 de setembro de 2023
+Entrada: 01092023
+Saída: 01 de setembro de 2023
 
-Entrada 17031909
-Saída 17 de marco de 1909
+Entrada: 17031909
+Saída: 17 de marco de 1909
 
-Entrada 31021031
-Saída 31 de fevereiro de 1031
+Entrada: 28021031
+Saída: 28 de fevereiro de 1031
