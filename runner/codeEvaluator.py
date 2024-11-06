@@ -40,10 +40,10 @@ class CodeEvaluator:
         #passo 7 com o código salvo é realizdo os casos de teste
         #passo 8 pega o resultado e traforma em XML
         #nameLLM, partPrompt, language, session
-        executeTestCase = testExecute.TestExecute(self.nameLLM, self.prompt_type, self.language, session, path, self.base_input_dirctory)
-        executeTestCase.runTestCase(self.nameProblems)
+        #executeTestCase = testExecute.TestExecute(self.nameLLM, self.prompt_type, self.language, session, path, self.base_input_dirctory)
+        #executeTestCase.runTestCase(self.nameProblems)
         #passo 9 é feita uma limpa no XML e pega o conteudo para jogar em uma planikha fora desse repositorio
-        extraction.run(self.nameProblems, self.nameLLM, self.language, self.prompt_type, path)
+        #extraction.run(self.nameProblems, self.nameLLM, self.language, self.prompt_type, path)
         #programa finalizado
 
 parser = argparse.ArgumentParser(description="Inciar gerador de soluções.")
