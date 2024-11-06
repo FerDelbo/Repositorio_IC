@@ -1,15 +1,15 @@
-Enunciado traduzido (Google Tradutor)
+Exercise name: Weighted average
 
 Description:
-Write a program that reads four notes from a student. As output, print the weighted average, knowing that the weights of the evaluations are respectively: 1, 2, 3 and 4.
+Write a program in Python that reads four grades from a student. As output, print the weighted average, knowing that the weights of the evaluations are respectively: 1, 2, 3, and 4.
 
 Input and output format:
-The program must receive 4 floating point numbers, which must be applied to each of the notes, with the first note weighing 1, the second 2, the third 3 and the fourth 4. As output, the program must make the weighted average of these 4 notes with the imposed weights. This result must be rounded to one decimal place.
+The program must receive 4 floating point numbers, which must be assigned to each grade, with the first grade weighting 1, the second 2, the third 3 and the fourth 4. As output, the program must calculate the weighted average of these 4 notes with the imposed weights. This result must be rounded to one decimal place.
 
-Tips:
+Hints:
 Inside the print command, use the round(x, n) command to round the number x to up to n decimal places.
 
-Test case:
+Test cases:
 Input:
 0.0
 0.0

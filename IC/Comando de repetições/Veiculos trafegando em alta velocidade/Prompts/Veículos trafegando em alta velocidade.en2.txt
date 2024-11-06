@@ -1,28 +1,31 @@
-Enunciado em traduzido ao inglês (Google tradutor):
+Exercise name: Vehicles traveling at high speed
 
-Descrição:
-Write a program in python that determines which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road.
+Description:
+Write a program in Python that determines which and how many drivers violated the speed limit by more than 20% and less than 50% above the maximum speed allowed for the road.
 
-Formato para entrada e saída de dados:
-The input data is a vector recording the speeds measured by the mobile radar. The first value of the vector indicates the maximum speed limit of the road. The other values ​​are the speed records of the cars that traveled on the road. As output, the position in the vector of each driver who violated the speed is reported (one per line) and, in the end, the number of drivers who violated the limit.
+Format for data input and output:
+The input data is a vector recording the speeds measured by the mobile radar. The first value of the vector indicates the maximum speed limit of the road. The other values ​​are the speed records of the cars that traveled on the road. As output, it should show the position in the vector of each driver who violated the speed (one per line) and, in the end, the number of drivers who violated the limit.
 
-Dicas:
-Use an accumulator variable to store the number of infractions.
-Consider that the values ​​entered as input are always valid, that is, they are real positives.
+Hints:
+Use an accumulator variable to save the number of infractions.
+Consider that the values ​​entered as input are always valid, that is, they are real positive numbers.
 
-Casos de teste:
-Input: [60.0, 73.9, 22.9, 72.1, 72.0, 100.6]
+Test cases:
+Input:
+[60.0, 73.9, 22.9, 72.1, 72.0, 100.6]
 Output:
 1
 3
 2
 
-Input: [11.6, 60.6, 16.6, 11.35]
+Input:
+[11.6, 60.6, 16.6, 11.35]
 Output:
 2
 1
 
-Input: [72.9, 29.1, 7.29, 90.7, 66.6]
+Input:
+[72.9, 29.1, 7.29, 90.7, 66.6]
 Output:
 3
 1
