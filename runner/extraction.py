@@ -45,14 +45,6 @@ class XMLExtractor:
         falhas = []
         acertos = []
 
-        # # coletar nomes de testes que falharam ou passaram
-        # for testcase in root.iter('testcase'):
-        #     nome_teste = testcase.attrib['name']
-        #     if testcase.find('errors') is not None:
-        #         falhas.append(nome_teste)
-        #     else:
-        #         acertos.append(nome_teste)
-
          # Coletar nomes de testes que falharam ou passaram
         for testcase in root.iter('testcase'):
             nome_teste = testcase.attrib['name']
@@ -69,8 +61,8 @@ class XMLExtractor:
 
     def saveExcel(self, components):
         # Abrir a planilha
-        excel_file = '/home/fernando/Área de Trabalho/Projeto/resultadoCasosdeTeste.xlsx'
-        #excel_file = '/home/fernando/Área de Trabalho/Projeto/planilhaIC.xlsx'
+        #excel_file = '/home/fernando/Área de Trabalho/Projeto/resultadoCasosdeTeste.xlsx'
+        excel_file = '/home/fernando/Área de Trabalho/Projeto/soluçõesLLM.xlsx'
         workbook = openpyxl.load_workbook(excel_file)
         sheet = workbook.active
 
@@ -92,15 +84,11 @@ class XMLExtractor:
         workbook.save(excel_file)
     
 def run(nameExercise, nameLLM, language, prompt, outDir):
-    #print("Iniciando!")
-    #print(outDir)
     xml= glob.glob(f'{outDir}/**/*{prompt}*{nameExercise}.xml', recursive=True)
-    #print(xml)
     extractor = XMLExtractor(xml[0], nameExercise, nameLLM, language, prompt)
     dados = extractor.extractData()
     extractor.saveExcel(dados)
-    #print("salvo vom sucesso!")
-
+    
 if __name__ == "__main__":
     nameExercise = sys.argv[1]
     nameLLM = sys.argv[2]

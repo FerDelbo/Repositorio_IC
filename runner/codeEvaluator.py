@@ -58,11 +58,5 @@ parser.add_argument('-n', '--listPrompt', action="append")
 #Analisando os argumentos
 args = parser.parse_args()
 
-# if len(args.listPrompt) == 3:
-#     partPrompt = args.listPrompt[2]
-# elif args.language == "pt":
-#     partPrompt = args.listPrompt[0]
-# else:
-#     partPrompt = args.listPrompt[1]
 start = CodeEvaluator(args.input, args.output, args.nameProblems, args.nameLLM, args.language, args.listPrompt)
 start.run()
