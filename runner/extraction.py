@@ -9,7 +9,7 @@ class XMLExtractor:
         self.nameExercise = nameExercise
         self.nameLLM = nameLLM
         self.language = language
-        self.prompt = prompt
+        self.partPrompt = prompt
 
     def extractData(self):
         # Transformar o arquivo XML em uma árvore
@@ -31,7 +31,7 @@ class XMLExtractor:
             "NomeFalha": '',
             "NomeAcerto": '',
             "Idioma": self.language,
-            "Prompt": self.prompt,
+            "Prompt": self.partPrompt[0],
             "Git": ''
         }
         

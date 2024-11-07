@@ -21,28 +21,36 @@ class codeGenerator:
         self.llm = llm
         self.nameExercise = name
         self.language = language
-        self.partitionPrompt = partition
+        self.partPrompt = partition
         self.session = session
         self.temperature = 1
         self.prompt = {} #dicionario vazio
-
+        
     def __convertTxt(self, fileTxt):
         #aquei ocorre a conversão de um txt em um dicionario
         with open(fileTxt, 'r') as arquivo:
             linhas = arquivo.readlines() #transforma o txt em um lista
-        for i in linhas: #laço que percorre a lista criada anteriormente
-            if ":\n" in i: #comparação para separar chave de valor
+        previousLine = "" 
+        for index,  i in enumerate(linhas): #laço que percorre a lista criada anteriormente
+            if "Test case" in i or "Casos de teste" in i:
+                value = linhas[index:]
+                self.prompt.update({i:''})
+                for j in value:
+                    self.prompt[i] += j 
+                break
+            elif ":\n" in i and previousLine == "\n": #comparação para separar chave de valor
                 self.prompt.update({i:''}) #define a chave com um valor vazio por enquanto
             elif len(self.prompt) >= 1: #deve conter pelo menos 1 chave no dicionario  
                 lastKey = list(self.prompt)[-1] #pega a ultima chave 
                 self.prompt[str(lastKey)] += i #define o valor para a ultima chave que foi definida
-        #print(prompt)
+            previousLine = i
+        #print(self.prompt)
 
     def __createPrompt(self, dirctory):
         #Aqui ocrre a filtragem dos diretorios e subdiretorios para a utilização do txt
         #Veiculos, Média, Data
-        #print(dirctory)
-        path = glob.glob(f"{dirctory}*/**/{self.nameExercise}*/**/Prompts/**/*.{self.language}.txt", recursive=True)
+        path = glob.glob(f"{dirctory}*/**/{self.nameExercise}*/**/Prompts/**/*.{self.language}*.txt", recursive=True)
+        print(path)
         self.__convertTxt(path[0])
 
     def saveCode(self, response, outDirctory):
@@ -51,10 +59,10 @@ class codeGenerator:
         if len(directory) == 0:
             path = self.__createSession(outDirctory)
             print("seção criada")
-            nome = f'{self.llm}{self.partitionPrompt}{self.language}.py'
+            nome = f'{self.llm}{self.partPrompt[0]}{self.language}.py'
             full_path = os.path.join(path, nome)
         else:
-            nome = f'{self.llm}{self.partitionPrompt}{self.language}.py'
+            nome = f'{self.llm}{self.partPrompt[0]}{self.language}.py'
             full_path = os.path.join(directory[0], nome)
         
         solution = self.__removeLines(response.content)
@@ -84,25 +92,37 @@ class codeGenerator:
 
     def createMessage(self, inputDir, output):
         self.__createPrompt(inputDir)
-        message = self.prompt['Descrição:\n']
-        l = ['Formato para entrada e saída de dados:\n', 'Dicas:\n', 'Casos de teste:\n']
-        desc = "Descrição"
-        if self.language == "en" or self.language == "en2":
-            from googletrans import Translator
-            l = Translator.trasnlator(l, "en")
-            print(l)
-        if self.partitionPrompt == "Descrição": 
+        if self.language == "en":
+            message = self.prompt['Description:\n']
+            l = ['Format for data input and output:\n', 'Tips:\n', 'Test cases:\n']
+            fragments = self.partPrompt[1]
+        elif "en2" in self.language:
+            message = self.prompt['Description:\n']
+            l = ['Format for data input and output:\n', 'Hints:\n', 'Test cases:\n']
+            if len(self.partPrompt) == 3:
+                fragments = self.partPrompt[2]
+            else:
+                fragments = self.partPrompt[1]
+        else:
+            message = self.prompt['Descrição:\n']
+            l = ['Formato para entrada e saída de dados:\n', 'Dicas:\n', 'Casos de teste:\n']
+            fragments = self.partPrompt[0]
+
+        if fragments == "Descrição" or fragments == "Description": 
             return message
+        if fragments in "Casos de teste" or fragments in "Test cases":
+            message = " ".join(self.prompt.values())
+            return message 
         else:
             for i in l:
-                if self.partitionPrompt in i:
+                if fragments in i:
                     newTxt = self.prompt[i]
                     message = message + newTxt
                     return message
                 else:
                     newTxt = self.prompt[i]
                     message = message + newTxt
-
+        
 def codeRun(inputDirctory, outDirctory, nameLLM, nameExercice, language, partPrompt, session):
     start = codeGenerator(nameLLM, nameExercice, language, partPrompt, session)
     message = start.createMessage(inputDirctory, outDirctory)
@@ -114,7 +134,8 @@ def codeRun(inputDirctory, outDirctory, nameLLM, nameExercice, language, partPro
     elif nameLLM == "HuggingChat":
         modelLLM = ChatMistralAI(model="open-codestral-mamba", mistral_api_key=MISTRAL_KEY)
         #modelLLM = ChatMistralAI(model="codestral-latest", mistral_api_key=MISTRAL_KEY)
-        
+
+    print(message)    
     response = modelLLM.invoke(message)
     print(response.content)
     start.saveCode(response, outDirctory)

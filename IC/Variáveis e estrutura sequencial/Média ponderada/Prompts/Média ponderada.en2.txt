@@ -3,7 +3,7 @@ Exercise name: Weighted average
 Description:
 Write a program in Python that reads four grades from a student. As output, print the weighted average, knowing that the weights of the evaluations are respectively: 1, 2, 3, and 4.
 
-Input and output format:
+Format for data input and output:
 The program must receive 4 floating point numbers, which must be assigned to each grade, with the first grade weighting 1, the second 2, the third 3 and the fourth 4. As output, the program must calculate the weighted average of these 4 notes with the imposed weights. This result must be rounded to one decimal place.
 
 Hints:
