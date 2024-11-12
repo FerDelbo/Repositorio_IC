@@ -1,5 +1,5 @@
 Nome do exercício: Veículos trafegando em alta velocidade
-	
+
 Descrição:
 Escreva um programa em Python que determine quais e quantos motoristas infringiram o limite de velocidade em mais de 20% e menos que 50% acima da velocidade máxima permitida para a via.
 

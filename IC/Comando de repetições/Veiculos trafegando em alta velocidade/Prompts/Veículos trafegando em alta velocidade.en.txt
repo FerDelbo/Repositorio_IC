@@ -6,7 +6,7 @@ Write a program in Python that determines which and how many drivers violated th
 Format for data input and output:
 The input data is a vector recording the speeds measured by the mobile radar. The first value of the vector indicates the maximum speed limit of the road. The other values ​​are the speed records of the cars that traveled on the road. As output, the position in the vector of each driver who violated the speed is reported (one per line) and, in the end, the number of drivers who violated the limit.
 
-Hints:
+Tips:
 Use an accumulator variable to save the number of infractions.
 Consider that the values ​​entered as input are always valid, that is, they are real positives.
 

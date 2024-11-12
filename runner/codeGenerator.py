@@ -49,8 +49,8 @@ class codeGenerator:
     def __createPrompt(self, dirctory):
         #Aqui ocrre a filtragem dos diretorios e subdiretorios para a utilização do txt
         #Veiculos, Média, Data
-        path = glob.glob(f"{dirctory}*/**/{self.nameExercise}*/**/Prompts/**/*.{self.language}*.txt", recursive=True)
-        print(path)
+        path = glob.glob(f"{dirctory}*/**/{self.nameExercise}*/**/Prompts/**/*.{self.language}.txt", recursive=True)
+        #print(path)
         self.__convertTxt(path[0])
 
     def saveCode(self, response, outDirctory):
@@ -134,8 +134,10 @@ def codeRun(inputDirctory, outDirctory, nameLLM, nameExercice, language, partPro
     elif nameLLM == "HuggingChat":
         modelLLM = ChatMistralAI(model="open-codestral-mamba", mistral_api_key=MISTRAL_KEY)
         #modelLLM = ChatMistralAI(model="codestral-latest", mistral_api_key=MISTRAL_KEY)
+    elif nameLLM == "ChatGPT4o":
+        modelLLM = ChatOpenAI(model="gpt-4o", openai_api_key=GPT_KEY)
 
-    print(message)    
+    #print(message)    
     response = modelLLM.invoke(message)
     print(response.content)
     start.saveCode(response, outDirctory)
