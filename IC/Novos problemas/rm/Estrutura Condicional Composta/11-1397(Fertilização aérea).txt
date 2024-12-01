@@ -1,0 +1,39 @@
+Fertilização aérea
+A empresa de aviação agrícola Agro Fértil oferece um serviço de aplicação de fertilizantes. O custo do serviço depende da área da plantação a ser fertilizada e obedece a seguinte regra:
+
+Se a área a ser fertilizada for de 10 mil hectares ou menos, o custo é de R$ 5,00 por hectare.
+Se a área a ser fertilizada tiver mais do que 10 mil hectares, o custo total é de R$ 5,00 por cada um do 10 mil hectares iniciais, mais R$ 4,00 por hectare excedente.
+Escreva um programa que leia:
+
+a área a ser fertilizada (em hectares).
+Como saída, determine:
+
+o valor total a ser cobrado pela empresa Agro Fértil. 
+O valor de saída deve ser arredondado com até duas casas decimais.
+
+Dicas
+Considere que a entrada do programa sempre será um valor maior que zero.
+Verifique se as variáveis associadas ao problema são reais ou inteiras.
+
+Use o comando int() para converter a entrada de texto para um número inteiro e float() para converter uma entrada de texto para número real.
+
+A ordem de leitura das variáveis de entrada deve obedecer àquela explicitada no enunciado.
+
+A quantidade de entradas solicitadas em um programa determina a quantidade de comandos input(); e a quantidade de saídas determina a quantidade de comandos print().
+
+Use a função round(x,n) para arrendondar o número x para n casas decimais.
+
+Exemplos de Entrada e Saída
+Entrada	
+11000.0
+Saída	
+54000.0
+Entrada	
+5555.55
+Saída	
+27777.75
+Entrada	
+95000.0
+Saída	
+390000.0
+

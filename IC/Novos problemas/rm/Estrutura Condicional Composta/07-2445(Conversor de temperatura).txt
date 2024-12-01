@@ -1,0 +1,46 @@
+Conversor de temperatura
+Escreva um programa que converta uma temperatura da escala Celsius para Fahrenheit ou vice-versa. Use a seguinte equação para conversão:
+
+C
+=
+5
+9
+(
+F
+−
+32
+)
+
+Para isso, você deverá ler duas entradas:
+
+escala em que a temperatura está representada: C para Celsius, ou F para Fahrenheit.
+valor da temperatura.
+Como saída, imprima:
+
+a temperatura convertida para a outra escala, arredondada em duas casas decimais.
+ 
+
+ 
+
+Dicas
+Atenção para a ordem de leitura de valores.
+A conversão de Celsius para Fahrenheit requer a manipulação da fórmula.
+Use a função round(x,n) para arrendondar o número x para n casas decimais.
+Teste as duas possibilidades da condição if. Não se limite ao exemplo de entrada/saída.
+Lembre-se que a linguagem diferencia letras maiúsculas e letras minúsculas. Use a função upper() para converter para maiusculo ou lower() para converter para minúsculos. 
+Exemplos de Entrada e Saída
+Entrada	
+F
+100.0
+Saída	
+37.78
+Entrada	
+C
+320.0
+Saída	
+608.0
+Entrada	
+F
+30.0
+Saída	
+-1.11

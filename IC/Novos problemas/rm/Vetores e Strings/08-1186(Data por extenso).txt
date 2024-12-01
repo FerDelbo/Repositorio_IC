@@ -1,0 +1,11 @@
+Data por extenso
+Escreva um programa que leia como entrada uma data no formato “ddmmaaaa”. Onde:
+
+"dd" é o dia do mês com dois dígitos. Alguns exemplos: 01, 10, 31
+"mm" é o número do mês do ano com dois digitos. Alguns exemplos: 01, 12
+"yyyy" é o ano completo. Alguns exemplos: 2022, 2021, 2020
+Sempre considere que os valores de entrada são válidos. Como saída,  imprima essa data por extenso.
+
+Exemplo: se a entrada do programa for 17031909 a saída deve ser:  17 de marco de 1909
+
+O mês de março deve ser escrito sem "ç". Ou seja, deve ser escrito "marco". Dessa forma, evitando problemas com encoding dos textos.

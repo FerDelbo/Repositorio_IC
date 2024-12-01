@@ -1,0 +1,44 @@
+Nome do exercício: Classificando um triângulo
+
+Descrição:
+Escreva um programa que leia três números reais, correspondentes às medidas dos lados de um triângulo, em ordem qualquer e classifique o triângulo em função das medidas dos lados. 
+
+Formato para entrada e saída de dados:
+Dados de entrada:
+
+1. Lado A.
+
+2. Lado B.
+
+3. Lado C.
+
+Como saída, o programa deverá imprimir as seguintes mensagens:
+
+1. "equilatero", se todos os três lados forem iguais;
+
+2. "isosceles", se apenas dois lados forem iguais;
+
+3. "escaleno", se nenhum dos lados forem iguais.
+
+Dicas
+Atenção para o uso de caracteres maiúsculos e minúsculos. Não use acentos, para evitar erros.
+Execute o programa para todos o casos de teste apresentados.
+Exemplos de Entrada e Saída
+Entrada	
+2.0
+2.0
+3.0
+Saída	
+isosceles
+Entrada	
+4.2
+4.2
+4.2
+Saída	
+equilatero
+Entrada	
+3.0
+4.0
+5.0
+Saída	
+escaleno

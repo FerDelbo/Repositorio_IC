@@ -1,0 +1,33 @@
+A tabela a seguir mostra o nome e o valor dos produtos vendidos no supermercado Super Duper Mart.
+
+Produto
+
+Custo (R$)
+
+ARROZ
+
+1.25
+
+FEIJAO
+
+2.60
+
+BIS
+
+1.80
+
+MIOJO
+
+0.85
+
+FANTA
+
+3.20
+
+Faça um programa que tenha como entrada:
+
+Um vetor de nomes de produtos que o cliente está comprando (em maiúsculas e conforme tabela acima);
+Um vetor de quantidades dos produtos especificados no vetor anterior, ou seja, o primeiro elemento indica a quantidade do primeiro produto, e assim por diante.
+Como saída, seu programa deverá imprimir o total da conta do cliente (em R$), com duas casas decimais de precisão.
+
+Os vetores informados como entrada devem ser uma sequência dos elementos separados por virgulas. Em outras palavras, todos os elementos  dos vetores devem ser informados uma única vez. Por exemplo, o usuário deve ser capaz de informar o vetor de produtos de seguinte maneira: ["FANTA","FEIJAO","ARROZ","MIOJO"]

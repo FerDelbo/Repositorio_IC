@@ -1,0 +1,57 @@
+Enunciado
+Calculando a área do triângulo
+Escreva um programa que leia as medidas dos três lados A, B e C de um triângulo qualquer. Em seguida, ele deve verificar se as medidas são válidas (condição de existência de um triângulo). Se as medidas forem válidas o programa deve calcular a área do triângulo.
+
+Dados de entrada:
+
+1. Lado A.
+
+2. Lado B.
+
+3. Lado C.
+
+Como saída, o programa deverá imprimir a seguinte mensagem:
+
+Area: X
+
+Se as entradas forem válidas, substitua a letra X pelo valor da área, com até três casas decimais de precisão. Caso contrário, substitua a letra X pela seguinte mensagem: invalida.
+
+Lembre-se de que as condições de existência de um triângulo são:
+
+1. Todos os lados devem ser positivos.
+
+2. A medida de qualquer um dos lados deve menor que a soma das medidas dos outros dois
+
+Leia as dicas caso ainda tenha alguma dúvidas em como verificar as condições em que os três valores representam medidas válidas de um triângulo.
+
+Dicas
+O programa fornecido está incompleto. Substitua as expressões ___COMPLETE AQUI___ por comandos que façam o programa executar corretamente.
+A solução proposta adota os seguintes passos:
+Ler o valor de cada lado do triângulo: A, B, C.
+Verificar se todos os valores fornecidos são positivos.
+Se verdade, verificar se as medidas fornecidas correspondem às de um triângulo, ou seja, se a soma dos dois lados menores é maior que o lado maior.
+O teste deve ser verdadeiro para todas as três combinações possíveis de lados.
+Se todos os testes forem bem sucedidos, calcule a área e exiba a mensagem.
+Se pelo menos um teste falhar, apresente a mensagem de erro.
+Execute o programa para todos o casos de teste apresentados.
+ 
+
+Exemplos de Entrada e Saída
+Entrada	
+1.0
+2.0
+3.0
+Saída	
+Area: invalida
+Entrada	
+-1.0
+2.5
+3.0
+Saída	
+Area: invalida
+Entrada	
+3.5
+4.2
+5.1
+Saída	
+Area: 7.286

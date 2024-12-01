@@ -1,0 +1,40 @@
+Nome do exercício: Haverá segundo turno?
+
+Descrição:
+No Brasil, as eleições para prefeito podem ser decididas em segundo turno, se o município tiver mais de 200 mil habitantes. O que define a possibilidade de realização de segundo turno é a adoção do critério da maioria absoluta de votos, ou seja, para ser eleito, o candidato mais votado deve obter mais da metade dos votos válidos. Votos válidos são aqueles atribuídos a algum candidato.
+
+Formato para entrada e saída de dados:
+Suponha que estamos contabilizando os votos do primeiro turno de uma eleição com três candidatos. Escreva um programa que leia o número de votos, nesta ordem:
+
+Do candidato mais votado.
+Do candidato em segundo lugar.
+Do candidato menos votado.
+Como saída, imprima:
+
+SIM, se a eleição precisar de segundo turno;
+NAO, se a eleição decidida no primeiro turno.
+
+DICAS:
+A ordem de leitura das variáveis de entrada deve obedecer àquela explicitada no enunciado.
+Considere que o usuário sempre fornece entradas válidas, ou seja, números inteiros (int).
+Atenção para o uso de caracteres maiúsculos e minúsculos. Não use acentos, para evitar erros.
+
+Exemplos de Entrada e Saída
+Entrada	
+160000
+140000
+40000
+Saída	
+SIM
+Entrada	
+508000
+255000
+231000
+Saída	
+NAO
+Entrada	
+633000
+401000
+199000
+Saída	
+NAO

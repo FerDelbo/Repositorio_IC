@@ -1,0 +1,36 @@
+Veículos trafegando em alta velocidade
+Objetivo: Contar multas graves em uma determinada avenida.
+
+A Superintendência Municipal de Transportes Urbanos (SMTU) instalou um radar móvel em pontos da cidade para identificar e multar motoristas que ultrapassam o limite de velocidade da via monitorada.
+
+Escreva um programa que leia o vetor com o registro das velocidades medidas pelo radar móvel. O primeiro valor do vetor indica o limite de velocidade da via. Os demais valores são os registros de velocidade dos carros que trafegam na via.
+
+Como saída, determine quais e quantos motoristas infringiram o limite de velocidade em mais de 20% e menos que 50% acima da velocidade máxima permitida para a via.
+
+ 
+
+Dicas
+Utilize uma variável acumuladora para guardar a quantidade de infrações.
+Considere que os valores inseridos como entrada são sempre válidos, ou seja, são reais positivos.
+Exemplo (não exaustivo): para a entrada [60.0, 73.9, 22.9, 72.1, 72.0, 100.6], a saída será:
+1
+3
+2
+Isso significa que a velocidade máxima nessa via é 60 km/h (posição 0 do vetor de entrada) e por isso os seguintes motoristas trafegaram em alta velocidade: o de índice 1 e o de índice 3, totalizando 2 motoristas.
+Exemplos de Entrada e Saída
+Entrada	
+[60.0,73.9,22.9,72.1,72.0,100.6]
+Saída	
+1
+3
+2
+Entrada	
+[11.6,60.6,16.6,11.35]
+Saída	
+2
+1
+Entrada	
+[72.9,29.1,7.29,90.7,66.6]
+Saída	
+3
+1
