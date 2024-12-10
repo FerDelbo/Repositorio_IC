@@ -28,28 +28,30 @@ class codeGenerator:
         
     def __convertTxt(self, fileTxt):
         #aquei ocorre a conversão de um txt em um dicionario
-        with open(fileTxt, 'r') as arquivo:
-            linhas = arquivo.readlines() #transforma o txt em um lista
-        previousLine = "" 
-        for index,  i in enumerate(linhas): #laço que percorre a lista criada anteriormente
-            if "Test case" in i or "Casos de teste" in i:
-                value = linhas[index:]
-                self.prompt.update({i:''})
-                for j in value:
-                    self.prompt[i] += j 
-                break
-            elif ":\n" in i and previousLine == "\n": #comparação para separar chave de valor
-                self.prompt.update({i:''}) #define a chave com um valor vazio por enquanto
-            elif len(self.prompt) >= 1: #deve conter pelo menos 1 chave no dicionario  
-                lastKey = list(self.prompt)[-1] #pega a ultima chave 
-                self.prompt[str(lastKey)] += i #define o valor para a ultima chave que foi definida
-            previousLine = i
-        #print(self.prompt)
+            with open(fileTxt, 'r') as arquivo:
+                linhas = arquivo.readlines() #transforma o txt em um lista
+            previousLine = "" 
+            for index,  i in enumerate(linhas): #laço que percorre a lista criada anteriormente
+                if "Test case" in i or "Casos de teste" in i:
+                    value = linhas[index:]
+                    self.prompt.update({i:''})
+                    for j in value:
+                        self.prompt[i] += j 
+                    break
+                elif ":\n" in i and previousLine == "\n": #comparação para separar chave de valor
+                    self.prompt.update({i:''}) #define a chave com um valor vazio por enquanto
+                elif len(self.prompt) >= 1: #deve cont, outDirctoryer pelo menos 1 chave no dicionario  
+                    lastKey = list(self.prompt)[-1] #pega a ultima chave 
+                    self.prompt[str(lastKey)] += i #define o valor para a ultima chave que foi definida
+                previousLine = i
+            #print(self.prompt)
 
     def __createPrompt(self, dirctory):
-        #Aqui ocrre a filtragem dos diretorios e subdiretorios para a utilização do txt
-        #Veiculos, Média, Data
+        #Aqui ocorre a filtragem dos diretorios e subdiretorios para a utilização do txt
         path = glob.glob(f"{dirctory}*/**/{self.nameExercise}*/**/Prompts/**/*.{self.language}.txt", recursive=True)
+        #print(len(path))
+        if len(path) == 0:
+            path = glob.glob(f"{dirctory}*/**/{self.nameExercise}.txt", recursive=True)
         #print(path)
         self.__convertTxt(path[0])
 
@@ -90,10 +92,29 @@ class codeGenerator:
             return solution
         return first_code_block
 
-    def createMessage(self, inputDir, output):
+    def createMessage(self, inputDir):
         self.__createPrompt(inputDir)
         if self.language == "en":
-            message = self.prompt['Description:\n']
+            #if list(self.prompt.keys()) in "Descrição":
+            from deep_translator import GoogleTranslator
+            # for key, value in self.prompt.items():
+            #     if isinstance(value, str):  # Traduz apenas strings
+            #         self.prompt[key] = GoogleTranslator(source='pt', target='en').translate(value)
+            
+            tradutor = GoogleTranslator(source='pt', target='en')
+            novo_dicionario = {}
+
+            for key, value in self.prompt.items():
+                nova_chave = tradutor.translate(key)
+                if isinstance(value, str):
+                    novo_valor = tradutor.translate(value)
+                else:
+                    novo_valor = value  # Mantém valores não string
+                novo_dicionario[nova_chave] = novo_valor
+            self.prompt = novo_dicionario
+
+            #print(self.prompt)
+            message = self.prompt['Description:']
             l = ['Format for data input and output:\n', 'Tips:\n', 'Test cases:\n']
             fragments = self.partPrompt[1]
         elif "en2" in self.language:
@@ -125,7 +146,7 @@ class codeGenerator:
         
 def codeRun(inputDirctory, outDirctory, nameLLM, nameExercice, language, partPrompt, session):
     start = codeGenerator(nameLLM, nameExercice, language, partPrompt, session)
-    message = start.createMessage(inputDirctory, outDirctory)
+    message = start.createMessage(inputDirctory)
 
     if nameLLM == "Gemini":
         modelLLM = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=GEMINI_KEY)
@@ -137,17 +158,19 @@ def codeRun(inputDirctory, outDirctory, nameLLM, nameExercice, language, partPro
     elif nameLLM == "ChatGPT4o":
         modelLLM = ChatOpenAI(model="gpt-4o", openai_api_key=GPT_KEY)
 
-    #print(message)    
+    print(message)    
     response = modelLLM.invoke(message)
     print(response.content)
     start.saveCode(response, outDirctory)
 
 if __name__ == "__main__":
     
-    nameLLM = sys.argv[1] #nome da LLM
-    nameExercice = sys.argv[2] #nome do exercicio
-    language =  sys.argv[3] #idioma
-    partPrompt = sys.argv[4] #parte do prompt
-    #session = sys.argv[5] #qual sesção de teste esta ocorendo
+    inputDirctory = sys.argv[1]
+    outDirctory= sys.argv[2]
+    nameLLM = sys.argv[3]
+    nameExercice = sys.argv[4]
+    language = sys.argv[5]
+    partPrompt= sys.argv[6]
+    session = sys.argv[7]
 
-    CodeRun(nameLLM, nameExercice, language, partPrompt, session)
+    codeRun(inputDirctory, outDirctory, nameLLM, nameExercice, language, partPrompt, session)

@@ -7,13 +7,14 @@ import os
 #o intuito é colocar o caminho do repositorio inicial o que já contem e um de saida para ele salvar as infos
 
 class CodeEvaluator:
-    def __init__(self, input_dirctory, output_dirctory, nameExercise, nameLLM, language, prompt):
+    def __init__(self, input_dirctory, output_dirctory, nameExercise, nameLLM, language, prompt, testcase):
         self.base_input_dirctory = input_dirctory #onde vai ser salvo
         self.base_output_dirctory = output_dirctory #repositorio ic
         self.nameProblems = nameExercise
         self.nameLLM = nameLLM
         self.language = language
         self.prompt_type = prompt
+        self.fileTC = testcase
         # self.k = qtd #quantas vezes ele vai gerar
 
     def _pathOutput(self):
@@ -39,8 +40,8 @@ class CodeEvaluator:
         executeCode = codeGenerator.codeRun(self.base_input_dirctory, path, self.nameLLM, self.nameProblems, self.language, self.prompt_type, session)
         #passo 7 com o código salvo é realizdo os casos de teste
         #passo 8 pega o resultado e traforma em XML
-        executeTestCase = testExecute.TestExecute(self.nameLLM, self.prompt_type, self.language, session, path, self.base_input_dirctory)
-        executeTestCase.runTestCase(self.nameProblems)
+        executeTestCase = testExecute.TestExecute(self.nameProblems, self.nameLLM, self.prompt_type, self.language, session, path, self.base_input_dirctory, self.fileTC)
+        executeTestCase.runTestCase()
         #passo 9 é feita uma limpa no XML e pega o conteudo para jogar em uma planikha fora desse repositorio
         extraction.run(self.nameProblems, self.nameLLM, self.language, self.prompt_type, path)
         #programa finalizado
@@ -54,9 +55,10 @@ parser.add_argument('nameLLM', type=str, help='Nome da LLM')
 parser.add_argument('language', type=str, help='Idioma')
 #parser.add_argument('partPrompt', type=str, help='Parte do prompt selecionada')
 parser.add_argument('-n', '--listPrompt', action="append")
+parser.add_argument('testCase', type=str, help="casos de teste")
 
 #Analisando os argumentos
 args = parser.parse_args()
 
-start = CodeEvaluator(args.input, args.output, args.nameProblems, args.nameLLM, args.language, args.listPrompt)
+start = CodeEvaluator(args.input, args.output, args.nameProblems, args.nameLLM, args.language, args.listPrompt, args.testCase)
 start.run()

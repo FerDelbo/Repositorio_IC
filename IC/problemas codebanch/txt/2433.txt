@@ -1,1 +1,3 @@
+
+Descrição:
 o cinema cinestar lançou uma campanha promocional no dia dos namorados. o casal que comprar dois ingressos ganha um desconto de número no valor do segundo ingresso. considerando a compra de dois ingressos por um casal, escreva um programa que leia: o preço do valor integral do ingresso. como saída, imprima os valores pagos por cada ingresso e o valor total da compra. o preço do segundo ingresso é dado pela seguinte fórmula: latex
