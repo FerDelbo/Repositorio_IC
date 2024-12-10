@@ -37,7 +37,7 @@ class CodeEvaluator:
         #passo 5 manda para a llm
         #passo 6 pega a resposta e salva em um diretorio fora do repositorio
         path = self._pathOutput()
-        executeCode = codeGenerator.codeRun(self.base_input_dirctory, path, self.nameLLM, self.nameProblems, self.language, self.prompt_type, session)
+        codeGenerator.codeRun(self.base_input_dirctory, path, self.nameLLM, self.nameProblems, self.language, self.prompt_type, session)
         #passo 7 com o código salvo é realizdo os casos de teste
         #passo 8 pega o resultado e traforma em XML
         executeTestCase = testExecute.TestExecute(self.nameProblems, self.nameLLM, self.prompt_type, self.language, session, path, self.base_input_dirctory, self.fileTC)

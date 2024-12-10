@@ -1,5 +1,6 @@
 import importlib.util
 import glob
+import os
 
 def module_from_file(module_name, file_path):
     spec = importlib.util.spec_from_file_location(module_name, file_path)
@@ -20,7 +21,7 @@ class TestExecute:
         self.fileTestCase = testcase
         self.testCase = {}
     
-    def __removeTestCase(self):
+    def __extractTestCase(self):
         #abre o arquivo com todos os casos de testes e busca o qual vai ser usado de acordo com o id e retira todo o contudo que pertence aquele problema
         with open(self.fileTestCase, 'r') as file:
             lines = file.readlines()
@@ -35,25 +36,40 @@ class TestExecute:
                 if flag and "-- GRADE" in l:
                     flag = False
                     break
-        
+
         start = False
-        input_value = ""
-        for i, linha in enumerate(NewtestCase):
+        start2 = False
+        input_value = []
+        output_value = ""
+        for linha in NewtestCase:
+
             if linha.startswith("---- input:"):
                 start = True
-                input_value = ""
-            elif linha.startswith("---- correct output:") and i + 1 < len(NewtestCase):
+                input_value = []
+            
+            elif linha.startswith("---- correct output:"):
                 start = False
-                correct_output = NewtestCase[i + 1].strip()
-                self.testCase[input_value] = correct_output
+                start2 = True
+                output_value = ""
+            
+            elif linha.startswith("---- user output:"):
+                start2 = False
+                self.testCase[", ".join(input_value)] = output_value
+            
+            elif start:
+                input_value.append(linha.strip())
+            
+            elif start2:
+                output_value += linha.strip()            
+
             elif linha.startswith("-- GRADE:"):
                 break
-            elif start:
-                input_value += linha.strip()
+            
+        
         print(self.testCase)
 
-    def test(self):
-        self.__removeTestCase()#metodo que faz a remoção dos casos de teste e salva em um self.testCase
+    def createtest(self):
+        self.__extractTestCase()#metodo que faz a remoção dos casos de teste e salva em um self.testCase
         modelo_caso_teste = """
     def test_verificar_string_%d(self):
         valores_entrada = ["%s"]
@@ -119,21 +135,24 @@ def runTest(nameLLm, prompt, language, outDir, id):
         """
         caseStudy =[]
         i=1
-        for key, value in self.testCase.items():
-            caseStudy.append(modelo_caso_teste % (i, key, value))
-            i += 1
-        conteudo = preambulo + "".join(str(caso_de_teste) for caso_de_teste in caseStudy) + main
-        namespace = {}
-        exec(conteudo, namespace)
-        namespace['runTest'](self.nameLLM, self.partPrompt[0], self.language, self.output_dirctory, self.nameproblem)   
-        
+        if len(self.testCase) == 0: #dicionario vazio, sem casos de testes
+            return
+        else:
+            for key, value in self.testCase.items():
+                caseStudy.append(modelo_caso_teste % (i, key, value))
+                i += 1
+            conteudo = preambulo + "".join(str(caso_de_teste) for caso_de_teste in caseStudy) + main
+            #criar um arquivo chamdo test.py para deixar no formato adequado
+            os.makedirs(f"{self.input_dirctory}/problemas codebanch/{self.nameproblem}/Testes/",exist_ok=True)
+            with open(self.input_dirctory + f"/problemas codebanch/{self.nameproblem}/Testes/test.py", "w") as f:
+                f.write(conteudo)
+
     def runTestCase(self,):
     #fazer a busca com o nome do exercico e usar o import module 
         path = glob.glob(f'{self.input_dirctory}/**/{self.nameproblem}*/**/test.py', recursive=True)
         if(len(path) == 0):
-            self.test()
+            self.createtest()
         else:
             test = module_from_file("test", path[0])
             test.runTest(self.nameLLM, self.partPrompt[0], self.language, self.output_dirctory)
             del(test)
-    
