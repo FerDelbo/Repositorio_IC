@@ -38,16 +38,16 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["2, 2, 15.0"]
-        self.assertTrue(verificar_string("13.0Sim", valores_entrada, self.file))
+        valores_entrada = ["2", "2", "15.0"]
+        self.assertTrue(verificar_string("13.0\nSim", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["1, 2, 8.0"]
-        self.assertTrue(verificar_string("10.0Nao", valores_entrada, self.file))
+        valores_entrada = ["1", "2", "8.0"]
+        self.assertTrue(verificar_string("10.0\nNao", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["3, 5, 25.50"]
-        self.assertTrue(verificar_string("26.5Nao", valores_entrada, self.file))
+        valores_entrada = ["3", "5", "25.50"]
+        self.assertTrue(verificar_string("26.5\nNao", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):
     import xmlrunner as r

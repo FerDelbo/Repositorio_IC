@@ -39,15 +39,15 @@ class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
         valores_entrada = ["2"]
-        self.assertTrue(verificar_string("0.541.271.83", valores_entrada, self.file))
+        self.assertTrue(verificar_string("0.54\n1.27\n1.83", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
         valores_entrada = ["4.5"]
-        self.assertTrue(verificar_string("1.216.452.74", valores_entrada, self.file))
+        self.assertTrue(verificar_string("1.21\n6.45\n2.74", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
         valores_entrada = ["10"]
-        self.assertTrue(verificar_string("2.6831.834.08", valores_entrada, self.file))
+        self.assertTrue(verificar_string("2.68\n31.83\n4.08", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):
     import xmlrunner as r

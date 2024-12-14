@@ -38,15 +38,15 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["Amazonas, Manaus"]
+        valores_entrada = ["Amazonas", "Manaus"]
         self.assertTrue(verificar_string("COROADO", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["Para, Belem"]
+        valores_entrada = ["Para", "Belem"]
         self.assertTrue(verificar_string("CIDADE VELHA", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["Amazonas, Iranduba"]
+        valores_entrada = ["Amazonas", "Iranduba"]
         self.assertTrue(verificar_string("BAIRRO NAO IDENTIFICADO", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):

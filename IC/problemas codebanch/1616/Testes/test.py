@@ -38,15 +38,15 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["["GELO","ILUSAO","CHOQUE"], [2,1,8]"]
+        valores_entrada = ["['GELO','ILUSAO','CHOQUE']", "[2,1,8]"]
         self.assertTrue(verificar_string("46", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["["GELO","CONJURACAO","CHOQUE"], [2,4,2]"]
+        valores_entrada = ["['GELO','CONJURACAO','CHOQUE']", "[2,4,2]"]
         self.assertTrue(verificar_string("44", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["["GELO","ILUSAO","CHOQUE","FOGO"], [2,3,1,4]"]
+        valores_entrada = ["['GELO','ILUSAO','CHOQUE','FOGO']", "[2,3,1,4]"]
         self.assertTrue(verificar_string("50", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):

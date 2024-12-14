@@ -47,7 +47,7 @@ class TestStringVerification(unittest.TestCase):
     
     def test_verificar_string_3(self):
         valores_entrada = ["cisteina"]
-        self.assertTrue(verificar_string("Entrada: cisteinaDado Invalido", valores_entrada, self.file))
+        self.assertTrue(verificar_string("Entrada: cisteina\nDado Invalido", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):
     import xmlrunner as r

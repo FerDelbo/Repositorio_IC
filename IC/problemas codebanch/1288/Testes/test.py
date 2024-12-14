@@ -39,15 +39,15 @@ class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
         valores_entrada = ["[186070,341000,741570,1368195]"]
-        self.assertTrue(verificar_string("titica: 9875.0barro no balde: 3215.0bestrume: 1236.0caca de vaca: 7415.0bestrume", valores_entrada, self.file))
+        self.assertTrue(verificar_string("titica: 9875.0\nbarro no balde: 3215.0\nbestrume: 1236.0\ncaca de vaca: 7415.0\nbestrume", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
         valores_entrada = ["[12849,62280,94710,77025]"]
-        self.assertTrue(verificar_string("titica: 321.0barro no balde: 654.0bestrume: 987.0caca de vaca: 159.0caca de vaca", valores_entrada, self.file))
+        self.assertTrue(verificar_string("titica: 321.0\nbarro no balde: 654.0\nbestrume: 987.0\ncaca de vaca: 159.0\ncaca de vaca", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
         valores_entrada = ["[12111,51660,75450,52995]"]
-        self.assertTrue(verificar_string("titica: 123.0barro no balde: 456.0bestrume: 789.0caca de vaca: 321.0titica", valores_entrada, self.file))
+        self.assertTrue(verificar_string("titica: 123.0\nbarro no balde: 456.0\nbestrume: 789.0\ncaca de vaca: 321.0\ntitica", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):
     import xmlrunner as r

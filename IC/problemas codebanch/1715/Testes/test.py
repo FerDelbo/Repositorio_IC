@@ -38,15 +38,15 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["[['L','N','L','L'],['N','N','L','L'],['N','N','L','N'],['N','L','L','L']], 3, 2"]
+        valores_entrada = ["[['L','N','L','L'],['N','N','L','L'],['N','N','L','N'],['N','L','L','L']]", "3", "2"]
         self.assertTrue(verificar_string("AGUA", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["[['N','L','L','N','N'],['N','N','N','N','N'],['L','L','N','L','N'],['N','L','N','N','N'],['N','L','N','L','N']], 3, 4"]
+        valores_entrada = ["[['N','L','L','N','N'],['N','N','N','N','N'],['L','L','N','L','N'],['N','L','N','N','N'],['N','L','N','L','N']]", "3", "4"]
         self.assertTrue(verificar_string("FOGO", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["[['L','L','N'],['N','L','L'],['L','N','L']], 2, 2"]
+        valores_entrada = ["[['L','L','N'],['N','L','L'],['L','N','L']]", "2", "2"]
         self.assertTrue(verificar_string("AGUA", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):

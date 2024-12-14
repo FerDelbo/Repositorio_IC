@@ -38,15 +38,15 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["Vertente, Samba-de-raiz"]
+        valores_entrada = ["Vertente", "Samba-de-raiz"]
         self.assertTrue(verificar_string("cavaquinho", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["Misturado, Samba-choro"]
+        valores_entrada = ["Misturado", "Samba-choro"]
         self.assertTrue(verificar_string("violao de seis cordas", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["Vertente, Samba-jazz"]
+        valores_entrada = ["Vertente", "Samba-jazz"]
         self.assertTrue(verificar_string("instrumento nao identificado", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):

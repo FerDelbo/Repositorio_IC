@@ -39,15 +39,15 @@ class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
         valores_entrada = ["45.6, 1.5"]
-        self.assertTrue(verificar_string("Entradas: 45.6 km/h e 1.5 hProxima parada: Bravos", valores_entrada, self.file))
+        self.assertTrue(verificar_string("Entradas: 45.6 km/h e 1.5 h\nProxima parada: Bravos", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
         valores_entrada = ["60.0, 4.0"]
-        self.assertTrue(verificar_string("Entradas: 60.0 km/h e 4.0 hProxima parada: Doriath", valores_entrada, self.file))
+        self.assertTrue(verificar_string("Entradas: 60.0 km/h e 4.0 h\nProxima parada: Doriath", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
         valores_entrada = ["-50.0, 2.0"]
-        self.assertTrue(verificar_string("Entradas: -50.0 km/h e 2.0 hDados invalidos", valores_entrada, self.file))
+        self.assertTrue(verificar_string("Entradas: -50.0 km/h e 2.0 h\nDados invalidos", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):
     import xmlrunner as r

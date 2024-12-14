@@ -38,15 +38,15 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["NAO, SIM, NAO, SIM, NAO, SIM, NAO, SIM, NAO, SIM, NAO, SIM, NAO, SIM, NAO, SIM, NAO, SIM, NAO, SIM, S"]
+        valores_entrada = ["NAO", "SIM", "NAO", "SIM", "NAO", "SIM", "NAO", "SIM", "NAO", "SIM", "NAO", "SIM", "NAO", "SIM", "NAO", "SIM", "NAO", "SIM", "NAO", "SIM", "S"]
         self.assertTrue(verificar_string("10", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["NAO, NAO, NAO, NAO, SIM, S"]
+        valores_entrada = ["NAO", "NAO", "NAO", "NAO", "SIM", "S"]
         self.assertTrue(verificar_string("1", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["NAO, NAO, NAO, S"]
+        valores_entrada = ["NAO", "NAO", "NAO", "S"]
         self.assertTrue(verificar_string("0", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):

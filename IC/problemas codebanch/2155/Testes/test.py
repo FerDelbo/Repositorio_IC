@@ -38,16 +38,16 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["[64.58,77.85,45.96,55.55], [1.62,1.84,1.55,1.66]"]
-        self.assertTrue(verificar_string("[ 24.61  22.99  19.13  20.16]O MAIOR IMC DA TURMA EH: 24.61PESO NORMAL", valores_entrada, self.file))
+        valores_entrada = ["[64.58,77.85,45.96,55.55]", "[1.62,1.84,1.55,1.66]"]
+        self.assertTrue(verificar_string("[ 24.61  22.99  19.13  20.16]\nO MAIOR IMC DA TURMA EH: 24.61\nPESO NORMAL", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["[34.67,45.78,55.89], [1.98,1.88,1.79]"]
-        self.assertTrue(verificar_string("[  8.84  12.95  17.44]O MAIOR IMC DA TURMA EH: 17.44ABAIXO DO PESO", valores_entrada, self.file))
+        valores_entrada = ["[34.67,45.78,55.89]", "[1.98,1.88,1.79]"]
+        self.assertTrue(verificar_string("[  8.84  12.95  17.44]\nO MAIOR IMC DA TURMA EH: 17.44\nABAIXO DO PESO", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["[102.89,99.87], [1.65,1.77]"]
-        self.assertTrue(verificar_string("[ 37.79  31.88]O MAIOR IMC DA TURMA EH: 37.79OBESIDADE SEVERA", valores_entrada, self.file))
+        valores_entrada = ["[102.89,99.87]", "[1.65,1.77]"]
+        self.assertTrue(verificar_string("[ 37.79  31.88]\nO MAIOR IMC DA TURMA EH: 37.79\nOBESIDADE SEVERA", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):
     import xmlrunner as r

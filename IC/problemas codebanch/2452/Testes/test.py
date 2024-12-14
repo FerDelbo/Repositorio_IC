@@ -38,15 +38,15 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["75, 1.75"]
+        valores_entrada = ["75", "1.75"]
         self.assertTrue(verificar_string("normal", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["88, 1.75"]
+        valores_entrada = ["88", "1.75"]
         self.assertTrue(verificar_string("acima do peso", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["130, 1.75"]
+        valores_entrada = ["130", "1.75"]
         self.assertTrue(verificar_string("obeso", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):

@@ -39,15 +39,15 @@ class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
         valores_entrada = ["10001010"]
-        self.assertTrue(verificar_string("10001010nao atende", valores_entrada, self.file))
+        self.assertTrue(verificar_string("10001010\nnao atende", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
         valores_entrada = ["60481729"]
-        self.assertTrue(verificar_string("60481729atende", valores_entrada, self.file))
+        self.assertTrue(verificar_string("60481729\natende", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
         valores_entrada = ["20034005"]
-        self.assertTrue(verificar_string("20034005nao atende", valores_entrada, self.file))
+        self.assertTrue(verificar_string("20034005\nnao atende", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):
     import xmlrunner as r

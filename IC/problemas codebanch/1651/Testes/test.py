@@ -39,15 +39,15 @@ class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
         valores_entrada = ["MC,C,C,C,CM,EM,EM,ME,E"]
-        self.assertTrue(verificar_string("3[1 3 1 2 1 1]", valores_entrada, self.file))
+        self.assertTrue(verificar_string("3\n[1 3 1 2 1 1]", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
         valores_entrada = ["MC,C,C,C,CM,ME,EM,E,E"]
-        self.assertTrue(verificar_string("3[1 3 1 1 2 1]", valores_entrada, self.file))
+        self.assertTrue(verificar_string("3\n[1 3 1 1 2 1]", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
         valores_entrada = ["C,C,C,C,CM,EM,EM,ME,E"]
-        self.assertTrue(verificar_string("4[0 4 1 2 1 1]", valores_entrada, self.file))
+        self.assertTrue(verificar_string("4\n[0 4 1 2 1 1]", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):
     import xmlrunner as r

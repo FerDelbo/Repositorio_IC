@@ -38,15 +38,15 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["Campeao, 05-vezes"]
+        valores_entrada = ["Campeao", "05-vezes"]
         self.assertTrue(verificar_string("BRASIL", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["Vice-Campeao, 03-vezes"]
+        valores_entrada = ["Vice-Campeao", "03-vezes"]
         self.assertTrue(verificar_string("ARGENTINA", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["Campeao, 10-vezes"]
+        valores_entrada = ["Campeao", "10-vezes"]
         self.assertTrue(verificar_string("SELECAO NAO IDENTIFICADA", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):

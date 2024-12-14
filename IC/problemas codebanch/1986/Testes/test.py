@@ -38,15 +38,15 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["Licenciatura, Vespertino"]
+        valores_entrada = ["Licenciatura", "Vespertino"]
         self.assertTrue(verificar_string("FILOSOFIA", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["Bacharelado, Noturno"]
+        valores_entrada = ["Bacharelado", "Noturno"]
         self.assertTrue(verificar_string("ADMINISTRACAO", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["Licenciatura, Diurno"]
+        valores_entrada = ["Licenciatura", "Diurno"]
         self.assertTrue(verificar_string("CURSO DE GRADUACAO NAO IDENTIFICADO", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):

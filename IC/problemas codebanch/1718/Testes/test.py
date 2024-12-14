@@ -38,15 +38,15 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["[['V','V','P'],['V','V','B'],['P','V','V']], 2, 1"]
+        valores_entrada = ["[['V','V','P'],['V','V','B'],['P','V','V']]", "2", "1"]
         self.assertTrue(verificar_string("VAZIA", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["[['V','P','V','P'],['V','P','V','P'],['V','P','P','B'],['P','B','P','B']], 1, 1"]
+        valores_entrada = ["[['V','P','V','P'],['V','P','V','P'],['V','P','P','B'],['P','B','P','B']]", "1", "1"]
         self.assertTrue(verificar_string("PRETA", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["[['B','B','V'],['P','P','P'],['V','P','B']], 2, 2"]
+        valores_entrada = ["[['B','B','V'],['P','P','P'],['V','P','B']]", "2", "2"]
         self.assertTrue(verificar_string("BRANCA", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):
