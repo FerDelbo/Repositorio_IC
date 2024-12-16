@@ -38,7 +38,7 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["-10", "-8", "-6", "-4", "-2", 0"]
+        valores_entrada = ["-10", "-8", "-6", "-4", "-2", "0"]
         self.assertTrue(verificar_string("-6.0\n0.0", valores_entrada, self.file))
     
     def test_verificar_string_2(self):

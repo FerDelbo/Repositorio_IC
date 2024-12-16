@@ -17,13 +17,14 @@ from keys import GPT_KEY
 from keys import MISTRAL_KEY
 
 class codeGenerator:
-    def __init__(self, llm, name, language, partition, session):
+    def __init__(self, llm, name, language, partition, session, temperature, qtd):
         self.llm = llm
         self.nameExercise = name
         self.language = language
         self.partPrompt = partition
         self.session = session
-        self.temperature = 1
+        self.temperature = temperature
+        self.k = qtd #qual é a vez qu ele esta rodando
         self.prompt = {} #dicionario vazio
         
     def __convertTxt(self, fileTxt):
@@ -60,11 +61,11 @@ class codeGenerator:
         directory = glob.glob(f"{outDirctory}/{self.nameExercise}/{self.llm}/{self.session}", recursive=True)
         if len(directory) == 0:
             path = self.__createSession(outDirctory)
-            print("seção criada")
-            nome = f'{self.llm}{self.partPrompt[0]}{self.language}.py'
+            #print("seção criada")
+            nome = f'{self.llm}{self.partPrompt[0]}{self.language}{self.k}.py'
             full_path = os.path.join(path, nome)
         else:
-            nome = f'{self.llm}{self.partPrompt[0]}{self.language}.py'
+            nome = f'{self.llm}{self.partPrompt[0]}{self.language}{self.k}.py'
             full_path = os.path.join(directory[0], nome)
         
         solution = self.__removeLines(response.content)
@@ -96,22 +97,22 @@ class codeGenerator:
         self.__createPrompt(inputDir)
         if self.language == "en":
             #if list(self.prompt.keys()) in "Descrição":
-            from deep_translator import GoogleTranslator
-            # for key, value in self.prompt.items():
-            #     if isinstance(value, str):  # Traduz apenas strings
-            #         self.prompt[key] = GoogleTranslator(source='pt', target='en').translate(value)
+            # from deep_translator import GoogleTranslator
+            # # for key, value in self.prompt.items():
+            # #     if isinstance(value, str):  # Traduz apenas strings
+            # #         self.prompt[key] = GoogleTranslator(source='pt', target='en').translate(value)
             
-            tradutor = GoogleTranslator(source='pt', target='en')
-            novo_dicionario = {}
+            # tradutor = GoogleTranslator(source='pt', target='en')
+            # novo_dicionario = {}
 
-            for key, value in self.prompt.items():
-                nova_chave = tradutor.translate(key)
-                if isinstance(value, str):
-                    novo_valor = tradutor.translate(value)
-                else:
-                    novo_valor = value  # Mantém valores não string
-                novo_dicionario[nova_chave] = novo_valor
-            self.prompt = novo_dicionario
+            # for key, value in self.prompt.items():
+            #     nova_chave = tradutor.translate(key)
+            #     if isinstance(value, str):
+            #         novo_valor = tradutor.translate(value)
+            #     else:
+            #         novo_valor = value  # Mantém valores não string
+            #     novo_dicionario[nova_chave] = novo_valor
+            # self.prompt = novo_dicionario
 
             #print(self.prompt)
             message = self.prompt['Description:']
@@ -150,17 +151,17 @@ def codeRun(inputDirctory, outDirctory, nameLLM, nameExercice, language, partPro
 
     if nameLLM == "Gemini":
         modelLLM = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=GEMINI_KEY)
-    elif nameLLM == "ChatGPT":
+    elif nameLLM == "GPT3.5":
         modelLLM = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=GPT_KEY)
     elif nameLLM == "HuggingChat":
         modelLLM = ChatMistralAI(model="open-codestral-mamba", mistral_api_key=MISTRAL_KEY)
         #modelLLM = ChatMistralAI(model="codestral-latest", mistral_api_key=MISTRAL_KEY)
-    elif nameLLM == "ChatGPT4o":
+    elif nameLLM == "GPT4o":
         modelLLM = ChatOpenAI(model="gpt-4o", openai_api_key=GPT_KEY)
 
-    print(message)    
+    #print(message)    
     response = modelLLM.invoke(message)
-    print(response.content)
+    #print(response.content)
     start.saveCode(response, outDirctory)
 
 if __name__ == "__main__":

@@ -23,6 +23,9 @@ def verificar_string(string1, valores_entrada,arquivo):
         # Executa o código lido do arquivo com o input mockado
         exec(codigo, {'input': input_mock_function})
         valor_impresso1 = sys.stdout.getvalue().strip()
+        with open('/home/fernando/Área de Trabalho/Projeto/returnTestCase.txt', 'w') as f:
+            f.write("\nExecusão do caso de teste data\n")
+            f.write(valor_impresso1)
 
     except Exception as e:
         print(f"Erro ao executar o código: {e}")
@@ -49,7 +52,7 @@ class TestStringVerification(unittest.TestCase):
         valores_entrada = ["31021031"]
         self.assertTrue(verificar_string("31 de fevereiro de 1031", valores_entrada,self.file))
 
-def runTest(nameLLm, prompt, language, outDir):
+def runTest(nameLLm, prompt, language, outDir, nameProblem, k):
     import xmlrunner as r
     import glob
 
@@ -59,7 +62,8 @@ def runTest(nameLLm, prompt, language, outDir):
     outDir = outDir +"/XML"
     if not(os.path.exists(outDir)):
         os.makedirs(outDir,exist_ok=True)
-    runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_Data")
+    #runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_Data")
+    runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_{nameProblem}")
     runner.run(suite)
     
     del(glob)

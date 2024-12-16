@@ -38,7 +38,7 @@ def verificar_string(string1, valores_entrada,arquivo):
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
-        valores_entrada = ["1500", "1000", "1.3", 2.3"]
+        valores_entrada = ["1500", "1000", "1.3", "2.3"]
         self.assertTrue(verificar_string("183", valores_entrada, self.file))
     
     def test_verificar_string_2(self):

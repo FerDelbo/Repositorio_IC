@@ -8,9 +8,8 @@ def module_from_file(module_name, file_path):
     spec.loader.exec_module(module)
     return module
 
-
 class TestExecute:
-    def __init__(self, nameProblem, nameLLM, partPrompt, language, session, outputDir, inputDir, testcase):
+    def __init__(self, nameProblem, nameLLM, partPrompt, language, session, outputDir, inputDir, testcase, k):
         self.input_dirctory = inputDir
         self.output_dirctory = outputDir
         self.nameproblem = nameProblem
@@ -19,6 +18,7 @@ class TestExecute:
         self.language = language
         self.session = session
         self.fileTestCase = testcase
+        self.k = k
         self.testCase = {}
     
     def __extractTestCase(self):
@@ -154,5 +154,5 @@ def runTest(nameLLm, prompt, language, outDir, id):
             self.createtest()
         else:
             test = module_from_file("test", path[0])
-            test.runTest(self.nameLLM, self.partPrompt[0], self.language, self.output_dirctory)
+            test.runTest(self.nameLLM, self.partPrompt[0], self.language, self.output_dirctory, self.nameproblem)
             del(test)

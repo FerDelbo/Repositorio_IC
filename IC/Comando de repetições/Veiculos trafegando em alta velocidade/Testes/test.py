@@ -24,10 +24,9 @@ def verificar_string(valores_esperados, valores_entrada,arquivo):
         # Executa o código lido do arquivo com o input mockado
         exec(codigo, {'input': input_mock_function})
         valor_impresso = sys.stdout.getvalue().strip()
-        # partes = valor_impresso.split('\n')
-        # saida1 = partes[0]
-        # saida2 = partes[1]
-        # saida3 = partes[2]
+        with open('/home/fernando/Área de Trabalho/Projeto/returnTestCase.txt', 'w') as f:
+            f.write("\nExecusão do caso de teste veiculos\n")
+            f.write(valor_impresso)
 
     except Exception as e:
         print(f"Erro ao executar o código: {e}")
@@ -57,17 +56,18 @@ class TestStringVerification(unittest.TestCase):
         valores_entrada = ["[72.9, 29.1, 7.29, 90.7, 66.6]"]
         self.assertTrue(verificar_string("3\n1", valores_entrada,self.file))
 
-def runTest(nameLLm, prompt, language, outDir):
+def runTest(nameLLm, prompt, language, outDir, nameProblem, k):
     import xmlrunner as r
     import glob 
        
-    file = glob.glob(f"{outDir}/**/{nameLLm}{prompt}{language}.py", recursive=True)
+    file = glob.glob(f"{outDir}/**/{nameLLm}{prompt}{language}{k}.py", recursive=True)
     TestStringVerification.file = file[0]
     suite = unittest.TestLoader().loadTestsFromTestCase(TestStringVerification)
     outDir = outDir +"/XML"
     if not(os.path.exists(outDir)):
         os.makedirs(outDir,exist_ok=True)
-    runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_Veiculos")
+    #runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_Veiculos")
+    runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_{nameProblem}")
     runner.run(suite)
 
     del(glob)

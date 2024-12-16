@@ -46,7 +46,7 @@ class TestStringVerification(unittest.TestCase):
         self.assertTrue(verificar_string("0.9298564409499358", valores_entrada, self.file))
     
     def test_verificar_string_3(self):
-        valores_entrada = ["12", "1220.0, "30.0"]
+        valores_entrada = ["12", "1220.0", "30.0"]
         self.assertTrue(verificar_string("0.244637475737705", valores_entrada, self.file))
     
 def runTest(nameLLm, prompt, language, outDir, id):

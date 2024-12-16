@@ -4,12 +4,13 @@ import glob
 import sys
 
 class XMLExtractor:
-    def __init__(self, fileXML, nameExercise, nameLLM, language, prompt):
+    def __init__(self, fileXML, nameExercise, nameLLM, language, prompt, temp):
         self.fileXML = fileXML
         self.nameExercise = nameExercise
         self.nameLLM = nameLLM
         self.language = language
         self.partPrompt = prompt
+        self.temperature = temp
 
     def extractData(self):
         # Transformar o arquivo XML em uma árvore
@@ -25,6 +26,7 @@ class XMLExtractor:
         components = {
             "NomeExercicio": self.nameExercise,
             "NomeLLM": self.nameLLM,
+            "Temperatura": self.temperature,
             "Data/Hora": listTestsuite['timestamp'],
             "QtdFalhas": str(int(listTestsuite['failures']) + int(listTestsuite['errors'])),
             "QtdAcerto": str(int(listTestsuite['tests']) - int(listTestsuite['failures']) - int(listTestsuite['errors'])),
@@ -62,7 +64,7 @@ class XMLExtractor:
     def saveExcel(self, components):
         # Abrir a planilha
         #excel_file = '/home/fernando/Área de Trabalho/Projeto/resultadoCasosdeTeste.xlsx'
-        excel_file = '/home/fernando/Área de Trabalho/Projeto/teste1.xlsx'
+        excel_file = '/home/fernando/Área de Trabalho/Projeto/soluçõesFinal.xlsx'
         workbook = openpyxl.load_workbook(excel_file)
         sheet = workbook.active
 
@@ -71,6 +73,7 @@ class XMLExtractor:
             components["NomeExercicio"],
             components["Idioma"],
             components["NomeLLM"],
+            components["Temperatura"],
             components["Prompt"],
             components["Data/Hora"],
             components["QtdFalhas"],

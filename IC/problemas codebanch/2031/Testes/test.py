@@ -42,7 +42,7 @@ class TestStringVerification(unittest.TestCase):
         self.assertTrue(verificar_string("1", valores_entrada, self.file))
     
     def test_verificar_string_2(self):
-        valores_entrada = ["1, "2", "6", "6", "3", "4", "6", "6", "5", "6", "6", "-1"]
+        valores_entrada = ["1", "2", "6", "6", "3", "4", "6", "6", "5", "6", "6", "-1"]
         self.assertTrue(verificar_string("6", valores_entrada, self.file))
     
     def test_verificar_string_3(self):

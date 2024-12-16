@@ -7,7 +7,7 @@ import os
 #o intuito é colocar o caminho do repositorio inicial o que já contem e um de saida para ele salvar as infos
 
 class CodeEvaluator:
-    def __init__(self, input_dirctory, output_dirctory, nameExercise, nameLLM, language, prompt, testcase):
+    def __init__(self, input_dirctory, output_dirctory, nameExercise, nameLLM, language, prompt, testcase, qtd, temp):
         self.base_input_dirctory = input_dirctory #onde vai ser salvo
         self.base_output_dirctory = output_dirctory #repositorio ic
         self.nameProblems = nameExercise
@@ -15,7 +15,8 @@ class CodeEvaluator:
         self.language = language
         self.prompt_type = prompt
         self.fileTC = testcase
-        # self.k = qtd #quantas vezes ele vai gerar
+        self.k = qtd #quantas vezes ele vai gerar
+        self.temperature = temp
 
     def _pathOutput(self):
         path = self.base_output_dirctory + f"/{self.nameProblems}/{self.nameLLM}"
@@ -37,13 +38,13 @@ class CodeEvaluator:
         #passo 5 manda para a llm
         #passo 6 pega a resposta e salva em um diretorio fora do repositorio
         path = self._pathOutput()
-        codeGenerator.codeRun(self.base_input_dirctory, path, self.nameLLM, self.nameProblems, self.language, self.prompt_type, session)
+        codeGenerator.codeRun(self.base_input_dirctory, path, self.nameLLM, self.nameProblems, self.language, self.prompt_type, session, self.temperature, self.k)
         #passo 7 com o código salvo é realizdo os casos de teste
         #passo 8 pega o resultado e traforma em XML
-        executeTestCase = testExecute.TestExecute(self.nameProblems, self.nameLLM, self.prompt_type, self.language, session, path, self.base_input_dirctory, self.fileTC)
+        executeTestCase = testExecute.TestExecute(self.nameProblems, self.nameLLM, self.prompt_type, self.language, session, path, self.base_input_dirctory, self.fileTC, self.k)
         executeTestCase.runTestCase()
         #passo 9 é feita uma limpa no XML e pega o conteudo para jogar em uma planikha fora desse repositorio
-        extraction.run(self.nameProblems, self.nameLLM, self.language, self.prompt_type, path)
+        extraction.run(self.nameProblems, self.nameLLM, self.language, self.prompt_type, path, self.temperature)
         #programa finalizado
 
 parser = argparse.ArgumentParser(description="Inciar gerador de soluções.")
@@ -56,6 +57,9 @@ parser.add_argument('language', type=str, help='Idioma')
 #parser.add_argument('partPrompt', type=str, help='Parte do prompt selecionada')
 parser.add_argument('-n', '--listPrompt', action="append")
 parser.add_argument('testCase', type=str, help="casos de teste")
+parser.add_argument('temperature', type=str, help="casos de teste")
+parser.add_argument('k', type=str, help="casos de teste")
+
 
 #Analisando os argumentos
 args = parser.parse_args()
