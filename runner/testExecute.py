@@ -9,7 +9,7 @@ def module_from_file(module_name, file_path):
     return module
 
 class TestExecute:
-    def __init__(self, nameProblem, nameLLM, partPrompt, language, session, outputDir, inputDir, testcase, k):
+    def __init__(self, nameProblem, nameLLM, partPrompt, language, session, outputDir, inputDir, testcase, k, temp):
         self.input_dirctory = inputDir
         self.output_dirctory = outputDir
         self.nameproblem = nameProblem
@@ -19,9 +19,10 @@ class TestExecute:
         self.session = session
         self.fileTestCase = testcase
         self.k = k
+        self.temperature = temp
         self.testCase = {}
     
-    def __extractTestCase(self):
+    def __extractTestCase(self):      
         #abre o arquivo com todos os casos de testes e busca o qual vai ser usado de acordo com o id e retira todo o contudo que pertence aquele problema
         with open(self.fileTestCase, 'r') as file:
             lines = file.readlines()
@@ -69,11 +70,18 @@ class TestExecute:
         print(self.testCase)
 
     def createtest(self):
-        self.__extractTestCase()#metodo que faz a remoção dos casos de teste e salva em um self.testCase
+        self.__extractTestCase() #metodo que faz a remoção dos casos de teste e salva em um self.testCase
         modelo_caso_teste = """
     def test_verificar_string_%d(self):
         valores_entrada = ["%s"]
-        self.assertTrue(verificar_string("%s", valores_entrada, self.file))
+        resultado = verificar_string("%s", valores_entrada, self.file, test_id=%d)
+        self.assertTrue(resultado[2], msg=f"String1 = {resultado[1]} resultado obtido = {resultado[0]}")
+    """
+        modelo_caso_teste2 = """
+    def test_verificar_string_%d(self):
+        valores_entrada = ["%s"]
+        resultado = verificar_string_tolerante("%s", valores_entrada, self.file, test_id=%d)
+        self.assertTrue(resultado[2], msg=f"String1 = {resultado[1]} resultado obtido = {resultado[0]}")
     """
 
         preambulo = """
@@ -82,7 +90,12 @@ import sys
 import io
 import os
 
-def verificar_string(string1, valores_entrada,arquivo):
+test_results = {}
+
+
+def verificar_string(string1, valores_entrada,arquivo, test_id):
+    results = []
+    results.append(string1)
     # Abre o arquivo 'codigo.py' e lê o seu conteúdo
     with open(arquivo, 'r') as file:
         codigo = file.read()
@@ -101,23 +114,76 @@ def verificar_string(string1, valores_entrada,arquivo):
     try:
         # Executa o código lido do arquivo com o input mockado
         exec(codigo, {'input': input_mock_function})
-        valor_impresso1 = sys.stdout.getvalue().strip()
+        valor_impresso1 = sys.stdout.getvalue().strip()#colocar na planilha
 
     except Exception as e:
         print(f"Erro ao executar o código: {e}")
-        return False
+        results.append("")
+        results.append(False)
+        return results
     finally:
         # Restaura a saída padrão
         sys.stdout = stdout_backup
 
     # Verifica se os valores impressos são iguais às strings fornecidas
-    return string1 == valor_impresso1
+    # results.append(string1)
+    results.append(valor_impresso1)
+    results.append(string1 == valor_impresso1)
+    
+    test_results[test_id] = {
+        'esperado': string1,
+        'obtido': valor_impresso1,
+    }
+    return results#colocar string1 planilha
+    
+def verificar_string_tolerante(string1, valores_entrada,arquivo, test_id):
+    results = []
+    results.append(string1)
+    # Abre o arquivo 'codigo.py' e lê o seu conteúdo
+    with open(arquivo, 'r') as file:
+        codigo = file.read()
+
+    # Redireciona a saída padrão para um objeto io.StringIO
+    stdout_backup = sys.stdout
+    sys.stdout = io.StringIO()
+
+    # Cria um iterador para fornecer os valores de entrada sequencialmente
+    input_mock = iter(valores_entrada)
+
+    # Função de input mockada para retornar os valores do iterador
+    def input_mock_function(*args):
+        return next(input_mock)
+
+    try:
+        # Executa o código lido do arquivo com o input mockado
+        exec(codigo, {'input': input_mock_function})
+        valor_impresso1 = sys.stdout.getvalue().strip()#colocar na planilha
+
+    except Exception as e:
+        print(f"Erro ao executar o código: {e}")
+        results.append("")
+        results.append(False)
+        return results
+    finally:
+        # Restaura a saída padrão
+        sys.stdout = stdout_backup
+
+    # Verifica se os valores impressos são iguais às strings fornecidas
+    # results.append(string1)
+    results.append(valor_impresso1)
+    results.append(string1 in valor_impresso1)
+    
+    test_results[test_id] = {
+        'esperado': string1,
+        'obtido': valor_impresso1,
+    }
+    return results#colocar string1 planilha
     
 class TestStringVerification(unittest.TestCase):
         """
 
         main = """
-def runTest(nameLLm, prompt, language, outDir, id):
+def runTest(nameLLm, prompt, language, outDir, id, k):
     import xmlrunner as r
     import glob
 
@@ -127,20 +193,24 @@ def runTest(nameLLm, prompt, language, outDir, id):
     outDir = outDir +"/XML"
     if not(os.path.exists(outDir)):
         os.makedirs(outDir,exist_ok=True)
-    runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_{id}") #prompt, id
+    runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_{id}_{k}") #prompt, id
     runner.run(suite)
         
     del(glob)
     del(r)
+    return test_results
         """
         caseStudy =[]
         i=1
+        j=4
         if len(self.testCase) == 0: #dicionario vazio, sem casos de testes
             return
         else:
             for key, value in self.testCase.items():
-                caseStudy.append(modelo_caso_teste % (i, key, value))
+                caseStudy.append(modelo_caso_teste % (i, key, value, i))
+                caseStudy.append(modelo_caso_teste2 % (j, key, value, j))
                 i += 1
+                j += 1
             conteudo = preambulo + "".join(str(caso_de_teste) for caso_de_teste in caseStudy) + main
             #criar um arquivo chamdo test.py para deixar no formato adequado
             os.makedirs(f"{self.input_dirctory}/problemas codebanch/{self.nameproblem}/Testes/",exist_ok=True)
@@ -152,7 +222,9 @@ def runTest(nameLLm, prompt, language, outDir, id):
         path = glob.glob(f'{self.input_dirctory}/**/{self.nameproblem}*/**/test.py', recursive=True)
         if(len(path) == 0):
             self.createtest()
-        else:
-            test = module_from_file("test", path[0])
-            test.runTest(self.nameLLM, self.partPrompt[0], self.language, self.output_dirctory, self.nameproblem)
-            del(test)
+            path = glob.glob(f'{self.input_dirctory}/**/{self.nameproblem}*/**/test.py', recursive=True)
+        test = module_from_file("test", path[0])
+        test_results = test.runTest(self.nameLLM, self.partPrompt[0], self.language, self.output_dirctory, 
+                     self.nameproblem, self.k)
+        del(test)
+        return test_results

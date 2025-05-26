@@ -3,7 +3,7 @@ import sys
 import io
 import os
 
-def verificar_string(string1, valores_entrada,arquivo):
+def verificar_string(string1, valores_entrada,arquivo, numTest):
     # Abre o arquivo 'codigo.py' e lê o seu conteúdo
     with open(arquivo, 'r') as file:
         codigo = file.read()
@@ -23,8 +23,8 @@ def verificar_string(string1, valores_entrada,arquivo):
         # Executa o código lido do arquivo com o input mockado
         exec(codigo, {'input': input_mock_function})
         valor_impresso1 = sys.stdout.getvalue().strip()
-        with open('/home/fernando/Área de Trabalho/Projeto/returnTestCase.txt', 'w') as f:
-            f.write("\nExecusão do caso de teste data\n")
+        with open('/home/fernando/Área de Trabalho/Projeto/returnTestCaseData.txt', 'a') as f:
+            f.write(f"\n\nExecusão do caso de teste data {numTest}\n\n")
             f.write(valor_impresso1)
 
     except Exception as e:
@@ -42,21 +42,21 @@ class TestStringVerification(unittest.TestCase):
     #file = 'codigo.py'
     def test_verificar_string_1(self):
         valores_entrada = ["01092023"]
-        self.assertTrue(verificar_string("01 de setembro de 2023", valores_entrada,self.file))
+        self.assertTrue(verificar_string("01 de setembro de 2023", valores_entrada,self.file, 1))
 
     def test_verificar_string_2(self):
         valores_entrada = ["17031909"]
-        self.assertTrue(verificar_string("17 de marco de 1909", valores_entrada,self.file))
+        self.assertTrue(verificar_string("17 de marco de 1909", valores_entrada,self.file, 2))
 
     def test_verificar_string_3(self):
         valores_entrada = ["31021031"]
-        self.assertTrue(verificar_string("31 de fevereiro de 1031", valores_entrada,self.file))
+        self.assertTrue(verificar_string("31 de fevereiro de 1031", valores_entrada,self.file, 3))
 
-def runTest(nameLLm, prompt, language, outDir, nameProblem, k):
+def runTest(nameLLm, prompt, language, outDir, nameProblem, k, temperature):
     import xmlrunner as r
     import glob
 
-    file = glob.glob(f"{outDir}/**/{nameLLm}{prompt}{language}.py", recursive=True)
+    file = glob.glob(f"{outDir}/**/{temperature}{nameLLm}{prompt}{language}{k}.py", recursive=True)
     TestStringVerification.file = file[0]
     suite = unittest.TestLoader().loadTestsFromTestCase(TestStringVerification)
     outDir = outDir +"/XML"

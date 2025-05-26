@@ -4,7 +4,12 @@ import sys
 import io
 import os
 
-def verificar_string(string1, valores_entrada,arquivo):
+test_results = {}
+
+
+def verificar_string(string1, valores_entrada,arquivo, test_id):
+    results = []
+    results.append(string1)
     # Abre o arquivo 'codigo.py' e lê o seu conteúdo
     with open(arquivo, 'r') as file:
         codigo = file.read()
@@ -23,33 +28,104 @@ def verificar_string(string1, valores_entrada,arquivo):
     try:
         # Executa o código lido do arquivo com o input mockado
         exec(codigo, {'input': input_mock_function})
-        valor_impresso1 = sys.stdout.getvalue().strip()
+        valor_impresso1 = sys.stdout.getvalue().strip()#colocar na planilha
 
     except Exception as e:
         print(f"Erro ao executar o código: {e}")
-        return False
+        results.append("")
+        results.append(False)
+        return results
     finally:
         # Restaura a saída padrão
         sys.stdout = stdout_backup
 
     # Verifica se os valores impressos são iguais às strings fornecidas
-    return string1 == valor_impresso1
+    # results.append(string1)
+    results.append(valor_impresso1)
+    results.append(string1 == valor_impresso1)
+    
+    test_results[test_id] = {
+        'esperado': string1,
+        'obtido': valor_impresso1,
+    }
+    return results#colocar string1 planilha
+    
+def verificar_string_tolerante(string1, valores_entrada,arquivo, test_id):
+    results = []
+    results.append(string1)
+    # Abre o arquivo 'codigo.py' e lê o seu conteúdo
+    with open(arquivo, 'r') as file:
+        codigo = file.read()
+
+    # Redireciona a saída padrão para um objeto io.StringIO
+    stdout_backup = sys.stdout
+    sys.stdout = io.StringIO()
+
+    # Cria um iterador para fornecer os valores de entrada sequencialmente
+    input_mock = iter(valores_entrada)
+
+    # Função de input mockada para retornar os valores do iterador
+    def input_mock_function(*args):
+        return next(input_mock)
+
+    try:
+        # Executa o código lido do arquivo com o input mockado
+        exec(codigo, {'input': input_mock_function})
+        valor_impresso1 = sys.stdout.getvalue().strip()#colocar na planilha
+
+    except Exception as e:
+        print(f"Erro ao executar o código: {e}")
+        results.append("")
+        results.append(False)
+        return results
+    finally:
+        # Restaura a saída padrão
+        sys.stdout = stdout_backup
+
+    # Verifica se os valores impressos são iguais às strings fornecidas
+    # results.append(string1)
+    results.append(valor_impresso1)
+    results.append(string1 in valor_impresso1)
+    
+    test_results[test_id] = {
+        'esperado': string1,
+        'obtido': valor_impresso1,
+    }
+    return results#colocar string1 planilha
     
 class TestStringVerification(unittest.TestCase):
         
     def test_verificar_string_1(self):
         valores_entrada = ["[1320,2528,1618]"]
-        self.assertTrue(verificar_string("suco: 557.5\nx-salada: -706.0\nacai: 1059.5\nacai", valores_entrada, self.file))
+        resultado = verificar_string("suco: 557.5x-salada: -706.0acai: 1059.5acai", valores_entrada, self.file, test_id=1)
+        self.assertTrue(resultado[2], msg=f"String1 = {resultado[1]} resultado obtido = {resultado[0]}")
+    
+    def test_verificar_string_4(self):
+        valores_entrada = ["[1320,2528,1618]"]
+        resultado = verificar_string_tolerante("suco: 557.5x-salada: -706.0acai: 1059.5acai", valores_entrada, self.file, test_id=4)
+        self.assertTrue(resultado[2], msg=f"String1 = {resultado[1]} resultado obtido = {resultado[0]}")
     
     def test_verificar_string_2(self):
         valores_entrada = ["[1616,1315,2523]"]
-        self.assertTrue(verificar_string("suco: 102.0\nx-salada: 503.0\nacai: 304.0\nx-salada", valores_entrada, self.file))
+        resultado = verificar_string("suco: 102.0x-salada: 503.0acai: 304.0x-salada", valores_entrada, self.file, test_id=2)
+        self.assertTrue(resultado[2], msg=f"String1 = {resultado[1]} resultado obtido = {resultado[0]}")
+    
+    def test_verificar_string_5(self):
+        valores_entrada = ["[1616,1315,2523]"]
+        resultado = verificar_string_tolerante("suco: 102.0x-salada: 503.0acai: 304.0x-salada", valores_entrada, self.file, test_id=5)
+        self.assertTrue(resultado[2], msg=f"String1 = {resultado[1]} resultado obtido = {resultado[0]}")
     
     def test_verificar_string_3(self):
         valores_entrada = ["[495,363,462]"]
-        self.assertTrue(verificar_string("suco: 99.0\nx-salada: 77.0\nacai: 44.0\nsuco", valores_entrada, self.file))
+        resultado = verificar_string("suco: 99.0x-salada: 77.0acai: 44.0suco", valores_entrada, self.file, test_id=3)
+        self.assertTrue(resultado[2], msg=f"String1 = {resultado[1]} resultado obtido = {resultado[0]}")
     
-def runTest(nameLLm, prompt, language, outDir, id):
+    def test_verificar_string_6(self):
+        valores_entrada = ["[495,363,462]"]
+        resultado = verificar_string_tolerante("suco: 99.0x-salada: 77.0acai: 44.0suco", valores_entrada, self.file, test_id=6)
+        self.assertTrue(resultado[2], msg=f"String1 = {resultado[1]} resultado obtido = {resultado[0]}")
+    
+def runTest(nameLLm, prompt, language, outDir, id, k):
     import xmlrunner as r
     import glob
 
@@ -59,9 +135,10 @@ def runTest(nameLLm, prompt, language, outDir, id):
     outDir = outDir +"/XML"
     if not(os.path.exists(outDir)):
         os.makedirs(outDir,exist_ok=True)
-    runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_{id}") #prompt, id
+    runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_{id}_{k}") #prompt, id
     runner.run(suite)
         
     del(glob)
     del(r)
+    return test_results
         
