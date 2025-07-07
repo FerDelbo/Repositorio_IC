@@ -69,6 +69,8 @@ class SessionManager:
         base_path = self.outDirectory
         new_path = f'{self.exercise.getId()}/{self.llm.getName()}/{self.exercise.getName()}_{self.session}.py'
         full_path = os.path.join(base_path, new_path)
+        create_path = os.path.dirname(full_path)
+        os.makedirs(create_path, exist_ok=True)
         open(full_path, 'w').write(self.llm.getContent())
         return full_path
 
