@@ -136,7 +136,8 @@ def runTest(nameLLm, prompt, language, outDir, id, k):
     if not(os.path.exists(outDir)):
         os.makedirs(outDir,exist_ok=True)
     runner = r.XMLTestRunner(output=outDir, outsuffix=f"{prompt}resultado_{id}_{k}") #prompt, id
-    runner.run(suite)
+    re = runner.run(suite)
+    print(re)
         
     del(glob)
     del(r)

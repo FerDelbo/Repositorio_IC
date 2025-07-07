@@ -77,7 +77,7 @@ class codeGenerator:
         #print(len(path))
         if len(path) == 0:
             path = glob.glob(f"{dirctory}*/**/{self.nameExercise}.txt", recursive=True)
-        #print(path)
+        #print(path)nameLLM
         self.__convertTxt(path[0])
 
     def saveCode(self, response, outDirctory):
@@ -95,9 +95,8 @@ class codeGenerator:
             full_path = os.path.join(directory[0], nome)
         
         solution = self.__removeLines(response.content)
-        file = open(full_path, 'w')
-        file.write(solution)
-        file.close()
+        with open(full_path, 'w') as file:
+            file.write(solution)
 
     def __createSession(self, outDirctory):
         #print("criando seção")
