@@ -7,12 +7,17 @@ import git
 
 
 class Sheet:
-    def __init__(self, exercise, fileXML, llm, path):
+    def __init__(self, exercise, llm, path, dict_test_results):
         self.exercise = exercise #Pegar qual o nome e linguem usada
-        self.fileXML = fileXML# Vai ter que passar
         self.llm = llm# Nome da LLM e temperatura
         self.path = path# Caminho da planilha salva
-    
+        self.total_test = dict_test_results['total']
+        self.passed_test = dict_test_results['passed']
+        self.failed_test = dict_test_results['failed']
+        self.passed_test_names = dict_test_results['passed_names']
+        self.failed_test_names = dict_test_results['failed_names']
+        self.expected_and_obtained = dict_test_results['esperado_e_obtido']
+
     def extractData(self):
         # Transformar o arquivo XML em uma árvore
         tree = ET.parse(self.fileXML)

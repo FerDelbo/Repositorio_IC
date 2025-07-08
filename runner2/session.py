@@ -2,8 +2,8 @@ import os
 from datetime import datetime
 import uuid
 from generatorCode import LLM
-# from prompt import PromptBuilder
 import pyexcel
+import re
 
 class Session:
     def __init__(self, outDirectory, inputDirectory):
@@ -30,7 +30,6 @@ class Session:
 # TODO: Realizar os SET de input e output directory
 
 
-# TODO: Fazer um session Manager
 class SessionManager:
     def __init__(self, file):
         self.archive = file
@@ -40,6 +39,25 @@ class SessionManager:
         self.outDirectory = Session.createSession(self.session)
         return self.outDirectory
         
+    def __test_case_formatting(self, test_case):
+        # Divide em blocos de test case
+        blocks = re.split(r"-- TEST CASE \d+:", test_case)
+
+        result = {}
+
+        for block in blocks:
+            # Extrai o input
+            match_input = re.search(r"---- input:\s*(\[.*?\])", block, re.DOTALL)
+            # Extrai o correct output (até a próxima seção ou fim)
+            match_output = re.search(r"---- correct output:\s*(.*?)(?:----|\Z)", block, re.DOTALL)
+
+            if match_input and match_output:
+                input = match_input.group(1).strip()
+                output = match_output.group(1).strip()
+                result[input] = output
+
+        return result
+
     def listExercise(self, problem_id, language):
         records = pyexcel.get_records(file_name=self.archive)
 
@@ -50,7 +68,8 @@ class SessionManager:
                     name=row['Nome do exercício'],
                     language=language,
                     content=row['Enunciado revisado'],
-                    test_case=row['Casos de teste'],
+                    # test_case=row['Casos de teste'],
+                    test_case=self.__test_case_formatting(row['Casos de teste']),
                     solution=row['Solução de referência']
                 )
                 return self.exercise
@@ -61,10 +80,6 @@ class SessionManager:
         self.llm = LLM(name_llm, self.exercise, temperature)
         return self.llm
 
-    def createPrompt(self):
-        self.prompt = PromptBuilder(exercise=self.exercise, file=self.archive)
-        self.prompt = self.prompt.__createMensage()
-
     def saveContent(self):
         base_path = self.outDirectory
         new_path = f'{self.exercise.getId()}/{self.llm.getName()}/{self.exercise.getName()}_{self.session}.py'
@@ -72,9 +87,7 @@ class SessionManager:
         create_path = os.path.dirname(full_path)
         os.makedirs(create_path, exist_ok=True)
         open(full_path, 'w').write(self.llm.getContent())
-        return full_path
-
-# TODO: Fazer uma classe de teste, Test Session Manager <- Usar o pytest
+        self.path_code = full_path
 
 class Exercise:
     def __init__(self, id, name, language, content, test_case, solution):
