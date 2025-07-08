@@ -7,7 +7,7 @@ class TestExecute:
         self.path_code_test = path # Aqui está o caminho do código
         self.session = session # A sessão que está sendo executada
         self.path_excel = path_excel
-        # self.row_table_save = 0
+        
     
     def module_from_file(self, module_name, file_path):
         spec = importlib.util.spec_from_file_location(module_name, file_path)
@@ -176,7 +176,7 @@ def runTest(nameLLm, prompt, language, outDir, id, k):
         # if path_test is None:
         #     path_test = self.create_test()
         test = self.module_from_file("test", path_test)
-        row_table_save = test.runTest(self, self.path_excel)
+        self.row_table_save = test.runTest(self, self.path_excel)
     
     def get_path_code_test(self):
         return self.path_code_test

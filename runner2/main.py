@@ -26,4 +26,11 @@ llm = s.settingLLM('GPT4o', 0.7)
 # Teste para executar os casos de teste e criar uma linha da planilha
 t = TestExecute(path='/home/fernando/Área de trabalho/Projeto/Repositorio_IC/IC/problemas codebanch/1289/Testes/test.py', session=s, path_excel='/home/fernando/Área de trabalho/Projeto/solucoesLLM.xlsx')
 t.runTestCase()
-t.
+row = t.row_table_save
+print("=======TESTES===========")
+print("Total de testes: ", row.total_test)
+print("Total de testes que passou: ", row.passed_test)
+print("Total de testes falho: ", row.failed_test)
+print("Nome dos testes que passaram: ", row.passed_test_names)
+print("Nome dos testes que falharam: ", row.failed_test_names)
+print("Saidas obtidas e saidas esperadas: ",row.expected_and_obtained)
