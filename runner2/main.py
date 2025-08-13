@@ -1,5 +1,6 @@
 from session import SessionManager
 from testExecute import TestExecute
+import sheet
 
 s = SessionManager('/home/fernando/Área de trabalho/Projeto/enunciadosCodeBench.xlsx')
 path = s.create(base_directory='/home/fernando/Área de trabalho/Projeto/Repositorio_IC/IC',
@@ -24,7 +25,7 @@ llm = s.settingLLM('GPT4o', 0.7)
 # s.saveContent()
 
 # Teste para executar os casos de teste e criar uma linha da planilha
-t = TestExecute(path='/home/fernando/Área de trabalho/Projeto/Repositorio_IC/IC/problemas codebanch/1289/Testes/test.py', session=s, path_excel='/home/fernando/Área de trabalho/Projeto/solucoesLLM.xlsx')
+t = TestExecute(path='/home/fernando/Área de trabalho/Projeto/solucaos/2025-07-08/1289/GPT4o/sed - preparador físico_<session.Session object at 0x7928260661e0>.py', session=s, path_excel='/home/fernando/Área de trabalho/Projeto/solucoesLLM.xlsx')
 t.runTestCase()
 row = t.row_table_save
 print("=======TESTES===========")
@@ -34,3 +35,5 @@ print("Total de testes falho: ", row.failed_test)
 print("Nome dos testes que passaram: ", row.passed_test_names)
 print("Nome dos testes que falharam: ", row.failed_test_names)
 print("Saidas obtidas e saidas esperadas: ",row.expected_and_obtained)
+
+row.saveExcel()
