@@ -18,7 +18,7 @@ class LLM:
 
     def generate(self):
         if self.name == "Gemini":
-            modelLLM = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001", google_api_key=GEMINI_KEY, temperature=self.temperature)
+            modelLLM = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=GEMINI_KEY, temperature=self.temperature)
         elif self.name == "GPT4o-mini":
             modelLLM = ChatOpenAI(model="gpt-4o-mini", openai_api_key=GPT_KEY, temperature=self.temperature)
         elif self.name == "HuggingChat":

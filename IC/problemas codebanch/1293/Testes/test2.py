@@ -80,33 +80,48 @@ def verificar_string_tolerante(string1, valores_entrada, arquivo, test_id):
 class TestStringVerification(unittest.TestCase):
 
     def test_verificar_string_1(self):
-        valores = ['[27740,26598,15468]']
-        result = verificar_string('plateia: 5123.0\ncamarotes inferiores: 1208.0\ncamarotes superiores: 987.0\nplateia', valores, self.file, 1)
+        valores = ["[27740,26598,15468]"]
+        result = verificar_string("plateia: 5123.0 camarotes inferiores: 1208.0 camarotes superiores: 987.0 plateia", valores, self.file, 1)
         self.assertTrue(result[2])
 
     def test_verificar_string_4(self):
-        valores = ['[27740,26598,15468]']
-        result = verificar_string_tolerante('plateia: 5123.0\ncamarotes inferiores: 1208.0\ncamarotes superiores: 987.0\nplateia', valores, self.file, 4)
+        valores = ["[27740,26598,15468]"]
+        result = verificar_string_tolerante("plateia: 5123.0
+camarotes inferiores: 1208.0
+camarotes superiores: 987.0
+plateia", valores, self.file, 4)
         self.assertTrue(result[2])
 
     def test_verificar_string_2(self):
-        valores = ['[47612,78142,60342]']
-        result = verificar_string('plateia: 1322.0\ncamarotes inferiores: 7054.0\ncamarotes superiores: 3265.0\ncamarotes inferiores', valores, self.file, 2)
+        valores = ["[47612,78142,60342]"]
+        result = verificar_string("plateia: 1322.0
+camarotes inferiores: 7054.0
+camarotes superiores: 3265.0
+camarotes inferiores", valores, self.file, 2)
         self.assertTrue(result[2])
 
     def test_verificar_string_5(self):
-        valores = ['[47612,78142,60342]']
-        result = verificar_string_tolerante('plateia: 1322.0\ncamarotes inferiores: 7054.0\ncamarotes superiores: 3265.0\ncamarotes inferiores', valores, self.file, 5)
+        valores = ["[47612,78142,60342]"]
+        result = verificar_string_tolerante("plateia: 1322.0
+camarotes inferiores: 7054.0
+camarotes superiores: 3265.0
+camarotes inferiores", valores, self.file, 5)
         self.assertTrue(result[2])
 
     def test_verificar_string_3(self):
-        valores = ['[2164,9042,10890]']
-        result = verificar_string('plateia: 16.0\ncamarotes inferiores: 350.0\ncamarotes superiores: 820.0\ncamarotes superiores', valores, self.file, 3)
+        valores = ["[2164,9042,10890]"]
+        result = verificar_string("plateia: 16.0
+camarotes inferiores: 350.0
+camarotes superiores: 820.0
+camarotes superiores", valores, self.file, 3)
         self.assertTrue(result[2])
 
     def test_verificar_string_6(self):
-        valores = ['[2164,9042,10890]']
-        result = verificar_string_tolerante('plateia: 16.0\ncamarotes inferiores: 350.0\ncamarotes superiores: 820.0\ncamarotes superiores', valores, self.file, 6)
+        valores = ["[2164,9042,10890]"]
+        result = verificar_string_tolerante("plateia: 16.0
+camarotes inferiores: 350.0
+camarotes superiores: 820.0
+camarotes superiores", valores, self.file, 6)
         self.assertTrue(result[2])
 
 
